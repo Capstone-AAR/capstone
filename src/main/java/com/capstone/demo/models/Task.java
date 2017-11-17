@@ -2,6 +2,7 @@ package com.capstone.demo.models;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "tasks")
 public class Task {
@@ -15,6 +16,9 @@ public class Task {
     @Column(nullable = false)
     private Integer pointValue;
 
+    @OneToOne
+    private Status taskStatus;
+
     public Task() {
 
     }
@@ -23,6 +27,7 @@ public class Task {
         this.id = task.id;
         this.taskName = task.taskName;
         this.pointValue = task.pointValue;
+        this.taskStatus = task.taskStatus;
     }
 
     public Long getId() {
@@ -48,6 +53,16 @@ public class Task {
     public void setPointValue(Integer pointValue) {
         this.pointValue = pointValue;
     }
+
+    public Status gettaskStatus() {
+        return taskStatus;
+    }
+
+    public void settaskStatus(Status taskStatus) {
+        this.taskStatus = taskStatus;
+    }
+
+
 
 
 }
