@@ -3,6 +3,7 @@ package com.capstone.demo.models;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -28,6 +29,14 @@ public class User {
 
     @Column()
     private Long totalPoints;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="users",
+            joinColumns={@JoinColumn(name="user_id")},
+            inverseJoinColumns={@JoinColumn(name="child_id")}
+    )
+    private List<Child> children;
 
     public User() {
 
