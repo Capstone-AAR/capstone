@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class UsersController {
 
     @GetMapping("/index")
-    public String homePage(){
-        return"users/index";
+    public String homePage() {
+        return "users/index";
     }
 }
