@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <head th:replace="fragments/header :: main-header('Register')"></head>
+</head>
+<body>
+
+<nav th:include="fragments/navbar :: mainNavbar"></nav>
+<br/>
+<h1>Register for Thrifty!</h1>
+<form th:action="@{/users/register}" method="post" th:object="${user}">
+    <div class="form-group">
+    <label for="username">Choose a username</label>
+    <input th:field= "*{username}" id="username" name="username" />
+    </div>
+    <div class="form-group">
+        <label for="email">Enter your email</label>
+        <input th:field="*{email}" id="email" name="email"/>
+    </div>
+    <div class="form-group">
+    <label for="password">Choose a password</label>
+    <input th:field="*{password}" id="password"/>
+    </div>
+
+    <div class="form-group">
+        <label for="confirm-password">Confirm</label>
+        <input id="confirm-password" name="confirm-password"/>
+    </div>
+    <input value="Sign me up." type="submit" class="btn btn-primary"/>
+
+</form>
+</body>
+</html>
