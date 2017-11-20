@@ -21,6 +21,7 @@ public class UsersController {
         return "users/index";
     }
 
+
     @GetMapping("/register")
     public String registerPage(Model viewModel){
         viewModel.addAttribute("user", new User());
