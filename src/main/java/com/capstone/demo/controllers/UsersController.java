@@ -33,4 +33,9 @@ public class UsersController {
         repository.save(user);
         return "redirect:/login";
     }
+
+    @GetMapping("/parent-profile")
+    public String viewProfile(){
+        return "users/parent-profile";
+    }
 }
