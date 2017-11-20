@@ -11,4 +11,9 @@ public class UsersController {
     public String homePage() {
         return "users/index";
     }
+
+    @GetMapping("/login")
+    public String showLoginPage() {
+        return "users/login";
+    }
 }
