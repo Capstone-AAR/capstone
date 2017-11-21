@@ -6,32 +6,89 @@ import java.util.List;
 @Entity
 @Table(name = "children")
 public class Child {
+
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
+    @Column(nullable = false, unique = true, name = "username")
+    private String username;
+
+    @Column(nullable = false, unique = true, name = "password")
+    private String password;
+
+    @Column
+    private long score;
+
+    //////////////////////////////////////////////////////////
+    // Many to many connection to Parent model.
+    //////////////////////////////////////////////////////////
     @ManyToMany(mappedBy = "children")
-    private List<User> users;
+    private List<Parent> parents;
 
-    public Child(Child child) {
-        this.id = child.id;
-        this.users = child.users;
+    public Child() {
+
     }
 
-    public Long getId() {
+    public Child(String username, String password, long score) {
+        this.username = username;
+        this.password = password;
+        this.score = score;
+    }
+
+    /////////////////////////////////////////////////////////////////
+    // Copy constructor used for authentication and validation
+    ////////////////////////////////////////////////////////////////
+    public Child(Child childCopy) {
+        this.id = childCopy.id;
+        this.username = childCopy.username;
+        this.password = childCopy.password;
+        this.score = childCopy.score;
+    }
+
+    //////////////////////////////////////////////////////////
+    // Setters and getters.
+    //////////////////////////////////////////////////////////
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public List<User> getUsers() {
-        return users;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setUsername(String username) {
+        this.username = username;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public long getScore() {
+        return score;
+    }
+
+    public void setScore(long score) {
+        this.score = score;
+    }
+
+    public List<Parent> getParents() {
+        return parents;
+    }
+
+    public void setParents(List<Parent> parents) {
+        this.parents = parents;
+    }
+
 
 }

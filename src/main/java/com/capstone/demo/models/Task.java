@@ -14,20 +14,20 @@ public class Task {
     private String taskName;
 
     @Column(nullable = false)
+    private String taskDescription;
+
+    @Column(nullable = false)
     private Integer pointValue;
 
     @OneToOne
     private Status taskStatus;
-
-    public Task() {
-
-    }
 
     public Task(Task task) {
         this.id = task.id;
         this.taskName = task.taskName;
         this.pointValue = task.pointValue;
         this.taskStatus = task.taskStatus;
+        this.taskDescription = task.taskDescription;
     }
 
     public Long getId() {
@@ -62,7 +62,13 @@ public class Task {
         this.taskStatus = taskStatus;
     }
 
+    public String getTaskDescription() {
+        return taskDescription;
+    }
 
+    public void setTaskDescription(String taskDescription) {
+        this.taskDescription = taskDescription;
+    }
 
 
 }

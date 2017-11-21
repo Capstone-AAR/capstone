@@ -7,27 +7,29 @@
 
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 <br/>
-<h1>Register for Thrifty!</h1>
-<form th:action="@{/users/register}" method="post" th:object="${user}">
-    <div class="form-group">
-    <label for="username">Choose a username</label>
-    <input th:field= "*{username}" id="username" name="username" />
-    </div>
-    <div class="form-group">
-        <label for="email">Enter your email</label>
-        <input th:field="*{email}" id="email" name="email"/>
-    </div>
-    <div class="form-group">
-    <label for="password">Choose a password</label>
-    <input th:field="*{password}" id="password"/>
-    </div>
+<div class="container">
+    <h1>Register for Thrifty!</h1>
+    <form th:action="@{/users/register}" method="post" th:object="${parent}">
+        <div class="form-group">
+            <label for="username">Choose a username</label>
+            <input th:field="*{username}" id="username" name="username"/>
+        </div>
+        <div class="form-group">
+            <label for="email">Enter your email</label>
+            <input th:field="*{email}" id="email" name="email"/>
+        </div>
+        <div class="form-group">
+            <label for="password">Choose a password</label>
+            <input th:field="*{password}" id="password" type="password"/>
+        </div>
 
-    <div class="form-group">
-        <label for="confirm-password">Confirm</label>
-        <input id="confirm-password" name="confirm-password"/>
-    </div>
-    <input value="Sign me up." type="submit" class="btn btn-primary"/>
+        <div class="form-group">
+            <label for="confirm-password">Confirm</label>
+            <input id="confirm-password" name="confirm-password" type="password"/>
+        </div>
+        <input value="Sign me up" type="submit" class="btn btn-primary"/>
 
-</form>
+    </form>
+</div>
 </body>
 </html>
