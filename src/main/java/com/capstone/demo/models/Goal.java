@@ -2,6 +2,7 @@ package com.capstone.demo.models;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "goals")
@@ -22,12 +23,16 @@ public class Goal {
     @Column()
     private Integer trackProgress;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "goals")
+    private List<Task> tasks;
+
     public Goal(Goal goal) {
         this.id = goal.id;
         this.goalName = goal.goalName;
         this.startDate = goal.startDate;
         this.endDate = goal.endDate;
         this.trackProgress = goal.trackProgress;
+        this.tasks = goal.tasks;
     }
 
     public Long getId() {
@@ -70,4 +75,11 @@ public class Goal {
         this.goalName = goalName;
     }
 
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
 }
