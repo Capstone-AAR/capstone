@@ -23,7 +23,7 @@ public class Goal {
     @Column()
     private Integer trackProgress;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "goals")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "goal")
     private List<Task> tasks;
 
     public Goal(Goal goal) {
