@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:="http://www.w3.org/1999/xhtml">
 <head>
-    <head th:replace="fragments/header :: main-header('Your Profile')"></head>
+    <title>Calendar</title>
+    <meta charset="UTF-8"/>
+    <link rel='stylesheet' href='/lib/bootstrap-3.3.7.min.css'/>
+    <link rel='stylesheet' href='/fullcalendar/fullcalendar.min.css'/>
 </head>
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
-<br/>
-<h1>Here is your profile</h1>
-<a>View goals</a>
-<br/>
-<a>View children profiles</a>
-<br/>
-<a>Set New Goal</a>
-<br/>
-<a>Set New Task</a>
-<br/>
+<h1>Calendar</h1>
 
+
+
+
+<!--///////////////////////////////////////////////////////////////////////////-->
+<!--///////////////////////////// Calendar Area ///////////////////////////////-->
+<!--///////////////////////////////////////////////////////////////////////////-->
+<div id="calendar" style="border: 1px solid #000; max-width: 500px; max-height: 500px;">
+</div>
+
+
+<!--///////////////////////////////////////////////////////////////////////////-->
+<!--///////////////////////JS and Jquery Scripts //////////////////////////////-->
+<!--///////////////////////////////////////////////////////////////////////////-->
+<script src='/lib/jquery-3.2.1.min.js'></script>
+<script src='/lib/moment.min.js'></script>
+<script src="/fullcalendar/fullcalendar.js"></script>
+<script src='/js/main.js'></script>
 </body>
 </html>
