@@ -1,5 +1,7 @@
 package com.capstone.demo.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -15,9 +17,11 @@ public class Goal {
     private String goalName;
 
     @Column(nullable = false)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date startDate;
 
     @Column(nullable = false)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date endDate;
 
     @Column()
@@ -33,6 +37,12 @@ public class Goal {
         this.endDate = goal.endDate;
         this.trackProgress = goal.trackProgress;
         this.tasks = goal.tasks;
+    }
+
+    public Goal(String goalName, Date startDate, Date endDate ){
+        this.goalName = goalName;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
     public Goal(){}
 

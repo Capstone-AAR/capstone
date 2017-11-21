@@ -5,12 +5,13 @@
 </head>
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
-<div th:each="Goal :${goal}">
-    <h1 th:text="${goal.goal_name}">
+<div th:each="goal:${goals}">
+    <h1 th:text="${goal.goalName}">
 
     </h1>
-    <p th:text="${goal.start_date}"></p>
-    <a th:href="@{'mailto:' + ${goal.parent.username} }"><span th:text="${goal.user.username}"></span></a>
+    <p th:text="${goal.startDate}"></p>
+    <p th:text="${goal.endDate}"></p>
+
 </div>
 
 </body>
