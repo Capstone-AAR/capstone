@@ -29,6 +29,7 @@ public class Goal {
         this.endDate = goal.endDate;
         this.trackProgress = goal.trackProgress;
     }
+    public Goal(){}
 
     public Long getId() {
         return id;
