@@ -22,7 +22,7 @@ public class ParentsController {
     //////////////////////////////////////////////////////////
     // Home page.
     //////////////////////////////////////////////////////////
-    @GetMapping("/index")
+    @GetMapping("/")
     public String homePage() {
         return "users/index";
     }
