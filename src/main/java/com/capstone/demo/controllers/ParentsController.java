@@ -2,6 +2,7 @@ package com.capstone.demo.controllers;
 
 import com.capstone.demo.models.Parent;
 import com.capstone.demo.repositories.ParentRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,11 +10,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class UsersController {
+public class ParentsController {
     private ParentRepository repository;
+    PasswordEncoder encoder;
 
-    public UsersController(ParentRepository repository) {
+    public ParentsController(PasswordEncoder encoder, ParentRepository repository) {
         this.repository = repository;
+        this.encoder = encoder;
     }
 
     //////////////////////////////////////////////////////////
@@ -23,7 +26,6 @@ public class UsersController {
     public String homePage() {
         return "users/index";
     }
-
 
     //////////////////////////////////////////////////////////
     // Registration page. (Parent)
@@ -36,8 +38,10 @@ public class UsersController {
 
     @PostMapping("/users/register")
     public String registerForm(@ModelAttribute Parent parent) {
+        String hash = encoder.encode(parent.getPassword());
+        parent.setPassword(hash);
         repository.save(parent);
-        return "redirect:/users/login";
+        return "redirect:/login";
     }
 
     @GetMapping("/parent-profile")
