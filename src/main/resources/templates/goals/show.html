@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <head th:replace="fragments/header :: main-header('View Goals')"></head>
+</head>
+<body>
+<nav th:replace="fragments/navbar :: mainNavbar"></nav>
+<div th:each="Goal :${goal}">
+    <h1 th:text="${goal.goal_name}">
+
+    </h1>
+    <p th:text="${goal.start_date}"></p>
+    <a th:href="@{'mailto:' + ${goal.parent.username} }"><span th:text="${goal.user.username}"></span></a>
+</div>
+
+</body>
+</html>
