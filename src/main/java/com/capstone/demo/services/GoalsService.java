@@ -6,7 +6,7 @@ import com.capstone.demo.repositories.GoalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service("GoalSvc")
+@Service("GoalService")
 public class GoalsService {
     private final GoalRepository goalDao;
 
