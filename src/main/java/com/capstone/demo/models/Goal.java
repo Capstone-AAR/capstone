@@ -34,6 +34,7 @@ public class Goal {
         this.trackProgress = goal.trackProgress;
         this.tasks = goal.tasks;
     }
+    public Goal(){}
 
     public Long getId() {
         return id;
