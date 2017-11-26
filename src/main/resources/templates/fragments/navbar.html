@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
     <title>Title</title>
 </head>
 <body>
-<nav id="my-nav" class="navbar navbar-default" th:fragment="mainNavbar">
-    <ul class="nav navbar-nav">
 
-        <li><a href="/">Home</a></li>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/register">Register</a></li>
-        <li><a href="/register">Set a Goal</a></li>
+
+<nav sec:authorize="isAuthenticated()" id="my-nav" class="navbar navbar-default" th:fragment="mainNavbar">
+    <ul class="nav navbar-nav">
+        <!--<p th:text="#{'Hello, ' + ${parent.username}}"></p>-->
+        <li><a href="/users/parent-profile">Home</a></li>
+        <li><a href="/goals/create">Set a Goal</a></li>
         <li><a href="/register">View Progress</a></li>
         <li><a href="/register">Create Task</a></li>
         <li><a href="/register">Add New Saver</a></li>
@@ -24,6 +24,25 @@
     </ul>
 
 </nav>
+
+    <nav sec:authorize="isAnonymous()" id="my-nav" class="navbar navbar-default" th:fragment="mainNavbar">
+        <ul class="nav navbar-nav">
+            <!--<p th:text="@{'Hello, ' + ${parent.username}}"></p>-->
+            <li><a href="/users/parent-profile">Home</a></li>
+            <li><a href="/register">Register</a></li>
+            <li><a href="/goals/create">How to set a Goal</a></li>
+            <li><a href="/register">View Progress</a></li>
+            <li><a href="/register">Create Task</a></li>
+            <li><a href="/register">FAQ's</a></li>
+            <li>
+                <form th:action="@{/login}" th:method="post">
+                    <button class="btn-link btn" style="margin-top: 8px">Login</button>
+                </form>
+            </li>
+        </ul>
+
+    </nav>
+
 
 </body>
 </html>

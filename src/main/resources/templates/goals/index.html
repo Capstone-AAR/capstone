@@ -7,10 +7,13 @@
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 <div th:each="goal:${goals}">
     <h1 th:text="${goal.goalName}">
-
     </h1>
-    <p th:text="${goal.startDate}"></p>
-    <p th:text="${goal.endDate}"></p>
+
+
+    <p>Total Points:</p>
+    <p th:text="${goal.totalPoints}"></p>
+    <p>Current Points</p>
+    <p th:text="${goal.trackProgress}"></p>
 
 </div>
 
