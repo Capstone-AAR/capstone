@@ -17,12 +17,15 @@ public class Goal {
     private String goalName;
 
     @Column(nullable = false)
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
-    private Date startDate;
+    private Integer totalPoints;
 
-    @Column(nullable = false)
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
-    private Date endDate;
+//    @Column(nullable = false)
+//    @DateTimeFormat(pattern = "dd/MM/yyyy")
+//    private Date startDate;
+//
+//    @Column(nullable = false)
+//    @DateTimeFormat(pattern = "dd/MM/yyyy")
+//    private Date endDate;
 
     @Column()
     private Integer trackProgress;
@@ -30,19 +33,31 @@ public class Goal {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "goal")
     private List<Task> tasks;
 
+    @ManyToOne
+    @JoinColumn(name="parent_id")
+    private Parent parent;
+
     public Goal(Goal goal) {
         this.id = goal.id;
         this.goalName = goal.goalName;
-        this.startDate = goal.startDate;
-        this.endDate = goal.endDate;
         this.trackProgress = goal.trackProgress;
         this.tasks = goal.tasks;
     }
 
-    public Goal(String goalName, Date startDate, Date endDate ){
+    public Integer getTotalPoints() {
+        return totalPoints;
+    }
+
+    public void setTotalPoints(Integer totalPoints) {
+        this.totalPoints = totalPoints;
+    }
+
+    public Goal(String goalName, Integer totalPoints, Integer trackProgress){
         this.goalName = goalName;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.totalPoints =totalPoints;
+        this.trackProgress = trackProgress;
+
+
     }
     public Goal(){}
 
@@ -52,22 +67,6 @@ public class Goal {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
     }
 
     public Integer getTrackProgress() {
@@ -93,4 +92,12 @@ public class Goal {
     public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
     }
+
+    public Parent getParent(){
+        return parent;
+    }
+    public void setParent(Parent parent){
+        this.parent = parent;
+    }
 }
+

@@ -8,6 +8,13 @@
 </head>
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
+
+
+<div th:each="parent :${parent}">
+    <h1 th:text="${parent.goal.username}">
+
+    </h1>
+</div>
 <h1>Calendar</h1>
 
 
