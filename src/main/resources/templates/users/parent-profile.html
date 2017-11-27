@@ -10,11 +10,9 @@
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 
 
-<div th:each="parent :${parent}">
-    <h1 th:text="${parent.goal.username}">
-
-    </h1>
-</div>
+<a href="/goals/create"><input type="submit" value="Create a new goal"/></a>
+<a href="/goals"><input type="submit" value="View all goals"/></a>
+<a href="/tasks"><input type="submit" value="View current tasks"/></a>
 <h1>Calendar</h1>
 
 
