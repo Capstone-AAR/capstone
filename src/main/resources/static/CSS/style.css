@@ -1,0 +1,13 @@
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: black;
+    text-align: center;
+
+}
+li{
+    display: inline-block;
+    margin: 8px;
+}
