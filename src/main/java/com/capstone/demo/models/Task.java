@@ -35,6 +35,11 @@ public class Task {
         this.goal = task.goal;
     }
 
+    public Task(String taskName, String taskDescription) {
+        this.taskName = taskName;
+        this.taskDescription = taskDescription;
+    }
+
     public Long getId() {
         return id;
     }
