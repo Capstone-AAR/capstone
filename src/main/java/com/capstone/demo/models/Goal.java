@@ -19,23 +19,15 @@ public class Goal {
     @Column(nullable = false)
     private Integer totalPoints;
 
-//    @Column(nullable = false)
-//    @DateTimeFormat(pattern = "dd/MM/yyyy")
-//    private Date startDate;
-//
-//    @Column(nullable = false)
-//    @DateTimeFormat(pattern = "dd/MM/yyyy")
-//    private Date endDate;
-
     @Column()
     private Integer trackProgress;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "goal")
     private List<Task> tasks;
 
-    @ManyToOne
-    @JoinColumn(name="parent_id")
-    private Parent parent;
+//    @ManyToOne
+//    @JoinColumn(name="parent_id")
+//    private Parent parent;
 
     public Goal(Goal goal) {
         this.id = goal.id;
@@ -85,19 +77,14 @@ public class Goal {
         this.goalName = goalName;
     }
 
-    public List<Task> getTasks() {
-        return tasks;
-    }
+//    public List<Task> getTasks() {
+//        return tasks;
+//    }
+//
+//    public void setTasks(List<Task> tasks) {
+//        this.tasks = tasks;
+//    }
 
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
-    }
 
-    public Parent getParent(){
-        return parent;
-    }
-    public void setParent(Parent parent){
-        this.parent = parent;
-    }
 }
 
