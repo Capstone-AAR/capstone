@@ -1,13 +1,22 @@
 .footer{
-    position: fixed;
+    position: relative;
     left: 0;
     bottom: 0;
     width: 100%;
     color: black;
     text-align: center;
+    font-size: small;
+    height: 2em;
 
 }
 li{
     display: inline-block;
     margin: 8px;
 }
+
+.panel{
+    width: 75%
+}
+
+
+
