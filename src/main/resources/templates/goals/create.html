@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <head th:replace="fragments/header :: main-header('Create new goal')"></head>
+    <head th:replace="fragments/header :: main-header('Create new goal')">
+        <link rel="stylesheet" href="CSS/style.css"/>
+    </head>
 </head>
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 <br/>
 <h1>Create a New Goal</h1>
+<div class="container">
 <form th:action="@{/goals/create}" method ="post" th:object = "${goal}">
 
 
@@ -25,6 +28,8 @@
     <input type="submit" />
 
 </form>
-
+<br/>
+</div>
+<!--<footer th:replace="fragments/footer :: mainFooter"></footer>-->
 </body>
 </html>
