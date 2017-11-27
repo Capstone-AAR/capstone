@@ -13,8 +13,8 @@
         <!--<p th:text="#{'Hello, ' + ${parent.username}}"></p>-->
         <li><a href="/users/parent-profile">Home</a></li>
         <li><a href="/goals/create">Set a Goal</a></li>
-        <li><a href="/register">View Progress</a></li>
-        <li><a href="/register">Create Task</a></li>
+        <li><a href="/child-profile">View your Child's Profile</a></li>
+        <li><a href="/tasks">Task</a></li>
         <li><a href="/register">Add New Saver</a></li>
         <li>
             <form th:action="@{/logout}" th:method="post">
@@ -28,11 +28,11 @@
     <nav sec:authorize="isAnonymous()" id="my-nav" class="navbar navbar-default" th:fragment="mainNavbar">
         <ul class="nav navbar-nav">
             <!--<p th:text="@{'Hello, ' + ${parent.username}}"></p>-->
-            <li><a href="/users/parent-profile">Home</a></li>
+            <li><a href="">How it works</a></li>
             <li><a href="/register">Register</a></li>
-            <li><a href="/goals/create">How to set a Goal</a></li>
+            <li><a href="">View Success Stories</a></li>
             <li><a href="/register">View Progress</a></li>
-            <li><a href="/register">Create Task</a></li>
+            <li><a href="">Start Today</a></li>
             <li><a href="/register">FAQ's</a></li>
             <li>
                 <form th:action="@{/login}" th:method="post">
