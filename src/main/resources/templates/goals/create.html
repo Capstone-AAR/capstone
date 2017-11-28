@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
 <head>
     <head th:replace="fragments/header :: main-header('Create new goal')"></head>
 </head>
@@ -12,15 +12,15 @@
 
 
     <label for="goalName">Goal:</label>
-    <input th:field="*{goalName}" id="goalName"/>
+    <input th:field="*{goalName}" id="goalName" />
     <!--<p th:if="${#fields.hasErrors('goal_name')}" th:errors="*{goal_name}"/>-->
     <br/>
-    <label for="totalPoints">Point Value:</label>
-    <input th:field="*{totalPoints}" id="totalPoints"/>
+    <label for="pointValue">Point Value:</label>
+    <input th:field="*{pointValue}" id="pointValue" />
     <!--<p th:if="${#fields.hasErrors('start_date')}" th:errors="*{start_date}"/>-->
     <br/>
     <label for="trackProgress">Current Points:</label>
-    <input th:field="*{trackProgress}" id="trackProgress"/>
+    <input th:field="*{trackProgress}" id="trackProgress" />
     <!--<p th:if="${#fields.hasErrors('end_date')}" th:errors="*{end_date}"/>-->
     <input type="submit" />
 

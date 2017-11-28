@@ -1,6 +1,11 @@
 package com.capstone.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.util.Date;
 
 
 @Entity
@@ -11,33 +16,45 @@ public class Task {
     private Long id;
 
     @Column(nullable = false)
+    @JsonProperty("title")
     private String taskName;
 
     @Column(nullable = false)
     private String taskDescription;
 
-    @Column(nullable = false)
-    private Integer pointValue;
+    @JsonProperty("end")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "YYY-MM-DD HH:mm:ss")
+    @DateTimeFormat(pattern = "YYYY-mm-dd")
+    private Date startDate;
 
-    @OneToOne
-    private Status taskStatus;
+    @JsonProperty("start")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "YYYY-MM-DD HH:mm:ss")
+    @DateTimeFormat(pattern = "YYYY-mm-dd")
+    private Date endDate;
 
     @ManyToOne
-    @JoinColumn (name = "goal_id")
+    @JoinColumn(name = "goal_id")
     private Goal goal;
 
-    public Task(Task task) {
-        this.id = task.id;
-        this.taskName = task.taskName;
-        this.pointValue = task.pointValue;
-        this.taskStatus = task.taskStatus;
-        this.taskDescription = task.taskDescription;
-        this.goal = task.goal;
-    }
+//    @ManyToOne
+//    @JoinColumn(name = "parent_id")
+//    private Parent parent;
+
+//    public Parent getParent() {
+//        return parent;
+//    }
+//
+//    public void setParent(Parent parent) {
+//        this.parent = parent;
+//    }
 
     public Task(String taskName, String taskDescription) {
         this.taskName = taskName;
         this.taskDescription = taskDescription;
+    }
+
+    public Task() {
+
     }
 
     public Long getId() {
@@ -56,22 +73,6 @@ public class Task {
         this.taskName = taskName;
     }
 
-    public Integer getPointValue() {
-        return pointValue;
-    }
-
-    public void setPointValue(Integer pointValue) {
-        this.pointValue = pointValue;
-    }
-
-    public Status gettaskStatus() {
-        return taskStatus;
-    }
-
-    public void settaskStatus(Status taskStatus) {
-        this.taskStatus = taskStatus;
-    }
-
     public String getTaskDescription() {
         return taskDescription;
     }
@@ -80,13 +81,19 @@ public class Task {
         this.taskDescription = taskDescription;
     }
 
-    public Goal getGoal() {
-        return goal;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setGoal(Goal goal) {
-        this.goal = goal;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
+    public Date getEndDate() {
+        return endDate;
+    }
 
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
 }

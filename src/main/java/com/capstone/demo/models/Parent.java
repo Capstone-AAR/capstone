@@ -1,5 +1,6 @@
 package com.capstone.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -29,6 +30,24 @@ public class Parent {
     @NotBlank
     private String password;
 
+//    public List<Task> getTasks() {
+//        return tasks;
+//    }
+//
+//    public void setTasks(List<Task> tasks) {
+//        this.tasks = tasks;
+//    }
+
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "parent")
+//    private List<Task> tasks;
+
+//    private List<Task> getJtasks() {
+//        return Jtasks;
+//    }
+//
+//    public void setJtasks(List<Task> jtasks) {
+//        Jtasks = jtasks;
+//    }
 
     //////////////////////////////////////////////////////////
     // Many to many connection to child model.
@@ -39,6 +58,13 @@ public class Parent {
             joinColumns = {@JoinColumn(name = "parent_id")},
             inverseJoinColumns = {@JoinColumn(name = "child_id")}
     )
+
+    //////////////////////////////////////////////////////////
+    // Many to many connection to Task model. JSON usage
+    //////////////////////////////////////////////////////////
+//    @OneToMany(mappedBy = "parent")
+//    @JsonBackReference
+//    private List<Task> Jtasks;
 
     //////////////////////////////////////////////////////////
     // Child object list populated by children retrieved
