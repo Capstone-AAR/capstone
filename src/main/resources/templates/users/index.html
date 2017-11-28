@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
     <head th:replace="fragments/header :: main-header('Home')"></head>
+    <link rel="stylesheet" href="CSS/style.css"/>
+
+</head>
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 <h1>Welcome to Thrifty</h1>
 <a href="/register"><input type="submit" value="Register"/></a>
 
 <a href="/login"><input type="submit" value="Login"/></a>
+
+
 <footer th:replace="fragments/footer :: mainFooter"></footer>
 </body>
 </html>

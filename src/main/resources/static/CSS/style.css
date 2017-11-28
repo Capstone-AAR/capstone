@@ -1,0 +1,49 @@
+.footer{
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: black;
+    text-align: center;
+    font-size: small;
+    height: 2em;
+
+}
+
+li{
+    display: inline-block;
+    margin: 8px;
+}
+
+.panel{
+    width: 75%
+}
+
+#my-nav{
+    background-color: white;
+    font-weight: 400;
+    position: relative;
+    z-index: 100;
+    height: 15em;
+    font-family: 'Raleway', sans-serif;
+    color: #605f5d;
+    text-align: center;
+    width: 100%;
+
+}
+#login{
+    position: relative;
+    right: 0;
+    display:inline-block;
+    padding-right: 2em;
+}
+#logo{
+    position: relative;
+    left: 0;
+    display:inline-block;
+
+    padding-left: 2em;
+
+}
+
+

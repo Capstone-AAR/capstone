@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <head th:replace="fragments/header :: main-header('View Goals')"></head>
+    <link rel="stylesheet" href="CSS/style.css"/>
 </head>
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
@@ -12,6 +13,6 @@
     <p th:text="${goal.totalPoints}"></p>
     <p th:text="${goal.trackProgress}"></p>
 </div>
-
+<footer th:replace="fragments/footer :: mainFooter"></footer>
 </body>
 </html>

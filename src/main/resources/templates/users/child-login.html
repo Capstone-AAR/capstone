@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-<head th:replace="fragments/header :: main-header('Log in')"></head>
+    <head th:replace="fragments/header :: main-header('Log in')"></head>
     <link rel="stylesheet" href="CSS/style.css"/>
 </head>
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 
 <div class="container">
-    <h1>Log in!</h1>
+    <h1>Log in Kids!</h1>
     <div class="row">
-        <form th:action="@{/login}" method="post">
+        <form th:action="@{/child-login}" method="post">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input id="username" class="username" name="username" type="text" />

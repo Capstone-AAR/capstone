@@ -1,30 +1,35 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <head th:replace="fragments/header :: main-header('Create new goal')"></head>
+    <head th:replace="fragments/header :: main-header('Create new goal')">
+        <link rel="stylesheet" href="CSS/style.css"/>
+    </head>
 </head>
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 <br/>
 <h1>Create a New Goal</h1>
+<div class="container">
 <form th:action="@{/goals/create}" method ="post" th:object = "${goal}">
 
 
 
     <label for="goalName">Goal:</label>
-    <input th:field="*{goalName}" id="goalName" />
+    <input th:field="*{goalName}" id="goalName"/>
     <!--<p th:if="${#fields.hasErrors('goal_name')}" th:errors="*{goal_name}"/>-->
     <br/>
-    <label for="pointValue">Point Value:</label>
-    <input th:field="*{pointValue}" id="pointValue" />
+    <label for="totalPoints">Point Value:</label>
+    <input th:field="*{totalPoints}" id="totalPoints"/>
     <!--<p th:if="${#fields.hasErrors('start_date')}" th:errors="*{start_date}"/>-->
     <br/>
     <label for="trackProgress">Current Points:</label>
-    <input th:field="*{trackProgress}" id="trackProgress" />
+    <input th:field="*{trackProgress}" id="trackProgress"/>
     <!--<p th:if="${#fields.hasErrors('end_date')}" th:errors="*{end_date}"/>-->
     <input type="submit" />
 
 </form>
-
+<br/>
+</div>
+<!--<footer th:replace="fragments/footer :: mainFooter"></footer>-->
 </body>
 </html>
