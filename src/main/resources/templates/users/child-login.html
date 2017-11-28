@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <head th:replace="fragments/header :: main-header('Log in')"></head>
+    <link rel="stylesheet" href="CSS/style.css"/>
+</head>
+<body>
+<nav th:replace="fragments/navbar :: mainNavbar"></nav>
+
+<div class="container">
+    <h1>Log in Kids!</h1>
+    <div class="row">
+        <form th:action="@{/child-login}" method="post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input id="username" class="username" name="username" type="text" />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" class="password" name="password" type="password" />
+            </div>
+            <input type="submit" value="Log In" class="btn btn-primary" />
+        </form>
+    </div>
+</div>
+
+
+<footer th:replace="fragments/footer :: mainFooter"></footer>
+</body>
+</html>
