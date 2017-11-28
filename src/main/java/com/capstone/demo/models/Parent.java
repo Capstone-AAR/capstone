@@ -1,5 +1,6 @@
 package com.capstone.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -28,7 +29,6 @@ public class Parent {
     @Column(nullable = false, name = "password")
     @NotBlank
     private String password;
-
 
     //////////////////////////////////////////////////////////
     // Many to many connection to child model.

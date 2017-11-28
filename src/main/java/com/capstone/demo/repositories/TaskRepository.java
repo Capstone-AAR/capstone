@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
+public interface TaskRepository extends CrudRepository<Task, Long> {
+
 public interface Tasks extends CrudRepository<Task, Long> {
     List<Task> findByStatus(TaskStatus status);
 }

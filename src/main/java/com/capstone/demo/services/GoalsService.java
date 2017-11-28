@@ -28,5 +28,6 @@ public class GoalsService {
     public Goal save (Goal goal){
         return goalDao.save(goal);
     }
+
     public void delete (long id){goalDao.delete(id);}
 }
