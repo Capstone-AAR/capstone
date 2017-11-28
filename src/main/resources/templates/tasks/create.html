@@ -55,14 +55,14 @@
                             <h4 class="modal-title">Create new task</h4>
                         </div>
                         <div class="modal-body">
-                            <form th:action="@{/tasks/create}" method="post" th:object="${task}">
+                            <form id="createTaskForm" th:action="@{/tasks/create}" th:method="post" th:object="${task}">
                                 <label for="title">Title:</label>
                                 <input th:field="*{taskName}" id="title"/>
                                 <label for="description">Description:</label>
                                 <input th:field="*{taskDescription}" id="description"/>
                                 <br/>
-                                <input type="submit" th:value="Create"/>
-                                <input type="hidden" name="startDate" id="startDate"/>
+                                <input type="hidden" id="startDateMoment" name="startDateMoment" />
+                                <input class="btn btn-primary" type="submit" th:value="Create"/>
                             </form>
                         </div>
                     </div>

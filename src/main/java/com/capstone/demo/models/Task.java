@@ -23,30 +23,16 @@ public class Task {
     private String taskDescription;
 
     @JsonProperty("end")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "YYY-MM-DD HH:mm:ss")
-    @DateTimeFormat(pattern = "YYYY-mm-dd")
+    @Temporal(TemporalType.DATE)
     private Date startDate;
 
     @JsonProperty("start")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "YYYY-MM-DD HH:mm:ss")
-    @DateTimeFormat(pattern = "YYYY-mm-dd")
+    @Temporal(TemporalType.DATE)
     private Date endDate;
 
     @ManyToOne
     @JoinColumn(name = "goal_id")
     private Goal goal;
-
-//    @ManyToOne
-//    @JoinColumn(name = "parent_id")
-//    private Parent parent;
-
-//    public Parent getParent() {
-//        return parent;
-//    }
-//
-//    public void setParent(Parent parent) {
-//        this.parent = parent;
-//    }
 
     public Task(String taskName, String taskDescription) {
         this.taskName = taskName;

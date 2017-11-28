@@ -9,12 +9,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 
 @Controller
@@ -51,7 +53,12 @@ public class TaskController {
     }
 
     @PostMapping("/tasks/create")
-    public String createNewTask(@ModelAttribute Task task) {
+    public String createNewTask(@ModelAttribute Task task, @RequestParam(name = "startDateMoment") String startDate) throws ParseException {
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        System.out.println(startDate);
+        Date start = format.parse(startDate);
+        task.setStartDate(start);
+        System.out.println(start.toString());
         service.save(task);
         return "redirect:/tasks/create";
     }

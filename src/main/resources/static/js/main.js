@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    console.log(tasks);
+
     $('#calendar').fullCalendar({
         header: {
             left: 'prev, next today',
@@ -12,27 +12,27 @@ $(document).ready(function () {
 
         dayClick: function (date, jsEvent, view) {
             var eventStart = moment(date).format("YYYY-MM-DD");
-            $('#startDate').val(eventStart);
+            $('#startDateMoment').val(eventStart);
             $('#createModal').modal('show');
-            var eventTitle = $('#title');
-            var eventDetail = $('#description');
+            // var eventTitle = $('#title').val();
+            // var eventDetail = $('#description').val();
 
-            if (eventTitle) {
-                $('#calendar').fullCalendar('renderEvent', {
-                    title: eventTitle,
-                    start: eventStart,
-                    detail: eventDetail,
-                    stick: true
-                });
-
-
-                console.log(view);
-                console.log(jsEvent);
-                console.log("This is the title: " + eventTitle);
-                console.log(eventDetail);
-                console.log("start date: " + eventStart);
-                console.log("end date: " + eventStart);
-            }
+            // if (eventTitle) {
+            //     // $('#calendar').fullCalendar('renderEvent', {
+            //     //     title: eventTitle,
+            //     //     start: eventStart,
+            //     //     detail: eventDetail,
+            //     //     stick: true
+            //     // });
+            //
+            //
+            //     console.log(view);
+            //     console.log(jsEvent);
+            //     console.log("This is the title: " + eventTitle);
+            //     console.log(eventDetail);
+            //     console.log("start date: " + eventStart);
+            //     console.log("end date: " + eventStart);
+            // }
         },
 
         eventClick: function (calEvent, jsEvent, view) {
