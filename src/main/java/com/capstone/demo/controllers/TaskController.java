@@ -35,7 +35,7 @@ public class TaskController {
     // See all tasks created by this user
     ///////////////////////////////////////////////////////////////////////
     @GetMapping("/tasks")
-    public String showAll(Model viewModel){
+    public String showAll(Model viewModel) {
         viewModel.addAttribute("tasks", service.findAll());
         return "users/tasks";
     }
@@ -68,37 +68,18 @@ public class TaskController {
     ////////////////////////////////////////////////////////////////
     @GetMapping("/tasks.json")
     public @ResponseBody
-    Iterable<Task> viewAllTasksInJsonFormat() { return taskDao.findAll(); }
+    Iterable<Task> viewAllTasksInJsonFormat() {
+        return taskDao.findAll();
+    }
 
 
     //////////////////////////////////////////////////////////////////////
     // View all tasks through Ajax call
     //////////////////////////////////////////////////////////////////////
     @GetMapping("/tasks/tasks")
-    public String viewAllTasksWithAjax() { return "tasks/tasks"; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public String viewAllTasksWithAjax() {
+        return "tasks/tasks";
+    }
 
 
 }
