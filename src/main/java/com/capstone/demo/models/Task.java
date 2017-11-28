@@ -19,8 +19,7 @@ public class Task {
     @Column(nullable = false)
     private Integer pointValue;
 
-    @OneToOne
-    private Status taskStatus;
+    private TaskStatus status;
 
     @ManyToOne
     @JoinColumn (name = "goal_id")
@@ -30,7 +29,7 @@ public class Task {
         this.id = task.id;
         this.taskName = task.taskName;
         this.pointValue = task.pointValue;
-        this.taskStatus = task.taskStatus;
+        this.status = task.status;
         this.taskDescription = task.taskDescription;
         this.goal = task.goal;
     }
@@ -38,6 +37,10 @@ public class Task {
     public Task(String taskName, String taskDescription) {
         this.taskName = taskName;
         this.taskDescription = taskDescription;
+    }
+
+    public Task(){
+
     }
 
     public Long getId() {
@@ -64,12 +67,12 @@ public class Task {
         this.pointValue = pointValue;
     }
 
-    public Status gettaskStatus() {
-        return taskStatus;
+    public TaskStatus getStatus() {
+        return status;
     }
 
-    public void settaskStatus(Status taskStatus) {
-        this.taskStatus = taskStatus;
+    public void seStatus(TaskStatus status) {
+        this.status = status;
     }
 
     public String getTaskDescription() {
