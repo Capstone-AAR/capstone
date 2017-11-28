@@ -2,9 +2,7 @@ $(document).ready(function () {
 
     $('#calendar').fullCalendar({
         header: {
-            left: 'prev, next today',
-            center: 'title',
-            right: 'month, agendaWeek, agendaDay'
+            right: 'prev, next today'
         },
         selectable: true,
         selectHelper: true,
@@ -14,32 +12,27 @@ $(document).ready(function () {
             var eventStart = moment(date).format("YYYY-MM-DD");
             $('#startDateMoment').val(eventStart);
             $('#createModal').modal('show');
-            // var eventTitle = $('#title').val();
-            // var eventDetail = $('#description').val();
 
-            // if (eventTitle) {
-            //     // $('#calendar').fullCalendar('renderEvent', {
-            //     //     title: eventTitle,
-            //     //     start: eventStart,
-            //     //     detail: eventDetail,
-            //     //     stick: true
-            //     // });
-            //
-            //
-            //     console.log(view);
-            //     console.log(jsEvent);
-            //     console.log("This is the title: " + eventTitle);
-            //     console.log(eventDetail);
-            //     console.log("start date: " + eventStart);
-            //     console.log("end date: " + eventStart);
-            // }
+        },
+
+        navLinks: true, // can click day/week names to navigate views
+        editable: true,
+        eventLimit: true,
+
+        events: {
+            url: '/tasks.json',
+            type: 'GET',
+            error: function () {
+                alert("There was an error getting the event dates");
+            }
         },
 
         eventClick: function (calEvent, jsEvent, view) {
             $('#modalTitle').html(calEvent.title);
             $('#modalBody').html(calEvent.detail);
             $('#myModal').modal("show");
-        },
-        events: tasks
+
+            console.log(calEvent.detail);
+        }
     });
 });

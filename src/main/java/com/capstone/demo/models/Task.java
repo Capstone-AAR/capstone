@@ -22,11 +22,11 @@ public class Task {
     @Column(nullable = false)
     private String taskDescription;
 
-    @JsonProperty("end")
+    @JsonProperty("start")
     @Temporal(TemporalType.DATE)
     private Date startDate;
 
-    @JsonProperty("start")
+    @JsonProperty("end")
     @Temporal(TemporalType.DATE)
     private Date endDate;
 
