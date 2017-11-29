@@ -17,10 +17,29 @@
 <h1>Welcome, <span th:text="${parent.user.username}"></span>!</h1>
 </div>
 
+<div th:each="goal:${goals}" class="panel panel-default">
+
+    <div th:text="${goal.goalName}" class="panel-heading">
 
 
-<div th:each="goal :${goals}">
-    <h1 th:text="${goal.goalName}"></h1>
+
+    </div>
+
+    <div class="panel-body">
+        <ul>
+            Total Points: <li th:text="${goal.totalPoints}"></li>
+            <br />
+            Current Points: <li th:text="${goal.trackProgress}"></li>
+            <br />
+            <a th:href="@{/goals/{id}(id=${goal.id})}">View Goal</a>
+            <br />
+            <a th:href="@{/tasks/create(id=${goal.id})}">Add tasks</a>
+        </ul>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+        </div>
+    </div>
+
 </div>
 
 <a href="/tasks/create"><input type="submit" value="Create a new task"/></a>
@@ -30,14 +49,7 @@
 
 
 
-<!--For Progress Bar-->
 
-
-
-
-<div class="progress">
-    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-</div>
 
 <!--///////////////////////////////////////////////////////////////////////////-->
 <!--///////////////////////JS and Jquery Scripts //////////////////////////////-->
