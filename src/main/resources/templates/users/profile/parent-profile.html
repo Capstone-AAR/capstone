@@ -14,12 +14,8 @@
 <div th:each="parent :${parent}">
     <h1 th:text="${parent.user.username}">
 
-    </h1>
-    <!--<p th:text="${child.totalPoints}"></p>-->
-    <!--<p th:text="${child.trackProgress}"></p>-->
-</div>
-<a href="/goals/create"><input type="submit" value="Create a new goal"/></a>
-<a href="/goals"><input type="submit" value="View all goals"/></a>
+<a href="/tasks/create"><input type="submit" value="Create a new task"/></a>
+<a href="/goals"><input type="submit" value="View all tasks"/></a>
 <a href="/tasks"><input type="submit" value="View current tasks"/></a>
 
 <!--For Progress Bar-->

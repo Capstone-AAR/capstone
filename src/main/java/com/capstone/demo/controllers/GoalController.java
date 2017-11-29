@@ -29,9 +29,7 @@ public class GoalController {
     }
 
     @GetMapping("/goals")
-
     public String showGoals(Model viewModel) {
-        List<Goal> goals = (List<Goal>) service.findAll();
         viewModel.addAttribute("goals", service.findAll());
         return "goals/index";
     }
