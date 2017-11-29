@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <head th:replace="fragments/header :: main-header('Reached Goal!')"></head>
+    <link rel="stylesheet" href="/CSS/style.css"/>
+</head>
+<body>
+<nav th:replace="fragments/navbar :: mainNavbar"></nav>
+<h1>You've completed your goal.</h1>
+<h2 th:text="${goal.goalName}"></h2>
+
+<footer th:replace="fragments/footer :: mainFooter"></footer>
+</body>
+</html>

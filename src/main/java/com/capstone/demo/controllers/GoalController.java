@@ -29,15 +29,12 @@ public class GoalController {
     }
 
     @GetMapping("/goals")
-
     public String showGoals(Model viewModel) {
-        List<Goal> goals = (List<Goal>) service.findAll();
         viewModel.addAttribute("goals", service.findAll());
         return "goals/index";
     }
 
 
-    ////////////////Not being implemented yet...////////////////////
     @GetMapping("/goals/{id}")
     public String showGoals (@PathVariable long id, Model viewmodel){
         Goal goal = service.findById(id);
@@ -58,4 +55,41 @@ public class GoalController {
         service.save(goal);
         return "redirect:/goals";
     }
+
+    @GetMapping("/goals/{id}/delete")
+    public String showGoalToBeDeleted(@PathVariable Long id, Model viewModel){
+        Goal goal = service.findById(id);
+        viewModel.addAttribute("goal", goal);
+        return "goals/delete";
+    }
+
+    @PostMapping("/goals/{id}/delete")
+    public String deleteGoal (@ModelAttribute Goal goal, @PathVariable Long id) {
+        service.delete(id);
+        return "redirect:/goals";
+    }
+
+    @GetMapping("/goals/{id}/update")
+    public String showGoalToBeEdited (@PathVariable Long id,  Model viewModel){
+        Goal existingGoal = service.findById(id);
+        viewModel.addAttribute("goal", existingGoal);
+        return "goals/update";
+    }
+
+    @PostMapping("/goals/{id}/update")
+    public String editGoal(@ModelAttribute Goal goal, @PathVariable Long id){
+        goal.setId(id);
+        service.save(goal);
+        return "redirect:/goals/" + goal.getId();
+    }
+
+    @GetMapping("/goals/{id}/reached")
+    public String showReachedGoals (@PathVariable long id, Model viewmodel){
+        Goal goal = service.findById(id);
+        viewmodel.addAttribute("goal", service.findById(id));
+
+
+        return "goals/reached";
+    }
+
 }

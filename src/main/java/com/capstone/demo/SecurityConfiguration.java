@@ -16,7 +16,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    @Autowired
     private UserDetailLoader userDetails;
 
     @Autowired
@@ -41,7 +40,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/parent-profile")
+                .defaultSuccessUrl("/profile")
                 .permitAll()
                 .and()
                 .authorizeRequests()
@@ -52,10 +51,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login?logout")
                 .and()
                 .authorizeRequests()
-                .antMatchers("/goals/create, ")
+                .antMatchers("/goals/create", "/profile")
                 .authenticated();
 
 
     }
+
 
 }
