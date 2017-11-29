@@ -34,6 +34,17 @@ public class Task {
     @JoinColumn(name = "goal_id")
     private Goal goal;
 
+    private TaskStatus status;
+
+    public Task(Task task) {
+        this.id = task.id;
+        this.taskName = task.taskName;
+//        this.pointValue = task.pointValue;
+        this.status = task.status;
+        this.taskDescription = task.taskDescription;
+        this.goal = task.goal;
+    }
+
     public Task(String taskName, String taskDescription) {
         this.taskName = taskName;
         this.taskDescription = taskDescription;

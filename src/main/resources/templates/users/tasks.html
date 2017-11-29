@@ -15,6 +15,11 @@
         <p th:text="${task.taskDescription}"></p>
     </th:block>
 
+<!--trying to get approved tasks-->
+<th:block th:each="tasks : ${tasks}">
+    <h3 th:text="${tasks.taskName}"></h3>
+    <p th:text="${tasks.taskDescription}"></p>
+</th:block>
 
 <footer th:replace="fragments/footer :: mainFooter"></footer>
 </body>
