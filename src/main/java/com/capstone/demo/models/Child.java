@@ -12,8 +12,8 @@ public class Child {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, name = "username")
-    private String username;
+//    @Column(nullable = false, name = "username")
+//    private String username;
 
     @OneToOne
     private User user;
@@ -26,7 +26,7 @@ public class Child {
     // Many to many connection to Parent model.
     //////////////////////////////////////////////////////////
     @ManyToOne
-    @JoinColumn(name = "parent_id")
+//    @JoinColumn(name = "parent_id")
     private Parent parent;
 
     public Child() {
