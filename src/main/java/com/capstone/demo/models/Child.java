@@ -12,11 +12,10 @@ public class Child {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, unique = true, name = "username")
-    private String username;
 
-    @Column(nullable = false, unique = true, name = "password")
-    private String password;
+    @OneToOne
+    private User user;
+
 
     @Column
     private long score;
@@ -24,29 +23,13 @@ public class Child {
     //////////////////////////////////////////////////////////
     // Many to many connection to Parent model.
     //////////////////////////////////////////////////////////
-    @ManyToMany(mappedBy = "children")
-    private List<Parent> parents;
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
+    private Parent parent;
 
     public Child() {
 
     }
-
-    public Child(String username, String password, long score) {
-        this.username = username;
-        this.password = password;
-        this.score = score;
-    }
-
-    /////////////////////////////////////////////////////////////////
-    // Copy constructor used for authentication and validation
-    ////////////////////////////////////////////////////////////////
-    public Child(Child childCopy) {
-        this.id = childCopy.id;
-        this.username = childCopy.username;
-        this.password = childCopy.password;
-        this.score = childCopy.score;
-    }
-
 
 
     //////////////////////////////////////////////////////////
@@ -60,22 +43,6 @@ public class Child {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public long getScore() {
         return score;
     }
@@ -84,13 +51,20 @@ public class Child {
         this.score = score;
     }
 
-    public List<Parent> getParents() {
-        return parents;
+    public Parent getParent() {
+        return parent;
     }
 
-    public void setParents(List<Parent> parents) {
-        this.parents = parents;
+    public void setParent(Parent parent) {
+        this.parent = parent;
     }
 
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
