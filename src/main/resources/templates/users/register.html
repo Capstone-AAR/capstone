@@ -25,7 +25,7 @@
         </div>
 
         <div class="form-group">
-            <label for="confirm-password">Confirm</label>
+            <label for="confirm-password">Confirm password</label>
             <input id="confirm-password" name="confirm-password" type="password"/>
         </div>
 
@@ -34,7 +34,9 @@
             <input id="isParent" type="checkbox" name="isParent"/>
         </div>
         <input value="Sign me up" type="submit" class="btn btn-primary"/>
-
+        <div th:if="${test}">
+            <p>You must be logged in to create/edit a Tasks</p>
+        </div>
     </form>
 </div>
 

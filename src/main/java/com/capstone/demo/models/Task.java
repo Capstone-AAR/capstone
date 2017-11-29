@@ -30,6 +30,14 @@ public class Task {
     @Temporal(TemporalType.DATE)
     private Date endDate;
 
+    public Goal getGoal() {
+        return goal;
+    }
+
+    public void setGoal(Goal goal) {
+        this.goal = goal;
+    }
+
     @ManyToOne
     @JoinColumn(name = "goal_id")
     private Goal goal;
