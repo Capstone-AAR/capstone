@@ -1,5 +1,6 @@
 package com.capstone.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -23,6 +24,7 @@ public class Goal {
     @Column()
     private Integer trackProgress;
 
+    @JsonBackReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "goal")
     private List<Task> tasks;
 
