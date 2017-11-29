@@ -12,6 +12,8 @@ public class Child {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(nullable = false, name = "username")
+    private String username;
 
     @OneToOne
     private User user;
