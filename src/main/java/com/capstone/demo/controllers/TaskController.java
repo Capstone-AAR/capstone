@@ -68,7 +68,7 @@ public class TaskController {
     @PostMapping("/tasks/create")
     public String createNewTask(@ModelAttribute Task task,
                                 @RequestParam(name = "startDateMoment") String startDate,
-                                @RequestParam(name = "id") long goalId,
+                                @RequestParam(name = "goalId") long goalId,
                                 Errors validation,
                                 Model model,
                                 RedirectAttributes redirect
@@ -94,15 +94,15 @@ public class TaskController {
         task.setGoal(goalsService.findById(goalId));
         task.setStatus(TaskStatus.NEW);
         service.save(task);
-        return "redirect:/tasks/tasks";
+        return "redirect:/tasks/create?id=" + goalId;
     }
 
     //////////////////////////////////////////////////////////////////////
     // View all tasks using Json
     ////////////////////////////////////////////////////////////////
     @GetMapping("/tasks.json")
-    public @ResponseBody Iterable<Task> viewAllTasksInJsonFormat() {
-        return taskDao.findAll();
+    public @ResponseBody Iterable<Task> viewAllTasksInJsonFormat(@RequestParam(name = "goalId") Long goalId) {
+        return taskDao.findByGoalId(goalId);
     }
 
 

@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    var goalId = $("#goalId").val();
     $('#calendar').fullCalendar({
         header: {
             right: 'prev, next today'
@@ -17,11 +18,12 @@ $(document).ready(function () {
 
         navLinks: true, // can click day/week names to navigate views
         editable: true,
-        eventLimit: true,
+        // eventLimit: true,
 
         events: {
             url: '/tasks.json',
             type: 'GET',
+            data: {goalId: goalId},
             error: function () {
                 alert("There was an error getting the event dates");
             }

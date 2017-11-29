@@ -56,8 +56,7 @@
                         </div>
                         <div class="modal-body">
                             <form id="createTaskForm" th:action="@{/tasks/create}" th:method="post" th:object="${task}">
-                                <input type="hidden" name="id" th:value="${id}" />
-                                <p th:text="${id}"></p>
+                                <input type="hidden" name="goalId" id="goalId" th:value="${id}" />
                                 <label for="title">Title:</label>
                                 <input th:field="*{taskName}" id="title"/>
                                 <label for="description">Description:</label>
