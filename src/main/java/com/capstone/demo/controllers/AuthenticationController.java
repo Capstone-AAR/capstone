@@ -41,11 +41,4 @@ public class AuthenticationController {
         viewModel.addAttribute("parent",parentDao.findByUser(user));
         return "users/profile/parent-profile";
     }
-
-
-
-//    @GetMapping("/child-login")
-//    public String childLogin(){
-//        return "users/child-login";
-//    }
 }

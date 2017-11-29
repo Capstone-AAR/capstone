@@ -4,6 +4,7 @@ import com.capstone.demo.models.Goal;
 import com.capstone.demo.models.Parent;
 import com.capstone.demo.repositories.GoalRepository;
 import com.capstone.demo.services.GoalsService;
+import com.capstone.demo.services.TasksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,11 +22,13 @@ public class GoalController {
 
     private final GoalsService service;
     private final GoalRepository goalDao;
+    private final TasksService Tservice;
 
     @Autowired
-    public GoalController(GoalsService service, GoalRepository goalDao) {
+    public GoalController(GoalsService service, GoalRepository goalDao, TasksService Tservice) {
         this.service = service;
         this.goalDao = goalDao;
+        this.Tservice = Tservice;
     }
 
     @GetMapping("/goals")
