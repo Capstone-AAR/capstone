@@ -9,4 +9,7 @@ public interface GoalRepository extends CrudRepository<Goal,Long> {
 
     @Query("from Goal g where g.id=?1")
     public Goal findById(long id);
+
+    @Query("FROM Goal g where user_id = ?1")
+    public Goal findAllByUserId(long id);
 }

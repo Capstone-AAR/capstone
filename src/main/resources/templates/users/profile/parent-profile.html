@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <head th:replace="fragments/header :: main-header('Your Profile')"></head>
     <title>Calendar</title>
@@ -13,8 +14,14 @@
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 
 <div th:each="parent :${parent}">
-    <h1 th:text="${parent.user.username}"></h1>
+<h1>Welcome, <span th:text="${parent.user.username}"></span>!</h1>
 </div>
+
+
+<!--Waiting to fix goals!!!-->
+<!--<div th:each="goal :${goals}">-->
+    <!--<h1 th:text="${goal.goalName}"></h1>-->
+<!--</div>-->
 
 <a href="/tasks/create"><input type="submit" value="Create a new task"/></a>
 <a href="/goals"><input type="submit" value="View all tasks"/></a>
