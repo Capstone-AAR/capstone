@@ -28,12 +28,24 @@ public class Goal {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "goal")
     private List<Task> tasks;
 
-    @Autowired
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
+
     public Goal(Goal goal) {
         this.id = goal.id;
         this.goalName = goal.goalName;
         this.trackProgress = goal.trackProgress;
         this.tasks = goal.tasks;
+        this.user =goal.user;
     }
 
     public Integer getTotalPoints() {
@@ -44,16 +56,15 @@ public class Goal {
         this.totalPoints = totalPoints;
     }
 
-    public Goal(String goalName, Integer totalPoints, Integer trackProgress) {
+    public Goal(String goalName, Integer totalPoints, Integer trackProgress, User user){
         this.goalName = goalName;
         this.totalPoints = totalPoints;
         this.trackProgress = trackProgress;
+        this.user=user;
 
 
     }
-
-    public Goal() {
-    }
+    public Goal(){}
 
     public Long getId() {
         return id;
