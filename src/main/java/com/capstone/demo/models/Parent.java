@@ -23,11 +23,12 @@ public class Parent {
     //////////////////////////////////////////////////////////
     // Many to many connection to child model.
     //////////////////////////////////////////////////////////
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     //////////////////////////////////////////////////////////
     // Child object list populated by children retrieved
     // from the many to many connection.
     //////////////////////////////////////////////////////////
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Child> children;
 
     public Parent() {

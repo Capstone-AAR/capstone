@@ -11,8 +11,8 @@
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 
-<div th:each="user :${user}">
-    <h1 th:text="${user.username}">
+<div th:each="parent :${parent}">
+    <h1 th:text="${parent.user.username}">
 
     </h1>
     <!--<p th:text="${child.totalPoints}"></p>-->

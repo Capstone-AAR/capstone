@@ -24,6 +24,7 @@ public class Child {
     // Many to many connection to Parent model.
     //////////////////////////////////////////////////////////
     @ManyToOne
+    @JoinColumn(name = "parent_id")
     private Parent parent;
 
     public Child() {

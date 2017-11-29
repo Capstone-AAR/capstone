@@ -1,6 +1,7 @@
 package com.capstone.demo.controllers;
 
 import com.capstone.demo.models.Child;
+import com.capstone.demo.models.Goal;
 import com.capstone.demo.models.Parent;
 import com.capstone.demo.models.User;
 import com.capstone.demo.repositories.ChildRepository;
@@ -34,8 +35,10 @@ public class AuthenticationController {
         Parent parent = parentDao.findByUser(user);
 
         if (parent == null) {
+        viewModel.addAttribute("child", childDao.findByUser(user));
             return "users/profile/child-profile";
         }
+        viewModel.addAttribute("parent",parentDao.findByUser(user));
         return "users/profile/parent-profile";
     }
 
