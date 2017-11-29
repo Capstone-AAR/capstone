@@ -1,6 +1,8 @@
 package com.capstone.demo.controllers;
 
 import com.capstone.demo.models.Task;
+import com.capstone.demo.models.Parent;
+import com.capstone.demo.models.TaskStatus;
 import com.capstone.demo.repositories.TaskRepository;
 import com.capstone.demo.services.GoalsService;
 import com.capstone.demo.services.ParentsService;
@@ -18,6 +20,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 
@@ -111,5 +114,22 @@ public class TaskController {
         return "tasks/tasks";
     }
 
+
+    ////querying approved tasks from repo using enum
+    @PostMapping("/tasks")
+    public String getStatus(Model model){
+        List<Task> completedTasks = taskDao.findByStatus(TaskStatus.REQUESTAPPROVAL);
+        model.addAttribute("tasks", completedTasks);
+
+        if(completedTasks.equals(TaskStatus.APPROVED)){
+            return "completedTasks";
+        }
+
+        if(completedTasks.equals(TaskStatus.REQUESTAPPROVAL)){
+            return "needs approval";
+        }
+
+        return "users/tasks";
+    }
 
 }
