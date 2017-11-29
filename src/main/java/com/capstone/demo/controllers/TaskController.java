@@ -87,15 +87,7 @@ public class TaskController {
     @PostMapping("/tasks")
     public String getStatus(Model model){
         List<Task> completedTasks = taskDao.findByStatus(TaskStatus.REQUESTAPPROVAL);
-        model.addAttribute("tasks", completedTasks);
-
-        if(completedTasks.equals(TaskStatus.APPROVED)){
-            return "completedTasks";
-        }
-
-        if(completedTasks.equals(TaskStatus.REQUESTAPPROVAL)){
-            return "needs approval";
-        }
+        model.addAttribute("pendingTasks", completedTasks);
 
         return "users/tasks";
     }
