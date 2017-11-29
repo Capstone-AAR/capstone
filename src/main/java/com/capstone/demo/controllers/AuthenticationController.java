@@ -7,6 +7,7 @@ import com.capstone.demo.models.User;
 import com.capstone.demo.repositories.ChildRepository;
 import com.capstone.demo.repositories.GoalRepository;
 import com.capstone.demo.repositories.ParentRepository;
+import com.capstone.demo.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,10 +22,14 @@ public class AuthenticationController {
     private ParentRepository parentDao;
     private ChildRepository childDao;
     private GoalRepository goalDao;
+    private UserRepository userDao;
 
-    public AuthenticationController(ParentRepository parentDao, ChildRepository childDao) {
+    public AuthenticationController(ParentRepository parentDao, ChildRepository childDao, GoalRepository goalDao, UserRepository userDao) {
         this.parentDao = parentDao;
         this.childDao = childDao;
+        this.goalDao=goalDao;
+        this.userDao = userDao;
+
     }
 
     @GetMapping("/login")
@@ -35,15 +40,18 @@ public class AuthenticationController {
     @GetMapping("/profile")
     public String dashboard(Model viewModel) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        System.out.println(user.getId());
+//        System.out.println(user.getUsername());
         Parent parent = parentDao.findByUser(user);
-        //Goal goal = goalDao.findAllByUserId(user.getId());
+        List<Goal> goals = goalDao.findByUserId(user.getId());
+        System.out.println(goals);
 
         if (parent == null) {
         viewModel.addAttribute("child", childDao.findByUser(user));
             return "users/profile/child-profile";
         }
         viewModel.addAttribute("parent",parent);
-        //viewModel.addAttribute("goals", goal);
+        viewModel.addAttribute("goals", goals);
         return "users/profile/parent-profile";
     }
 

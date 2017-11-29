@@ -29,6 +29,13 @@ public class User {
 
     public User() {
     }
+    public User(Long id, String username, String password, String email, List<Goal> goals){
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.goals = goals;
+    }
 
     public User(User copy) {
         id = copy.id;

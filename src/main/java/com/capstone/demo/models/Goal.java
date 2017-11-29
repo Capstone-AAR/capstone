@@ -37,7 +37,6 @@ public class Goal {
     @JoinColumn(name="user_id")
     private User user;
 
-
     public Goal(Goal goal) {
         this.id = goal.id;
         this.goalName = goal.goalName;
@@ -54,10 +53,11 @@ public class Goal {
         this.totalPoints = totalPoints;
     }
 
-    public Goal(String goalName, Integer totalPoints, Integer trackProgress){
+    public Goal(String goalName, Integer totalPoints, Integer trackProgress, User user){
         this.goalName = goalName;
         this.totalPoints =totalPoints;
         this.trackProgress = trackProgress;
+        this.user=user;
 
 
     }

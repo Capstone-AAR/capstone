@@ -18,10 +18,10 @@
 </div>
 
 
-<!--Waiting to fix goals!!!-->
-<!--<div th:each="goal :${goals}">-->
-    <!--<h1 th:text="${goal.goalName}"></h1>-->
-<!--</div>-->
+
+<div th:each="goal :${goals}">
+    <h1 th:text="${goal.goalName}"></h1>
+</div>
 
 <a href="/tasks/create"><input type="submit" value="Create a new task"/></a>
 <a href="/goals"><input type="submit" value="View all tasks"/></a>
