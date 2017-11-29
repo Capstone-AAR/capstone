@@ -9,6 +9,14 @@
 <!--using main navbar as a placeholder, but will need to make a custom nav for child profile bc child profile has different constraints-->
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 
+<div th:each="child :${child}">
+    <h1 th:text="${user.username}">
+
+    </h1>
+
+</div>
+    <h1 th:text="${user.username}"></h1>
+
 <div class="panel panel-default">
     <div class="panel-heading">
         Goals

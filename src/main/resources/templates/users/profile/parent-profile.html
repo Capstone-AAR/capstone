@@ -11,7 +11,13 @@
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 
+<div th:each="user :${user}">
+    <h1 th:text="${user.username}">
 
+    </h1>
+    <!--<p th:text="${child.totalPoints}"></p>-->
+    <!--<p th:text="${child.trackProgress}"></p>-->
+</div>
 <a href="/goals/create"><input type="submit" value="Create a new goal"/></a>
 <a href="/goals"><input type="submit" value="View all goals"/></a>
 <a href="/tasks"><input type="submit" value="View current tasks"/></a>

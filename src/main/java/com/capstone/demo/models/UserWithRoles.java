@@ -8,13 +8,13 @@ import org.springframework.util.StringUtils;
 import java.util.Collection;
 import java.util.Collections;
 
-public class UserWithRoles extends Parent implements UserDetails {
+public class UserWithRoles extends User implements UserDetails {
     ///////////////////////////////////////////////////////////////////
     // Constructor method that initializes this class and it calls the
     // copy constructor defined in parent.
     ///////////////////////////////////////////////////////////////////
-    public UserWithRoles(Parent parent) {
-        super(parent);
+    public UserWithRoles(User user) {
+        super(user);
     }
 
     @Override

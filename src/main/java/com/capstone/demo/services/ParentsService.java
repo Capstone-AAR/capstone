@@ -5,7 +5,7 @@ import com.capstone.demo.repositories.ParentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service("ParentsService")
+@Service
 public class ParentsService {
     private final ParentRepository parentDao;
 
