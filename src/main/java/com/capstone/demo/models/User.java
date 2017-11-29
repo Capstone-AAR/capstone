@@ -3,6 +3,7 @@ package com.capstone.demo.models;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -23,6 +24,9 @@ public class User {
     @Column(nullable = false, name = "password")
     private String password;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Goal>goals;
+
     public User() {
     }
 
@@ -31,6 +35,7 @@ public class User {
         username = copy.username;
         password = copy.password;
         email = copy.email;
+        goals = copy.goals;
     }
 
     public long getId() {
