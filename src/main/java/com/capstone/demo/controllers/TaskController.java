@@ -92,6 +92,7 @@ public class TaskController {
         System.out.println(start.toString());
         System.out.println(goalsService.findById(goalId).getGoalName());
         task.setGoal(goalsService.findById(goalId));
+        task.setStatus(TaskStatus.NEW);
         service.save(task);
         return "redirect:/tasks/tasks";
     }
@@ -100,8 +101,7 @@ public class TaskController {
     // View all tasks using Json
     ////////////////////////////////////////////////////////////////
     @GetMapping("/tasks.json")
-    public @ResponseBody
-    Iterable<Task> viewAllTasksInJsonFormat() {
+    public @ResponseBody Iterable<Task> viewAllTasksInJsonFormat() {
         return taskDao.findAll();
     }
 
@@ -118,10 +118,18 @@ public class TaskController {
     ////querying approved tasks from repo using enum
     @PostMapping("/tasks")
     public String getStatus(Model model){
-        List<Task> completedTasks = taskDao.findByStatus(TaskStatus.REQUESTAPPROVAL);
+        List<Task> completedTasks = taskDao.findByStatus(TaskStatus.REQUEST_APPROVAL);
         model.addAttribute("pendingTasks", completedTasks);
 
         return "users/tasks";
     }
 
+    @GetMapping("/tasks/approve/{id}")
+    @ResponseBody
+    public String approveTask(@PathVariable Long id) {
+        Task task = taskDao.findOne(id);
+        task.setStatus(TaskStatus.APPROVED);
+        taskDao.save(task);
+        return "";
+    }
 }
