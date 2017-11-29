@@ -28,11 +28,27 @@ $(document).ready(function () {
         },
 
         eventClick: function (calEvent, jsEvent, view) {
-            $('#modalTitle').html(calEvent.title);
-            $('#modalBody').html(calEvent.detail);
-            $('#myModal').modal("show");
+            var $modalBody = $('#modalBody');
+            var $modal = $('#myModal');
 
-            console.log(calEvent.detail);
+            $('#modalTitle').html(calEvent.title);
+            $modalBody.html(calEvent.taskDescription);
+            if (calEvent.status === 'REQUEST_APPROVAL') {
+                var $approve = $('#approve-task');
+                $approve.val('Approve');
+                $approve.on('click', function () {
+                    var request = $.ajax('/tasks/approve/' + calEvent.id);
+                    request.fail(function (e) {
+                        console.log(e);
+                    });
+                    request.done(function () {
+                        $modal.modal('hide');
+                    })
+                });
+            }
+            $modal.modal("show");
+
+            console.log(calEvent);
         }
     });
 });

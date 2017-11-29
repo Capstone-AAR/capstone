@@ -54,11 +54,4 @@ public class AuthenticationController {
         viewModel.addAttribute("goals", goals);
         return "users/profile/parent-profile";
     }
-
-
-
-//    @GetMapping("/child-login")
-//    public String childLogin(){
-//        return "users/child-login";
-//    }
 }

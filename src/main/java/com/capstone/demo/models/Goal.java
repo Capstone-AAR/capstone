@@ -1,5 +1,7 @@
 package com.capstone.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -22,6 +24,7 @@ public class Goal {
     @Column()
     private Integer trackProgress;
 
+    @JsonBackReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "goal")
     private List<Task> tasks;
 
@@ -55,7 +58,7 @@ public class Goal {
 
     public Goal(String goalName, Integer totalPoints, Integer trackProgress, User user){
         this.goalName = goalName;
-        this.totalPoints =totalPoints;
+        this.totalPoints = totalPoints;
         this.trackProgress = trackProgress;
         this.user=user;
 
@@ -87,13 +90,13 @@ public class Goal {
         this.goalName = goalName;
     }
 
-//    public List<Task> getTasks() {
-//        return tasks;
-//    }
-//
-//    public void setTasks(List<Task> tasks) {
-//        this.tasks = tasks;
-//    }
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
 
 
 }

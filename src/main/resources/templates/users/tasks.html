@@ -15,6 +15,11 @@
         <p th:text="${task.taskDescription}"></p>
     </th:block>
 
+<!--trying to get approved tasks-->
+<th:block th:switch="${tasks}">
+    <p th:case="#{tasks.pendingTasks}">needs approval</p>
+    <p th:case="*">complete or pending</p>
+</th:block>
 
 <footer th:replace="fragments/footer :: mainFooter"></footer>
 </body>

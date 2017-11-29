@@ -1,6 +1,7 @@
 package com.capstone.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -30,9 +31,29 @@ public class Task {
     @Temporal(TemporalType.DATE)
     private Date endDate;
 
+    public Goal getGoal() {
+        return goal;
+    }
+
+    public void setGoal(Goal goal) {
+        this.goal = goal;
+    }
+
+    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "goal_id")
     private Goal goal;
+
+    private TaskStatus status;
+
+    public Task(Task task) {
+        this.id = task.id;
+        this.taskName = task.taskName;
+//        this.pointValue = task.pointValue;
+        this.status = task.status;
+        this.taskDescription = task.taskDescription;
+        this.goal = task.goal;
+    }
 
     public Task(String taskName, String taskDescription) {
         this.taskName = taskName;
@@ -81,5 +102,13 @@ public class Task {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public TaskStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(TaskStatus status) {
+        this.status = status;
     }
 }

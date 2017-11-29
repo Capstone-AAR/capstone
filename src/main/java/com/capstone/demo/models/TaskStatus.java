@@ -1,7 +1,8 @@
 package com.capstone.demo.models;
 
 public enum TaskStatus {
-    REQUESTAPPROVAL,
+    NEW,
+    REQUEST_APPROVAL,
     APPROVED,
     COMPLETED,
 
