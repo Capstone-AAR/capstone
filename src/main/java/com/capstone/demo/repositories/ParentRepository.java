@@ -6,4 +6,8 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ParentRepository extends CrudRepository<Parent, Long>{
     Parent findByUser(User user);
+
+    Parent findByUserId(Long id);
+
+
 }

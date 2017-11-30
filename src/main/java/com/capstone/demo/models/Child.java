@@ -32,6 +32,12 @@ public class Child {
     public Child() {
 
     }
+    public Child(Long id, Long score, Parent parent, User user){
+        this.id=id;
+        this.score=score;
+        this.parent=parent;
+        this.user=user;
+    }
 
 
     //////////////////////////////////////////////////////////

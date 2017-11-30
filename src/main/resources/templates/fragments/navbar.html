@@ -22,7 +22,7 @@
         <li><a href="/profile">Home</a></li>
         <li><a href="/goals/create">Set a Goal</a></li>
         <li><a href="/goals">View your Goals</a></li>
-        <li><a href="/child-profile">View your Child's Profile</a></li>
+        <li><a th:href="@{/view-child-profile/{id}(id=${#authentication.principal.id})}">View your Child's Profile</a></li>
         <li><a href="/tasks">Task</a></li>
         <li><a href="/register">Add New Saver</a></li>
         <li>

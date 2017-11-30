@@ -8,6 +8,7 @@ import com.capstone.demo.repositories.ChildRepository;
 import com.capstone.demo.repositories.GoalRepository;
 import com.capstone.demo.repositories.ParentRepository;
 import com.capstone.demo.repositories.UserRepository;
+import org.springframework.security.access.method.P;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,18 +41,47 @@ public class AuthenticationController {
     @GetMapping("/profile")
     public String dashboard(Model viewModel) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        System.out.println(user.getId());
-//        System.out.println(user.getUsername());
         Parent parent = parentDao.findByUser(user);
+        //Erased... but used to work for parents' goals
         List<Goal> goals = goalDao.findByUserId(user.getId());
+        //Child child = childDao.findByUserId(parent.getId());
+        //List<Goal> childGoal= goalDao.findByUserId(child.getId());
         System.out.println(goals);
 
         if (parent == null) {
         viewModel.addAttribute("child", childDao.findByUser(user));
             return "users/profile/child-profile";
         }
+        //This is where parent stuff starts.
+
+        //List<Goal> goals = goalDao.findByUserId(child.getId());
+        List<Child> children = childDao.findAllBy(parent.getId());
+        //Child child = childDao.findByUserId(user.getId());
+
+
+
         viewModel.addAttribute("parent",parent);
         viewModel.addAttribute("goals", goals);
+        //viewModel.addAttribute("goals",goalDao.findByUserId(child.getId()));
+        viewModel.addAttribute("children",children);
+        //viewModel.addAttribute("childGoal",childGoal);
         return "users/profile/parent-profile";
+    }
+
+    @GetMapping("/view-child-profile/{id}")
+    public String viewProfile(Model viewModel, @PathVariable Long id){
+//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        //Parent parent = parentDao.findByUserId(id);
+        Child child = childDao.findByUserId(id);
+        List<Child> children = childDao.findAllBy(child.getId());
+        viewModel.addAttribute("child", child);
+        viewModel.addAttribute("children",children);
+        viewModel.addAttribute("goals",goalDao.findByUserId(child.getId()));
+        System.out.println("hi");
+        System.out.println(child.getId());
+        ;
+        //System.out.println(child.getChildren());
+        return "users/profile/view-child-profile";
+
     }
 }

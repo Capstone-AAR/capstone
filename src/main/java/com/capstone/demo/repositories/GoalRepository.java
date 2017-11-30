@@ -14,4 +14,7 @@ public interface GoalRepository extends CrudRepository<Goal,Long> {
     public Goal findById(long id);
 
     List<Goal> findByUserId(Long id);
+
+    //@Query(nativeQuery = true, value = "Select * from goals where user_id ")
 }
+

@@ -28,7 +28,7 @@ public class Parent {
     // from the many to many connection.
     //////////////////////////////////////////////////////////
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "parent")
     private List<Child> children;
 
     public Parent() {
