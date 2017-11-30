@@ -32,13 +32,16 @@ $(document).ready(function () {
         eventClick: function (calEvent, jsEvent, view) {
             var $modalBody = $('#modalBody');
             var $modal = $('#myModal');
-
+            var taskId = $('#taskId');
+            taskId.val(calEvent.id);
             $('#modalTitle').html(calEvent.title);
             $modalBody.html(calEvent.taskDescription);
+            $modalBody.append(calEvent.id);
             console.log(calEvent.status);
             console.log(calEvent.id);
             if (calEvent.status === 'REQUEST_APPROVAL') {
                 var $approve = $('#approve-task');
+
                 $approve.val('Approve');
                 $approve.on('click', function () {
                     var request = $.ajax('/tasks/approve/' + calEvent.id);
@@ -51,7 +54,6 @@ $(document).ready(function () {
                 });
             }
             $modal.modal("show");
-
             console.log(calEvent);
         }
 

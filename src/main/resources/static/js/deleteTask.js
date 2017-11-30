@@ -1,3 +1,4 @@
+/*
 $('#deleteButton').on('click', function (e) {
     e.preventDefault();
     doDelete();
@@ -5,4 +6,4 @@ $('#deleteButton').on('click', function (e) {
 
 function deDelete() {
     $('')
-}
+}*/
