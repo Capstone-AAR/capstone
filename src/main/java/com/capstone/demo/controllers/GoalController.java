@@ -2,9 +2,11 @@ package com.capstone.demo.controllers;
 
 import com.capstone.demo.models.Goal;
 import com.capstone.demo.models.Parent;
+import com.capstone.demo.models.User;
 import com.capstone.demo.repositories.GoalRepository;
 import com.capstone.demo.services.GoalsService;
 import com.capstone.demo.services.TasksService;
+import com.capstone.demo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -23,12 +26,14 @@ public class GoalController {
     private final GoalsService service;
     private final GoalRepository goalDao;
     private final TasksService Tservice;
+    private final UserService userService;
 
     @Autowired
-    public GoalController(GoalsService service, GoalRepository goalDao, TasksService Tservice) {
+    public GoalController(GoalsService service, GoalRepository goalDao, TasksService Tservice, UserService userService) {
         this.service = service;
         this.goalDao = goalDao;
         this.Tservice = Tservice;
+        this.userService = userService;
     }
 
     @GetMapping("/goals")
@@ -54,7 +59,25 @@ public class GoalController {
     }
 
     @PostMapping("/goals/create")
-    public String createGoal(@ModelAttribute Goal goal) {
+    public String createGoal(@ModelAttribute Goal goal,
+                             Errors validation,
+                             Model model,
+                             RedirectAttributes redirect
+    ) {
+
+        if (validation.hasErrors()) {
+            model.addAttribute("errors", validation);
+            model.addAttribute("goal", goal);
+            return "goals/create";
+        }
+
+        if (!userService.isLoggedIn()) {
+            redirect.addFlashAttribute("test", true);
+            return "redirect:/register";
+        }
+
+
+        goal.setUser(userService.loggedInUser());
         service.save(goal);
         return "redirect:/goals";
     }

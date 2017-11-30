@@ -1,5 +1,6 @@
 package com.capstone.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -24,6 +25,7 @@ public class User {
     @Column(nullable = false, name = "password")
     private String password;
 
+    @JsonBackReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Goal>goals;
 
@@ -78,6 +80,12 @@ public class User {
         this.password = password;
     }
 
+    public List<Goal> getGoals() {
+        return goals;
+    }
 
+    public void setGoals(List<Goal> goals) {
+        this.goals = goals;
+    }
 
 }
