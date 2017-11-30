@@ -54,6 +54,7 @@ public class ChildController {
 
         String hash = encoder.encode(user.getPassword());
         user.setPassword(hash);
+        user.isAChild();
         userDao.save(user);
 
         Child child = new Child();

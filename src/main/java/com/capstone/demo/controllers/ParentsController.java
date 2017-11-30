@@ -52,6 +52,7 @@ public class ParentsController {
     public String registerForm(@ModelAttribute User user) {
         String hash = encoder.encode(user.getPassword());
         user.setPassword(hash);
+        user.isAParent();
         repository.save(user);
 
         Parent parent = new Parent();

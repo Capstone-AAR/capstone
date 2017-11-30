@@ -9,6 +9,9 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 public class User {
+    private static final String PARENT = "parent";
+    private static final String CHILD = "child";
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +27,8 @@ public class User {
 
     @Column(nullable = false, name = "password")
     private String password;
+
+    private String role;
 
     @JsonBackReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
@@ -88,4 +93,19 @@ public class User {
         this.goals = goals;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public void isAParent() {
+        role = PARENT;
+    }
+
+    public void isAChild() {
+        role = CHILD;
+    }
 }
