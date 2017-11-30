@@ -38,7 +38,10 @@
                         </div>
                         <div id="modalBody" class="modal-body"></div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="approve-task">Approve</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="approve-task">
+                                Approve
+                            </button>
+                            <button type="submit" class="btn btn-danger" id="deleteButton">Delete</button>
                         </div>
                     </div>
                 </div>
@@ -56,13 +59,13 @@
                         </div>
                         <div class="modal-body">
                             <form id="createTaskForm" th:action="@{/tasks/create}" th:method="post" th:object="${task}">
-                                <input type="hidden" name="goalId" id="goalId" th:value="${id}" />
+                                <input type="hidden" name="goalId" id="goalId" th:value="${id}"/>
                                 <label for="title">Title:</label>
                                 <input th:field="*{taskName}" id="title"/>
                                 <label for="description">Description:</label>
                                 <input th:field="*{taskDescription}" id="description"/>
                                 <br/>
-                                <input type="hidden" id="startDateMoment" name="startDateMoment" />
+                                <input type="hidden" id="startDateMoment" name="startDateMoment"/>
                                 <input class="btn btn-primary" type="submit" th:value="Create"/>
                             </form>
                         </div>
@@ -83,6 +86,7 @@
 <script src='/lib/moment.min.js'></script>
 <script src="/fullcalendar/fullcalendar.js"></script>
 <script src='/js/main.js'></script>
+<script src='/js/deleteTask.js'></script>
 <script th:inline="javascript">
     /*<![CDATA[*/
     var tasks = /*[[${tasks}]]*/ '';

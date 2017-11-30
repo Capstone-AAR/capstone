@@ -56,9 +56,6 @@ public class TaskController {
     public String showCreateTaskForm(Model viewModel, @RequestParam(value = "id", required = false) Long goalId) throws JsonProcessingException {
         Iterable<Task> tasks = taskDao.findAll();
         ObjectMapper mapper = new ObjectMapper();
-        System.out.println("/////////////////");
-        System.out.println(goalId);
-        System.out.println("/////////////////");
         viewModel.addAttribute("id", goalId);
         viewModel.addAttribute("tasks", mapper.writeValueAsString(tasks));
         viewModel.addAttribute("task", new Task());
