@@ -8,7 +8,6 @@ import com.capstone.demo.repositories.ChildRepository;
 import com.capstone.demo.repositories.GoalRepository;
 import com.capstone.demo.repositories.ParentRepository;
 import com.capstone.demo.repositories.UserRepository;
-import org.springframework.security.access.method.P;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,7 +54,7 @@ public class AuthenticationController {
         //This is where parent stuff starts.
 
         //List<Goal> goals = goalDao.findByUserId(child.getId());
-        List<Child> children = childDao.findAllBy(parent.getId());
+        List<Child> children = childDao.findAllByParentId(parent.getId());
         //Child child = childDao.findByUserId(user.getId());
 
 
@@ -73,7 +72,7 @@ public class AuthenticationController {
 //        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         //Parent parent = parentDao.findByUserId(id);
         Child child = childDao.findByUserId(id);
-        List<Child> children = childDao.findAllBy(child.getId());
+        List<Child> children = childDao.findAllByParentId(child.getId());
         viewModel.addAttribute("child", child);
         viewModel.addAttribute("children",children);
         viewModel.addAttribute("goals",goalDao.findByUserId(child.getId()));

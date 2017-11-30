@@ -13,7 +13,7 @@ public interface ChildRepository extends CrudRepository<Child, Long> {
     Child findByUserId(Long id);
 
     @Query(nativeQuery = true, value="SELECT * from children where parent_id=?1")
-    List<Child> findAllBy (Long id);
+    List<Child> findAllByParentId(Long id);
 
 
 }

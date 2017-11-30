@@ -25,6 +25,11 @@
     <label for="trackProgress">Current Points:</label>
     <input th:field="*{trackProgress}" id="trackProgress"/>
     <!--<p th:if="${#fields.hasErrors('end_date')}" th:errors="*{end_date}"/>-->
+    <label for="child_id">Child</label>
+    <select name="child_id" id="child_id">
+        <option th:each="child: ${children}" th:value="${child.id}" th:text="${child.user.username}"></option>
+    </select>
+
     <input type="submit" />
 
 </form>
