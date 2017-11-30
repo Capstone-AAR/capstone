@@ -35,6 +35,8 @@ $(document).ready(function () {
 
             $('#modalTitle').html(calEvent.title);
             $modalBody.html(calEvent.taskDescription);
+            console.log(calEvent.status);
+            console.log(calEvent.id);
             if (calEvent.status === 'REQUEST_APPROVAL') {
                 var $approve = $('#approve-task');
                 $approve.val('Approve');
