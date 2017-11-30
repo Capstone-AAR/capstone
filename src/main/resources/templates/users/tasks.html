@@ -11,8 +11,14 @@
 
 
     <th:block th:each="task : ${tasks}">
+
+        <div th:if="${task.goal.user.id == loggedUser.id}">
+
         <h3 th:text="${task.taskName}"></h3>
         <p th:text="${task.taskDescription}"></p>
+            <a th:href="${'/tasks/edit/' + task.id}">Edit Task</a>
+
+        </div>
     </th:block>
 
 <!--trying to get approved tasks-->

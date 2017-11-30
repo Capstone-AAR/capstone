@@ -31,13 +31,6 @@ public class Task {
     @Temporal(TemporalType.DATE)
     private Date endDate;
 
-    public Goal getGoal() {
-        return goal;
-    }
-
-    public void setGoal(Goal goal) {
-        this.goal = goal;
-    }
 
     @JsonManagedReference
     @ManyToOne
@@ -49,7 +42,6 @@ public class Task {
     public Task(Task task) {
         this.id = task.id;
         this.taskName = task.taskName;
-//        this.pointValue = task.pointValue;
         this.status = task.status;
         this.taskDescription = task.taskDescription;
         this.goal = task.goal;
@@ -110,5 +102,13 @@ public class Task {
 
     public void setStatus(TaskStatus status) {
         this.status = status;
+    }
+
+    public Goal getGoal() {
+        return this.goal;
+    }
+
+    public void setGoal(Goal goal) {
+        this.goal = goal;
     }
 }

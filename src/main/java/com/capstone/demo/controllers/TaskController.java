@@ -3,10 +3,12 @@ package com.capstone.demo.controllers;
 import com.capstone.demo.models.Task;
 import com.capstone.demo.models.Parent;
 import com.capstone.demo.models.TaskStatus;
+import com.capstone.demo.models.User;
 import com.capstone.demo.repositories.TaskRepository;
 import com.capstone.demo.services.GoalsService;
 import com.capstone.demo.services.ParentsService;
 import com.capstone.demo.services.TasksService;
+import com.capstone.demo.services.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,13 +33,15 @@ public class TaskController {
     private final TaskRepository taskDao;
     private final ParentsService parentsService;
     private final GoalsService goalsService;
+    private final UserService userService;
 
     @Autowired
-    public TaskController(TasksService service, TaskRepository taskDao, ParentsService parentsService, GoalsService goalsService) {
+    public TaskController(TasksService service, TaskRepository taskDao, ParentsService parentsService, GoalsService goalsService, UserService userService) {
         this.service = service;
         this.taskDao = taskDao;
         this.parentsService = parentsService;
         this.goalsService = goalsService;
+        this.userService = userService;
     }
 
     ///////////////////////////////////////////////////////////////////////
@@ -46,6 +50,8 @@ public class TaskController {
     @GetMapping("/tasks")
     public String showAll(Model viewModel) {
         viewModel.addAttribute("tasks", service.findAll());
+        viewModel.addAttribute("loggedUser", userService.loggedInUser());
+
         return "users/tasks";
     }
 
@@ -98,7 +104,8 @@ public class TaskController {
     // View all tasks using Json
     ////////////////////////////////////////////////////////////////
     @GetMapping("/tasks.json")
-    public @ResponseBody Iterable<Task> viewAllTasksInJsonFormat(@RequestParam(name = "goalId") Long goalId) {
+    public @ResponseBody
+    Iterable<Task> viewAllTasksInJsonFormat(@RequestParam(name = "goalId") Long goalId) {
         return taskDao.findByGoalId(goalId);
     }
 
@@ -114,7 +121,7 @@ public class TaskController {
 
     ////querying approved tasks from repo using enum
     @PostMapping("/tasks")
-    public String getStatus(Model model){
+    public String getStatus(Model model) {
         List<Task> completedTasks = taskDao.findByStatus(TaskStatus.REQUEST_APPROVAL);
         model.addAttribute("pendingTasks", completedTasks);
 
@@ -129,4 +136,42 @@ public class TaskController {
         taskDao.save(task);
         return "";
     }
+
+    //////////////////////////////////////////////////////////////////////
+    // Delete event.
+    //////////////////////////////////////////////////////////////////////
+    @GetMapping("/tasks/delete")
+    public String showTaskToBeDeleted(@PathVariable Long id, Model viewModel) {
+        Task task = service.findById(id);
+        viewModel.addAttribute("task", task);
+        return "tasks/edit";
+    }
+
+    @PostMapping("/tasks/delete")
+    public String deleteTask (@RequestParam(value = "taskId") Long id, @RequestParam(name = "goalId") long goalId) {
+        System.out.println("////////////////////");
+        System.out.println(id);
+        System.out.println("////////////////////");
+        service.delete(id);
+        return "redirect:/tasks/create?id=" + goalId;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

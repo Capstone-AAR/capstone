@@ -38,10 +38,18 @@
                         </div>
                         <div id="modalBody" class="modal-body"></div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="approve-task">
-                                Approve
-                            </button>
-                            <button type="submit" class="btn btn-danger" id="deleteButton">Delete</button>
+                            <!--///////////////////////////////////////////////////////////////////////////-->
+                            <!--///////////////// Delete event button form inside modal /////////////////////-->
+                            <!--///////////////////////////////////////////////////////////////////////////-->
+                            <form id="deleteTask" th:action="@{/tasks/delete}" th:method="post"
+                                  th:object="${task}">
+                                <input type="hidden" name="goalId" th:value="${id}"/>
+                                <input type="hidden" id="taskId" name="taskId" />
+                                <input type="submit" class="btn btn-danger" id="deleteButton" value="Delete"/>
+                            </form>
+                            <!--<button type="submit" class="btn btn-primary" data-dismiss="modal" id="approve-task">-->
+                                <!--Approve-->
+                            <!--</button>-->
                         </div>
                     </div>
                 </div>
@@ -59,7 +67,7 @@
                         </div>
                         <div class="modal-body">
                             <form id="createTaskForm" th:action="@{/tasks/create}" th:method="post" th:object="${task}">
-                                <input type="hidden" name="goalId" id="goalId" th:value="${id}"/>
+                                <input type="hidden" name="goalId" id="goalId" th:value="${id}" />
                                 <label for="title">Title:</label>
                                 <input th:field="*{taskName}" id="title"/>
                                 <label for="description">Description:</label>
