@@ -24,6 +24,10 @@ public class Goal {
     @Column()
     private Integer trackProgress;
 
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
+
     @JsonBackReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "goal")
     private List<Task> tasks;
@@ -35,10 +39,6 @@ public class Goal {
     public void setUser(User user) {
         this.user = user;
     }
-
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    private User user;
 
     public Goal(Goal goal) {
         this.id = goal.id;

@@ -51,7 +51,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login?logout")
             .and()
                 .authorizeRequests()
-                .antMatchers("/goals/create", "/profile")
+                .antMatchers("/goals/create", "/profile","/view-child-profile")
                 .authenticated();
 
 

@@ -13,9 +13,10 @@
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 
-<div th:each="parent :${parent}">
-<h1>Welcome, <span th:text="${parent.user.username}"></span>!</h1>
+<div>
+    <h1>Welcome, <span th:text="${child.user.username}"></span>!</h1>
 </div>
+
 
 <div th:each="goal:${goals}" class="panel panel-default">
 
@@ -42,47 +43,6 @@
 
 </div>
 
-<div th:each="child:${children}" class="panel panel-default">
-
-    <div th:text="${child.user.username}" class="panel-heading">
-
-
-
-    </div>
-
-    <div class="panel-body">
-        <div>
-            <a th:href="@{/view-child-profile/{id}(id=${child.user.id})}">View Child Profile</a>
-        </div>
-        <p th:text="${child.user.email}"></p>
-        <!--<div>-->
-            <!--<p th:text="${goal.goalName}"></p>-->
-        <!--</div>-->
-
-        <!--<div>-->
-            <!--<a th:href="@{/view-child-profile/{id}(id=${child.user.email})}">View Child Profile</a>-->
-        <!--</div>-->
-
-
-
-
-
-        <!--<ul>-->
-            <!--Total Points: <li th:text="${goal.totalPoints}"></li>-->
-            <!--<br />-->
-            <!--Current Points: <li th:text="${goal.trackProgress}"></li>-->
-            <!--<br />-->
-            <!--<a th:href="@{/goals/{id}(id=${child.user.id})}">View Goal</a>-->
-            <!--<br />-->
-            <!--<a th:href="@{/tasks/create(id=${goal.id})}">Add tasks</a>-->
-        <!--</ul>-->
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-        </div>
-    </div>
-
-</div>
-
 <a href="/tasks/create"><input type="submit" value="Create a new task"/></a>
 <a href="/goals"><input type="submit" value="View all tasks"/></a>
 <a href="/tasks"><input type="submit" value="View current tasks"/></a>
@@ -90,7 +50,14 @@
 
 
 
+<!--For Progress Bar-->
 
+
+
+
+<div class="progress">
+    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+</div>
 
 <!--///////////////////////////////////////////////////////////////////////////-->
 <!--///////////////////////JS and Jquery Scripts //////////////////////////////-->
