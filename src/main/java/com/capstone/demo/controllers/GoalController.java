@@ -3,18 +3,19 @@ package com.capstone.demo.controllers;
 import com.capstone.demo.models.Goal;
 import com.capstone.demo.models.Parent;
 import com.capstone.demo.models.User;
+import com.capstone.demo.repositories.ChildRepository;
 import com.capstone.demo.repositories.GoalRepository;
+import com.capstone.demo.repositories.ParentRepository;
+import com.capstone.demo.repositories.UserRepository;
 import com.capstone.demo.services.GoalsService;
 import com.capstone.demo.services.TasksService;
 import com.capstone.demo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -25,15 +26,29 @@ public class GoalController {
 
     private final GoalsService service;
     private final GoalRepository goalDao;
+    private ParentRepository parentDao;
+    private UserRepository userDao;
     private final TasksService Tservice;
     private final UserService userService;
+    private ChildRepository childDao;
 
     @Autowired
-    public GoalController(GoalsService service, GoalRepository goalDao, TasksService Tservice, UserService userService) {
+    public GoalController(
+        GoalsService service,
+        GoalRepository goalDao,
+        ParentRepository parentDao,
+        UserRepository userDao,
+        TasksService Tservice,
+        UserService userService,
+        ChildRepository childDao
+    ) {
         this.service = service;
         this.goalDao = goalDao;
+        this.parentDao = parentDao;
+        this.userDao = userDao;
         this.Tservice = Tservice;
         this.userService = userService;
+        this.childDao = childDao;
     }
 
     @GetMapping("/goals")
@@ -54,6 +69,9 @@ public class GoalController {
 
     @GetMapping("/goals/create")
     public String showCreateForm(Model viewModel) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Parent parent = parentDao.findByUserId(user.getId());
+        viewModel.addAttribute("children", childDao.findAllByParentId(parent.getId()));
         viewModel.addAttribute("goal", new Goal());
         return "goals/create";
     }
@@ -61,6 +79,7 @@ public class GoalController {
     @PostMapping("/goals/create")
     public String createGoal(@ModelAttribute Goal goal,
                              Errors validation,
+                             @RequestParam(name = "child_id") Long childId,
                              Model model,
                              RedirectAttributes redirect
     ) {
@@ -71,13 +90,7 @@ public class GoalController {
             return "goals/create";
         }
 
-        if (!userService.isLoggedIn()) {
-            redirect.addFlashAttribute("test", true);
-            return "redirect:/register";
-        }
-
-
-        goal.setUser(userService.loggedInUser());
+        goal.setUser(userDao.findByChildId(childId));
         service.save(goal);
         return "redirect:/goals";
     }

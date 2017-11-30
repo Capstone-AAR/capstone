@@ -30,8 +30,8 @@ public class Child {
     private Parent parent;
 
     public Child() {
-
     }
+
     public Child(Long id, Long score, Parent parent, User user){
         this.id=id;
         this.score=score;
