@@ -10,4 +10,6 @@ import java.util.List;
 @Repository
 public interface TaskRepository extends CrudRepository<Task, Long> {
     List<Task> findByStatus(TaskStatus status);
+
+    Iterable<Task> findByGoalId(Long goalId);
 }

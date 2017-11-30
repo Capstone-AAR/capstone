@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    var goalId = $("#goalId").val();
     $('#calendar').fullCalendar({
         header: {
             right: 'prev, next today'
@@ -17,11 +18,12 @@ $(document).ready(function () {
 
         navLinks: true, // can click day/week names to navigate views
         editable: true,
-        eventLimit: true,
+        // eventLimit: true,
 
         events: {
             url: '/tasks.json',
             type: 'GET',
+            data: {goalId: goalId},
             error: function () {
                 alert("There was an error getting the event dates");
             }
@@ -33,6 +35,8 @@ $(document).ready(function () {
 
             $('#modalTitle').html(calEvent.title);
             $modalBody.html(calEvent.taskDescription);
+            console.log(calEvent.status);
+            console.log(calEvent.id);
             if (calEvent.status === 'REQUEST_APPROVAL') {
                 var $approve = $('#approve-task');
                 $approve.val('Approve');
@@ -50,5 +54,6 @@ $(document).ready(function () {
 
             console.log(calEvent);
         }
+
     });
 });
