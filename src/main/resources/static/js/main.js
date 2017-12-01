@@ -55,6 +55,21 @@ $(document).ready(function () {
             }
             $modal.modal("show");
             console.log(calEvent);
+            if(calEvent.status === 'NEW') {
+                var completedTask = $('#completed-task');
+                completedTask.val('completed');
+                completedTask.on('click', function () {
+                    var request = $.ajax('/tasks/completed/' + calEvent.id);
+                    request.fail(function (e) {
+                        console.log(e);
+                    });
+                    request.done(function () {
+                        $modal.modal('hide');
+                    })
+                });
+            }
+            $modal.modal("show");
+            console.log(calEvent);
         }
 
     });

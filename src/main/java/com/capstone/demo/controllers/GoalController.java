@@ -59,7 +59,7 @@ public class GoalController {
 
         List<Child> children = childDao.findAllByParentId(parent.getId());
 
-        List<Long> childrenIds = children.stream().map(Child::getId).collect(Collectors.toList());
+        List<Long> childrenIds = children.stream().map(child -> child.getUser().getId()).collect(Collectors.toList());
         Iterable<Goal> incompleteGoals = goalDao.childrenIncompleteGoals(childrenIds);
 
         viewModel.addAttribute("goals", incompleteGoals);
@@ -150,14 +150,6 @@ public class GoalController {
         User user = userDao.findByGoalId(goal.getId());
         goal.setUser(user);
         service.save(goal);
-
-        if (goal.isComplete()) {
-            Child child = childDao.findByUserId(goal.getUser().getId());
-            child.increasScore(goal);
-            childDao.save(child);
-        }
-
-
         return "redirect:/goals/" + goal.getId();
     }
 

@@ -47,9 +47,15 @@
                                 <input type="hidden" id="taskId" name="taskId" />
                                 <input type="submit" class="btn btn-danger" id="deleteButton" value="Delete"/>
                             </form>
-                            <!--<button type="submit" class="btn btn-primary" data-dismiss="modal" id="approve-task">-->
-                                <!--Approve-->
-                            <!--</button>-->
+
+                            <button th:if="${#authentication.principal.role == 'parent'}" type="submit" class="btn btn-primary" data-dismiss="modal" id="approve-task">
+                                Approve
+                            </button>
+
+                            <button th:if="${#authentication.principal.role == 'child'}" type="submit" class="btn btn-primary" data-dismiss="modal" id="completed-task">
+                                completed
+                            </button>
+
                         </div>
                     </div>
                 </div>
@@ -72,6 +78,8 @@
                                 <input th:field="*{taskName}" id="title"/>
                                 <label for="description">Description:</label>
                                 <input th:field="*{taskDescription}" id="description"/>
+                                <label for="points">points:</label>
+                                <input th:field="*{points}" id="points"/>
                                 <br/>
                                 <input type="hidden" id="startDateMoment" name="startDateMoment"/>
                                 <input class="btn btn-primary" type="submit" th:value="Create"/>
