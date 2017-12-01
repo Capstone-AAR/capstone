@@ -4,7 +4,10 @@ import com.capstone.demo.models.Task;
 import com.capstone.demo.models.Parent;
 import com.capstone.demo.models.TaskStatus;
 import com.capstone.demo.models.User;
+import com.capstone.demo.repositories.ChildRepository;
+import com.capstone.demo.repositories.ParentRepository;
 import com.capstone.demo.repositories.TaskRepository;
+import com.capstone.demo.repositories.UserRepository;
 import com.capstone.demo.services.GoalsService;
 import com.capstone.demo.services.ParentsService;
 import com.capstone.demo.services.TasksService;
@@ -12,6 +15,7 @@ import com.capstone.demo.services.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -28,20 +32,25 @@ import java.util.Locale;
 
 @Controller
 public class TaskController {
-
+    private final ParentRepository parentDao;
     private final TasksService service;
     private final TaskRepository taskDao;
     private final ParentsService parentsService;
     private final GoalsService goalsService;
     private final UserService userService;
+    private final UserRepository userRepo;
+    private final ChildRepository childDao;
 
     @Autowired
-    public TaskController(TasksService service, TaskRepository taskDao, ParentsService parentsService, GoalsService goalsService, UserService userService) {
+    public TaskController(ParentRepository parentDao, TasksService service, TaskRepository taskDao, ParentsService parentsService, GoalsService goalsService, UserService userService, UserRepository userRepo, ChildRepository childDao) {
+        this.parentDao = parentDao;
         this.service = service;
         this.taskDao = taskDao;
         this.parentsService = parentsService;
         this.goalsService = goalsService;
         this.userService = userService;
+        this.userRepo = userRepo;
+        this.childDao = childDao;
     }
 
     ///////////////////////////////////////////////////////////////////////
@@ -49,6 +58,15 @@ public class TaskController {
     ///////////////////////////////////////////////////////////////////////
     @GetMapping("/tasks")
     public String showAll(Model viewModel) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Parent parent = parentDao.findByUser(user);
+        viewModel.addAttribute("parent", parent);
+        viewModel.addAttribute("child", childDao.findByUser(user));
+
+        String role = user.getRole();
+        System.out.println(role);
+        viewModel.addAttribute("role", role);
+
         viewModel.addAttribute("tasks", service.findAll());
         viewModel.addAttribute("loggedUser", userService.loggedInUser());
 
@@ -133,6 +151,15 @@ public class TaskController {
     public String approveTask(@PathVariable Long id) {
         Task task = taskDao.findOne(id);
         task.setStatus(TaskStatus.APPROVED);
+        taskDao.save(task);
+        return "";
+    }
+
+    @GetMapping("/tasks/completed/{id}")
+    @ResponseBody
+    public String completeTask(@PathVariable Long id) {
+        Task task = taskDao.findOne(id);
+        task.setStatus(TaskStatus.REQUEST_APPROVAL);
         taskDao.save(task);
         return "";
     }
