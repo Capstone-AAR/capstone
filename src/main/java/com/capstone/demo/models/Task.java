@@ -31,7 +31,7 @@ public class Task {
     @Temporal(TemporalType.DATE)
     private Date endDate;
 
-    private Long points;
+    private Integer points;
 
     @JsonManagedReference
     @ManyToOne
@@ -113,11 +113,15 @@ public class Task {
         this.goal = goal;
     }
 
-    public Long getPoints() {
+    public Integer getPoints() {
         return points;
     }
 
-    public void setPoints(Long points) {
+    public void setPoints(Integer points) {
         this.points = points;
+    }
+
+    public void updateGoalProgress() {
+        goal.setTrackProgress(goal.getTrackProgress() + getPoints());
     }
 }

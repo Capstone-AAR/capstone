@@ -149,6 +149,7 @@ public class TaskController {
     public String approveTask(@PathVariable Long id) {
         Task task = taskDao.findOne(id);
         task.setStatus(TaskStatus.APPROVED);
+        task.updateGoalProgress();
         taskDao.save(task);
         return "";
     }
