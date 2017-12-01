@@ -42,7 +42,7 @@ public class User {
         this.password = password;
         this.email = email;
         this.goals = goals;
-        this.role=role;
+        this.role = role;
     }
 
     public User(User copy) {

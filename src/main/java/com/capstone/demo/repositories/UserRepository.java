@@ -7,6 +7,8 @@ import org.springframework.data.repository.CrudRepository;
 public interface UserRepository extends CrudRepository<User, Long> {
     User findByUsername(String username);
     User findById(Long id);
+    User findByRole(String role);
+
 
     @Query("select u from Child c join c.user u where c.id = ?1")
     User findByChildId(Long id);

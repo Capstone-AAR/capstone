@@ -1,9 +1,7 @@
 package com.capstone.demo.controllers;
 
-import com.capstone.demo.models.Task;
-import com.capstone.demo.models.Parent;
-import com.capstone.demo.models.TaskStatus;
-import com.capstone.demo.models.User;
+import com.capstone.demo.models.*;
+import com.capstone.demo.repositories.ChildRepository;
 import com.capstone.demo.repositories.ParentRepository;
 import com.capstone.demo.repositories.TaskRepository;
 import com.capstone.demo.repositories.UserRepository;
@@ -39,9 +37,10 @@ public class TaskController {
     private final UserService userService;
     private final UserRepository userDao;
     private final ParentRepository parentDao;
+    private final ChildRepository childDao;
 
     @Autowired
-    public TaskController(TasksService service, TaskRepository taskDao, ParentsService parentsService, GoalsService goalsService, UserService userService, UserRepository userDao, ParentRepository parentDao) {
+    public TaskController(TasksService service, TaskRepository taskDao, ParentsService parentsService, GoalsService goalsService, UserService userService, UserRepository userDao, ParentRepository parentDao, ChildRepository childDao) {
         this.service = service;
         this.taskDao = taskDao;
         this.parentsService = parentsService;
@@ -49,6 +48,7 @@ public class TaskController {
         this.userService = userService;
         this.userDao=userDao;
         this.parentDao=parentDao;
+        this.childDao = childDao;
     }
 
     ///////////////////////////////////////////////////////////////////////
@@ -56,16 +56,17 @@ public class TaskController {
     ///////////////////////////////////////////////////////////////////////
     @GetMapping("/tasks")
     public String showAll(Model viewModel) {
-//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        //Parent parent = parentDao.findByUser(user);
-//        //viewModel.addAttribute("parent",userDao.findIfParent(user.getRole()));
-//
-//
-//
-//        System.out.println(userDao.findIfParent("parent"));
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Parent parent = parentDao.findByUser(user);
+        viewModel.addAttribute("parent", parent);
+        viewModel.addAttribute("child", childDao.findByUser(user));
+
+        String role = user.getRole();
+        System.out.println(role);
+        viewModel.addAttribute("role", role);
+
         viewModel.addAttribute("tasks", service.findAll());
         viewModel.addAttribute("loggedUser", userService.loggedInUser());
-
 
         return "users/tasks";
     }
@@ -148,6 +149,15 @@ public class TaskController {
     public String approveTask(@PathVariable Long id) {
         Task task = taskDao.findOne(id);
         task.setStatus(TaskStatus.APPROVED);
+        taskDao.save(task);
+        return "";
+    }
+
+    @GetMapping("/tasks/completed/{id}")
+    @ResponseBody
+    public String completeTask(@PathVariable Long id) {
+        Task task = taskDao.findOne(id);
+        task.setStatus(TaskStatus.REQUEST_APPROVAL);
         taskDao.save(task);
         return "";
     }
