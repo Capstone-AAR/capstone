@@ -18,16 +18,25 @@ public class GoalsService {
     //Get all the goals//
 
     public Iterable<Goal> findAll(){
+
         return goalDao.findAll();
     }
 
     public Goal findById(Long id){
+
         return goalDao.findOne(id);
     }
 
     public Goal save (Goal goal){
+
         return goalDao.save(goal);
     }
 
-    public void delete (long id){goalDao.delete(id);}
+    public void delete (long id){
+        goalDao.delete(id);}
+
+    //Trying to find completed goals!!
+
+//    public Iterable<Goal> findIfGoalIsComplete(){
+//        return goalDao.findIfGoalIsComplete(findById(Long id)); }
 }
