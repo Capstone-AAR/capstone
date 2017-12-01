@@ -19,8 +19,8 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.validation.Valid;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class GoalController {
@@ -54,14 +54,17 @@ public class GoalController {
 
     @GetMapping("/goals")
     public String showGoals(Model viewModel, @ModelAttribute Goal goal) {
-        viewModel.addAttribute("goals", service.findAll());
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Parent parent = parentDao.findByUser(user);
-        viewModel.addAttribute("child", childDao.findByUser(user));
+
+        List<Child> children = childDao.findAllByParentId(parent.getId());
+
+        List<Long> childrenIds = children.stream().map(Child::getId).collect(Collectors.toList());
+        Iterable<Goal> incompleteGoals = goalDao.childrenIncompleteGoals(childrenIds);
+
+        viewModel.addAttribute("goals", incompleteGoals);
+        viewModel.addAttribute("child", children);
         viewModel.addAttribute("parent",parent);
-        String role=user.getRole();
-        System.out.println(user.getRole());
-        viewModel.addAttribute("role",role);
 
         return "goals/index";
 
@@ -143,9 +146,18 @@ public class GoalController {
     }
 
     @PostMapping("/goals/{id}/update")
-    public String editGoal(@ModelAttribute Goal goal, @PathVariable Long id){
-        goal.setId(id);
+    public String editGoal(@ModelAttribute Goal goal){
+        User user = userDao.findByGoalId(goal.getId());
+        goal.setUser(user);
         service.save(goal);
+
+        if (goal.isComplete()) {
+            Child child = childDao.findByUserId(goal.getUser().getId());
+            child.increasScore(goal);
+            childDao.save(child);
+        }
+
+
         return "redirect:/goals/" + goal.getId();
     }
 
@@ -165,15 +177,22 @@ public class GoalController {
 
     @GetMapping("/goals/completed/{id}")
     public String showCompletedGoals(@PathVariable Long id, Model viewModel, @ModelAttribute Goal goal){
-
         User parentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Parent parent = parentDao.findByUser(parentUser);
         User user = userDao.findById(id);
+        viewModel.addAttribute("user", user);
+
+        //User user = userDao.findById(id);
+        Child child = childDao.findByUser(user);
+        List<Goal> completeGoals = goalDao.findIfGoalIsComplete(user.getId());
         //List<User> users = userDao.findAllByParentId(user.getId());
         viewModel.addAttribute("user", user);
         //viewModel.addAttribute("children",children);
-        Long user3 = 3L;
-        viewModel.addAttribute("goals",goalDao.findIfGoalIsComplete(user3));
+
+        viewModel.addAttribute("goals",completeGoals);
+        viewModel.addAttribute("parent",parent);
+        viewModel.addAttribute("child",child);
+        System.out.println(goalDao.findIfGoalIsComplete(user.getId()));
 
         return "goals/completed";
 
