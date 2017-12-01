@@ -4,7 +4,9 @@ import com.capstone.demo.models.Task;
 import com.capstone.demo.models.Parent;
 import com.capstone.demo.models.TaskStatus;
 import com.capstone.demo.models.User;
+import com.capstone.demo.repositories.ParentRepository;
 import com.capstone.demo.repositories.TaskRepository;
+import com.capstone.demo.repositories.UserRepository;
 import com.capstone.demo.services.GoalsService;
 import com.capstone.demo.services.ParentsService;
 import com.capstone.demo.services.TasksService;
@@ -12,6 +14,7 @@ import com.capstone.demo.services.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -34,14 +37,18 @@ public class TaskController {
     private final ParentsService parentsService;
     private final GoalsService goalsService;
     private final UserService userService;
+    private final UserRepository userDao;
+    private final ParentRepository parentDao;
 
     @Autowired
-    public TaskController(TasksService service, TaskRepository taskDao, ParentsService parentsService, GoalsService goalsService, UserService userService) {
+    public TaskController(TasksService service, TaskRepository taskDao, ParentsService parentsService, GoalsService goalsService, UserService userService, UserRepository userDao, ParentRepository parentDao) {
         this.service = service;
         this.taskDao = taskDao;
         this.parentsService = parentsService;
         this.goalsService = goalsService;
         this.userService = userService;
+        this.userDao=userDao;
+        this.parentDao=parentDao;
     }
 
     ///////////////////////////////////////////////////////////////////////
@@ -49,8 +56,16 @@ public class TaskController {
     ///////////////////////////////////////////////////////////////////////
     @GetMapping("/tasks")
     public String showAll(Model viewModel) {
+//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        //Parent parent = parentDao.findByUser(user);
+//        //viewModel.addAttribute("parent",userDao.findIfParent(user.getRole()));
+//
+//
+//
+//        System.out.println(userDao.findIfParent("parent"));
         viewModel.addAttribute("tasks", service.findAll());
         viewModel.addAttribute("loggedUser", userService.loggedInUser());
+
 
         return "users/tasks";
     }

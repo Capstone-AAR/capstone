@@ -53,34 +53,47 @@ public class AuthenticationController {
         }
         //This is where parent stuff starts.
 
-        //List<Goal> goals = goalDao.findByUserId(child.getId());
         List<Child> children = childDao.findAllByParentId(parent.getId());
-        //Child child = childDao.findByUserId(user.getId());
-
-
-
         viewModel.addAttribute("parent",parent);
         viewModel.addAttribute("goals", goals);
-        //viewModel.addAttribute("goals",goalDao.findByUserId(child.getId()));
         viewModel.addAttribute("children",children);
-        //viewModel.addAttribute("childGoal",childGoal);
         return "users/profile/parent-profile";
+
+        //List<Goal> goals = goalDao.findByUserId(child.getId());
+        //Child child = childDao.findByUserId(user.getId());
+        //viewModel.addAttribute("goals",goalDao.findByUserId(child.getId()));
+        //viewModel.addAttribute("childGoal",childGoal);
     }
 
     @GetMapping("/view-child-profile/{id}")
     public String viewProfile(Model viewModel, @PathVariable Long id){
 //        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         //Parent parent = parentDao.findByUserId(id);
-        Child child = childDao.findByUserId(id);
-        List<Child> children = childDao.findAllByParentId(child.getId());
-        viewModel.addAttribute("child", child);
-        viewModel.addAttribute("children",children);
-        viewModel.addAttribute("goals",goalDao.findByUserId(child.getId()));
+        User parentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Parent parent = parentDao.findByUser(parentUser);
+        User user = userDao.findById(id);
+        //List<User> users = userDao.findAllByParentId(user.getId());
+        viewModel.addAttribute("user", user);
+        //viewModel.addAttribute("children",children);
+        viewModel.addAttribute("goals",goalDao.findByUserId(user.getId()));
         System.out.println("hi");
-        System.out.println(child.getId());
+        System.out.println(user.getId());
         ;
         //System.out.println(child.getChildren());
         return "users/profile/view-child-profile";
+
+
+
+//        Child child = childDao.findByUserId(id);
+//        List<Child> children = childDao.findAllByParentId(child.getId());
+//        viewModel.addAttribute("child", child);
+//        viewModel.addAttribute("children",children);
+//        viewModel.addAttribute("goals",goalDao.findByUserId(child.getId()));
+//        System.out.println("hi");
+//        System.out.println(child.getId());
+//        ;
+//        //System.out.println(child.getChildren());
+//        return "users/profile/view-child-profile";
 
     }
 }

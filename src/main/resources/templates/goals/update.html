@@ -18,6 +18,9 @@
     <br/>
     <input type="submit" value="Update Goal"/>
 </form>
+<div th:each="goals ${completeGoals}">
+    <p th:text="${goal.username}"></p>
+</div>
 
 <footer th:replace="fragments/footer :: mainFooter"></footer>
 </body>

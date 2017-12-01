@@ -10,4 +10,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
     @Query("select u from Child c join c.user u where c.id = ?1")
     User findByChildId(Long id);
+
+    @Query(nativeQuery = true, value="SELECT * FROM users WHERE role = \"parent\";")
+    User findIfParent(String role);
 }

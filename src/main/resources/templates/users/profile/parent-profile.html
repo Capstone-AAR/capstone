@@ -50,7 +50,10 @@
 
     <div class="panel-body">
         <div>
-            <a th:href="@{/view-child-profile/{id}(id=${child.user.id})}">View Child Profile</a>
+            <a th:href="@{/view-child-profile/{id}(id=${child.user.id})}">View Child's Goals</a>
+        </div>
+        <div>
+            <a th:href="@{/view-child-profile/{id}(id=${child.user.id})}">View Child's Goals</a>
         </div>
         <p th:text="${child.user.email}"></p>
         <!--<div>-->

@@ -36,12 +36,13 @@ public class User {
 
     public User() {
     }
-    public User(Long id, String username, String password, String email, List<Goal> goals){
+    public User(Long id, String username, String password, String email, List<Goal> goals, String role){
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.goals = goals;
+        this.role=role;
     }
 
     public User(User copy) {
@@ -50,6 +51,7 @@ public class User {
         password = copy.password;
         email = copy.email;
         goals = copy.goals;
+        role = copy.role;
     }
 
     public long getId() {

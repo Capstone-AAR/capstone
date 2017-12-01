@@ -9,10 +9,15 @@
 <body>
 
 
-<nav sec:authorize="isAuthenticated()" id="my-nav" class="navbar navbar-default" th:fragment="mainNavbar">
+<div sec:authorize="isAuthenticated()" id="my-nav" class="navbar navbar-default" th:fragment="mainNavbar">
     <div id="logo">
         <h2>Thrifty</h2>
+
+
+
     </div>
+
+
 
 
     <br/>
@@ -32,7 +37,7 @@
         </li>
     </ul>
 
-</nav>
+</div>
 
     <nav sec:authorize="isAnonymous()" id="my-nav" class="navbar navbar-default" th:fragment="mainNavbar">
         <div id="logo">

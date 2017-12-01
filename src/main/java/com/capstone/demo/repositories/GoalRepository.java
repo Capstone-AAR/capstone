@@ -15,6 +15,11 @@ public interface GoalRepository extends CrudRepository<Goal,Long> {
 
     List<Goal> findByUserId(Long id);
 
+    @Query(nativeQuery = true, value="SELECT * FROM GOALS WHERE total_points = track_progress;")
+    List<Goal> findIfGoalIsComplete(Long userId);
+
+    //Iterable<Goal> findIfGoalIsComplete (Long userId);
+
     //@Query(nativeQuery = true, value = "Select * from goals where user_id ")
 }
 

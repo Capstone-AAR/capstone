@@ -1,5 +1,6 @@
 package com.capstone.demo.controllers;
 
+import com.capstone.demo.models.Child;
 import com.capstone.demo.models.Goal;
 import com.capstone.demo.models.Parent;
 import com.capstone.demo.models.User;
@@ -52,16 +53,41 @@ public class GoalController {
     }
 
     @GetMapping("/goals")
-    public String showGoals(Model viewModel) {
+    public String showGoals(Model viewModel, @ModelAttribute Goal goal) {
         viewModel.addAttribute("goals", service.findAll());
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Parent parent = parentDao.findByUser(user);
+        viewModel.addAttribute("child", childDao.findByUser(user));
+        viewModel.addAttribute("parent",parent);
+        String role=user.getRole();
+        System.out.println(user.getRole());
+        viewModel.addAttribute("role",role);
+
         return "goals/index";
+
+    }
+
+    @GetMapping("/goals/child")
+    public String showGoalsIfChild(Model viewModel, @ModelAttribute Goal goal) {
+        viewModel.addAttribute("goals", service.findAll());
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Parent parent = parentDao.findByUser(user);
+        viewModel.addAttribute("child", childDao.findByUser(user));
+        viewModel.addAttribute("parent",parent);
+        String role=user.getRole();
+        System.out.println(user.getRole());
+        viewModel.addAttribute("role",role);
+
+        return "goals/child-index";
+
     }
 
 
+
     @GetMapping("/goals/{id}")
-    public String showGoals (@PathVariable long id, Model viewmodel){
+    public String showGoals (@PathVariable long id, Model viewModel){
         Goal goal = service.findById(id);
-        viewmodel.addAttribute("goal", service.findById(id));
+        viewModel.addAttribute("goal", service.findById(id));
 
 
         return "goals/show";
@@ -112,6 +138,7 @@ public class GoalController {
     public String showGoalToBeEdited (@PathVariable Long id,  Model viewModel){
         Goal existingGoal = service.findById(id);
         viewModel.addAttribute("goal", existingGoal);
+
         return "goals/update";
     }
 
@@ -123,12 +150,64 @@ public class GoalController {
     }
 
     @GetMapping("/goals/{id}/reached")
-    public String showReachedGoals (@PathVariable long id, Model viewmodel){
-        Goal goal = service.findById(id);
-        viewmodel.addAttribute("goal", service.findById(id));
+    public String showReachedGoals (@PathVariable long id, Model viewModel, @ModelAttribute Goal goal){
+        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        //List<Goal> goals = goalDao.findIfGoalIsComplete(user.getId());
+        //Goal goal = service.findById(id);
+        //List<Goal>goals = goalDao.findIfGoalIsComplete(user.getId());
+        //viewModel.addAttribute("goal", service.findById(id));
+        //viewModel.addAttribute("goals",goals);
+
 
 
         return "goals/reached";
+    }
+
+    @GetMapping("/goals/completed/{id}")
+    public String showCompletedGoals(@PathVariable Long id, Model viewModel, @ModelAttribute Goal goal){
+
+        User parentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Parent parent = parentDao.findByUser(parentUser);
+        User user = userDao.findById(id);
+        //List<User> users = userDao.findAllByParentId(user.getId());
+        viewModel.addAttribute("user", user);
+        //viewModel.addAttribute("children",children);
+        Long user3 = 3L;
+        viewModel.addAttribute("goals",goalDao.findIfGoalIsComplete(user3));
+
+        return "goals/completed";
+
+//        User parentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        Parent parent = parentDao.findByUser(parentUser);
+//        User user = userDao.findById(id);
+//        viewModel.addAttribute("goals",goalDao.findIfGoalIsComplete(user.getId()));
+
+
+        //Working on making a points system
+
+        //System.out.println(goals.getTotalPoints());
+        //if (goal.getTotalPoints() == goal.getTrackProgress()) {
+          //  System.out.println("goal complete!!!");
+        //}
+
+
+        //List<Goal>goals =
+//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        Parent parent = parentDao.findByUser(user);
+        //Erased... but used to work for parents' goals
+        //List<Goal> goals = goalDao.findIfGoalIsComplete(goal.getId());
+
+//        List<Child> children = childDao.findAllByParentId(parent.getId());
+//        viewModel.addAttribute("parent",parent);
+        //viewModel.addAttribute("goals", goals);
+        // viewModel.addAttribute("children",children);
+        //System.out.println(goalDao.findIfGoalIsComplete(goal.getId()));
+
+//        if (goal.getTotalPoints() == goal.getTrackProgress()) {
+//
+//
+//            System.out.println(goalDao.findIfGoalIsComplete(user.getId()));
+//        }
     }
 
 }
