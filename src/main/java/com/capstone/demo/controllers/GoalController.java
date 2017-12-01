@@ -59,7 +59,7 @@ public class GoalController {
 
         List<Child> children = childDao.findAllByParentId(parent.getId());
 
-        List<Long> childrenIds = children.stream().map(Child::getId).collect(Collectors.toList());
+        List<Long> childrenIds = children.stream().map(child -> child.getUser().getId()).collect(Collectors.toList());
         Iterable<Goal> incompleteGoals = goalDao.childrenIncompleteGoals(childrenIds);
 
         viewModel.addAttribute("goals", incompleteGoals);
