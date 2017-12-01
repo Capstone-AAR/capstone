@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:="http://www.w3.org/1999/xhtml">
 <head>
-<head th:replace="fragments/header :: main-header('Your Profile')"></head>
+    <head th:replace="fragments/header :: main-header('Your Profile')"></head>
     <link rel="stylesheet" href="CSS/style.css"/>
 </head>
 
@@ -10,47 +10,58 @@
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 
 
+<div th:each="child :${child}">
+    <h1 th:text="${child.user.username}"></h1>
+</div>
 
 <div th:each="child :${child}">
-    <h1 th:text="${child.user.username}">
-
-    </h1>
-
+    <!--<p th:text="${child}"></p>-->
 </div>
 
-<div class="panel panel-default">
+<div clas="panel panel-default" th:each="goal :${goals}">
     <div class="panel-heading">
-        Goals
+        <h3 th:text="${goal.goalName}"></h3>
     </div>
     <div class="panel-body">
-        <ul>
-            <li><a href="goals/create">Start New Goal</a></li>
-            <br/>
-            <li><a href="goals">View Goals</a></li>
-            <br/>
-            <li><a href="">View Completed Goals</a></li>
-            <br/>
-        </ul>
+        <p th:text="${goal.totalPoints}"></p>
+        <p th:text="${goal.trackProgress}"></p>
     </div>
-
 </div>
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        Tasks
-    </div>
-    <div class="panel-body">
-        <ul>
-            <li><a href="/tasks">View your Tasks</a></li>
-            <br/>
-            <li><a href="">Mark Task as Complete</a></li>
-            <br/>
-            <li><a href="">View Completed Tasks</a></li>
-            <br/>
-        </ul>
-    </div>
 
-</div>
+<!--<div class="panel panel-default">-->
+<!--<div class="panel-heading">-->
+<!--Goals-->
+<!--</div>-->
+<!--<div class="panel-body">-->
+<!--<ul>-->
+<!--<li><a href="goals/create">Start New Goal</a></li>-->
+<!--<br/>-->
+<!--<li><a href="goals">View Goals</a></li>-->
+<!--<br/>-->
+<!--<li><a href="">View Completed Goals</a></li>-->
+<!--<br/>-->
+<!--</ul>-->
+<!--</div>-->
+
+<!--</div>-->
+
+<!--<div class="panel panel-default">-->
+<!--<div class="panel-heading">-->
+<!--Tasks-->
+<!--</div>-->
+<!--<div class="panel-body">-->
+<!--<ul>-->
+<!--<li><a href="/tasks">View your Tasks</a></li>-->
+<!--<br/>-->
+<!--<li><a href="">Mark Task as Complete</a></li>-->
+<!--<br/>-->
+<!--<li><a href="">View Completed Tasks</a></li>-->
+<!--<br/>-->
+<!--</ul>-->
+<!--</div>-->
+
+<!--</div>-->
 
 <footer th:replace="fragments/footer :: mainFooter"></footer>
 

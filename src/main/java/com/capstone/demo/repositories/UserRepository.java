@@ -10,4 +10,6 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
     @Query("select u from Child c join c.user u where c.id = ?1")
     User findByChildId(Long id);
+
+    User findByEmail(String email);
 }
