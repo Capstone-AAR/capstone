@@ -124,4 +124,12 @@ public class Task {
     public void updateGoalProgress() {
         goal.setTrackProgress(goal.getTrackProgress() + getPoints());
     }
+
+    public boolean completesGoal() {
+        return goal.isComplete();
+    }
+
+    public Long childUserId() {
+        return goal.getUser().getId();
+    }
 }

@@ -150,6 +150,13 @@ public class TaskController {
         Task task = taskDao.findOne(id);
         task.setStatus(TaskStatus.APPROVED);
         task.updateGoalProgress();
+
+        if (task.completesGoal()) {
+            Child child = childDao.findByUserId(task.childUserId());
+            child.increasScore(task.getGoal());
+            childDao.save(child);
+        }
+
         taskDao.save(task);
         return "";
     }
