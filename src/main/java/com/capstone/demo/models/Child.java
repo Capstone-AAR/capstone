@@ -75,4 +75,8 @@ public class Child {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public void increasScore(Goal goal) {
+        score += goal.getTotalPoints();
+    }
 }

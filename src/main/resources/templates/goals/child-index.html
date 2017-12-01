@@ -6,10 +6,9 @@
 </head>
 <body>
 
-<nav th:replace="fragments/navbar :: mainNavbar">
+<nav th:replace="fragments/child-navbar :: childNavbar">
     <h2>Thrifty</h2>
 </nav>
-
 <div th:each="goal:${goals}" class="panel panel-default">
 
     <div th:text="${goal.goalName}" class="panel-heading">

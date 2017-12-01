@@ -7,14 +7,12 @@
 
 <body>
 <!--using main navbar as a placeholder, but will need to make a custom nav for child profile bc child profile has different constraints-->
-<nav th:replace="fragments/navbar :: mainNavbar"></nav>
+<nav th:replace="fragments/child-navbar :: childNavbar"></nav>
 
 
 
 <div th:each="child :${child}">
-    <h1 th:text="${child.user.username}">
-
-    </h1>
+    <h1>Welcome, <span th:text="${child.user.username}"></span>!</h1>
 
 </div>
 

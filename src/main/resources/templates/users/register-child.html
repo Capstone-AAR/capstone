@@ -8,11 +8,11 @@
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 <form th:action="@{/children/new}" method="post" th:object="${user}">
     <div class="form-group">
-        <label for="username">Choose a username</label>
+        <label for="username">Choose a username for your child</label>
         <input th:field="*{username}" id="username" name="username"/>
     </div>
     <div class="form-group">
-    <label for="email">Enter your email</label>
+    <label for="email">Enter your child's email</label>
     <input th:field="*{email}" id="email" name="email"/>
     </div>
     <div class="form-group">

@@ -99,5 +99,8 @@ public class Goal {
         this.user = user;
     }
 
+    public boolean isComplete() {
+        return totalPoints ==  trackProgress;
+    }
 }
 

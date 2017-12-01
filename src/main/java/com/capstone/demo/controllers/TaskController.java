@@ -1,9 +1,6 @@
 package com.capstone.demo.controllers;
 
-import com.capstone.demo.models.Task;
-import com.capstone.demo.models.Parent;
-import com.capstone.demo.models.TaskStatus;
-import com.capstone.demo.models.User;
+import com.capstone.demo.models.*;
 import com.capstone.demo.repositories.ChildRepository;
 import com.capstone.demo.repositories.ParentRepository;
 import com.capstone.demo.repositories.TaskRepository;
@@ -32,24 +29,25 @@ import java.util.Locale;
 
 @Controller
 public class TaskController {
-    private final ParentRepository parentDao;
+
     private final TasksService service;
     private final TaskRepository taskDao;
     private final ParentsService parentsService;
     private final GoalsService goalsService;
     private final UserService userService;
-    private final UserRepository userRepo;
+    private final UserRepository userDao;
+    private final ParentRepository parentDao;
     private final ChildRepository childDao;
 
     @Autowired
-    public TaskController(ParentRepository parentDao, TasksService service, TaskRepository taskDao, ParentsService parentsService, GoalsService goalsService, UserService userService, UserRepository userRepo, ChildRepository childDao) {
-        this.parentDao = parentDao;
+    public TaskController(TasksService service, TaskRepository taskDao, ParentsService parentsService, GoalsService goalsService, UserService userService, UserRepository userDao, ParentRepository parentDao, ChildRepository childDao) {
         this.service = service;
         this.taskDao = taskDao;
         this.parentsService = parentsService;
         this.goalsService = goalsService;
         this.userService = userService;
-        this.userRepo = userRepo;
+        this.userDao=userDao;
+        this.parentDao=parentDao;
         this.childDao = childDao;
     }
 

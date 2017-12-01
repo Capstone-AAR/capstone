@@ -9,10 +9,15 @@
 <body>
 
 
-<nav sec:authorize="isAuthenticated()" id="my-nav" class="navbar navbar-default" th:fragment="mainNavbar">
+<div sec:authorize="isAuthenticated()" id="my-nav" class="navbar navbar-default" th:fragment="mainNavbar">
     <div id="logo">
         <h2>Thrifty</h2>
+
+
+
     </div>
+
+
 
 
     <br/>
@@ -25,6 +30,7 @@
         <li><a th:href="@{/view-child-profile/{id}(id=${#authentication.principal.id})}">View your Child's Profile</a></li>
         <li><a href="/tasks">Task</a></li>
         <li><a href="/children/new">Add New Saver</a></li>
+
         <li>
             <form th:action="@{/logout}" th:method="post">
                 <button class="btn-link btn" style="margin-top: 8px">Logout</button>
@@ -32,7 +38,7 @@
         </li>
     </ul>
 
-</nav>
+</div>
 
     <nav sec:authorize="isAnonymous()" id="my-nav" class="navbar navbar-default" th:fragment="mainNavbar">
         <div id="logo">

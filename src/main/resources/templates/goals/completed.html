@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <head th:replace="fragments/header :: main-header('View Goals')"></head>
+    <link rel="stylesheet" href="/CSS/style.css"/>
+</head>
+<body>
+<nav th:replace="fragments/navbar :: mainNavbar"></nav>
+
+<div th:each="goal:${goals}" class="panel panel-default">
+
+    <div th:text="${goal.goalName}" class="panel-heading"></div>
+
+
+
+    <!--</div>-->
+    <!--<div class="panel-body">-->
+        <!--<ul>-->
+            <!--Total Points: <li th:text="${goal.totalPoints}"></li>-->
+            <!--<br />-->
+            <!--Current Points: <li th:text="${goal.trackProgress}"></li>-->
+            <!--<br />-->
+            <!--<a th:href="@{/goals/{id}(id=${goal.id})}">View Goal</a>-->
+            <!--<br />-->
+            <!--<a th:href="@{/tasks/create/(id=${goal.id})}">Add tasks</a>-->
+        <!--</ul>-->
+        <!--<div class="progress">-->
+            <!--<div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+</div>
+<br/>
+<hr/>
+<footer th:replace="fragments/footer :: mainFooter"></footer>
+</body>
+</html>
