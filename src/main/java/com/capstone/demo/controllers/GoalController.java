@@ -150,14 +150,6 @@ public class GoalController {
         User user = userDao.findByGoalId(goal.getId());
         goal.setUser(user);
         service.save(goal);
-
-        if (goal.isComplete()) {
-            Child child = childDao.findByUserId(goal.getUser().getId());
-            child.increasScore(goal);
-            childDao.save(child);
-        }
-
-
         return "redirect:/goals/" + goal.getId();
     }
 

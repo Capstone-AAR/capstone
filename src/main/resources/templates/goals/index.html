@@ -6,9 +6,14 @@
 </head>
 <body>
 
-<nav th:replace="fragments/navbar :: mainNavbar">
+<nav th:if="${#authentication.principal == 'parent'}" th:replace="fragments/navbar :: mainNavbar">
     <h2>Thrifty</h2>
 </nav>
+
+<nav th:if="${#authentication.principal == 'child'}" th:replace="fragments/child-navbar :: childNavbar">
+    <h2>Thrifty</h2>
+</nav>
+
 
 <div th:each="goal:${goals}" class="panel panel-default">
 
