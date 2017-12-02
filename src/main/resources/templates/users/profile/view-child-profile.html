@@ -23,16 +23,16 @@
     </div>
     <div class="panel-body">
         <ul>
-            Total Points: <li th:text="${goal.totalPoints}"></li>
+            Total Points: <li class="total-points" th:text="${goal.totalPoints}"></li>
             <br />
-            Current Points: <li th:text="${goal.trackProgress}"></li>
+            Current Points: <li class="track-progress" th:text="${goal.trackProgress}"></li>
             <br />
             <a th:href="@{/tasks/create(id=${goal.id})}">Add tasks</a>
         </ul>
 
         <!--For Progress Bar-->
         <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+            <div class="myBar progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
 
     </div>
@@ -51,5 +51,7 @@
 <script src='/js/main.js'></script>
 
 <footer th:replace="fragments/footer :: mainFooter"></footer>
+
+<script src="/js/progress-bar.js"></script>
 </body>
 </html>
