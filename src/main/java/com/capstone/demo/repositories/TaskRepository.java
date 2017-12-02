@@ -11,7 +11,6 @@ import java.util.List;
 public interface TaskRepository extends CrudRepository<Task, Long> {
     List<Task> findByStatus(TaskStatus status);
 
-    Iterable<Task> findByGoalId(Long goalId);
-
+    List<Task> findByGoalId(Long goalId);
 
 }

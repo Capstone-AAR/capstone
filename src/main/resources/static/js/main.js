@@ -39,9 +39,10 @@ $(document).ready(function () {
             $modalBody.append(calEvent.id);
             console.log(calEvent.status);
             console.log(calEvent.id);
+            console.log(calEvent.status);
             if (calEvent.status === 'REQUEST_APPROVAL') {
+                $('#taskStatus').show();
                 var $approve = $('#approve-task');
-
                 $approve.val('Approve');
                 $approve.on('click', function () {
                     var request = $.ajax('/tasks/approve/' + calEvent.id);
@@ -55,7 +56,8 @@ $(document).ready(function () {
             }
             $modal.modal("show");
             console.log(calEvent);
-            if(calEvent.status === 'NEW') {
+            if (calEvent.status === 'NEW') {
+                $('#taskStatus').hide();
                 var completedTask = $('#completed-task');
                 completedTask.val('completed');
                 completedTask.on('click', function () {

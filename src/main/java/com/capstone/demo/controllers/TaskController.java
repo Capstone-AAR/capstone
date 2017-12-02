@@ -11,6 +11,7 @@ import com.capstone.demo.services.TasksService;
 import com.capstone.demo.services.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.hibernate.jpa.internal.schemagen.ScriptTargetOutputToFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -46,8 +48,8 @@ public class TaskController {
         this.parentsService = parentsService;
         this.goalsService = goalsService;
         this.userService = userService;
-        this.userDao=userDao;
-        this.parentDao=parentDao;
+        this.userDao = userDao;
+        this.parentDao = parentDao;
         this.childDao = childDao;
     }
 
@@ -122,7 +124,16 @@ public class TaskController {
     @GetMapping("/tasks.json")
     public @ResponseBody
     Iterable<Task> viewAllTasksInJsonFormat(@RequestParam(name = "goalId") Long goalId) {
-        return taskDao.findByGoalId(goalId);
+
+        Iterable<Task> tasks = taskDao.findByGoalId(goalId);
+        ArrayList<Task> notApproved = new ArrayList<>();
+
+        for (Task task : tasks) {
+            if(task.getStatus() != TaskStatus.APPROVED) {
+                notApproved.add(task);
+            }
+        }
+        return notApproved;
     }
 
 
@@ -146,8 +157,12 @@ public class TaskController {
 
     @GetMapping("/tasks/approve/{id}")
     @ResponseBody
-    public String approveTask(@PathVariable Long id) {
+    public String approveTask(@PathVariable Long id, Model model) {
         Task task = taskDao.findOne(id);
+        System.out.println("////////////////////////////");
+        System.out.println(service.findById(id).getStatus());
+        model.addAttribute("taskStatus", service.findById(id).getStatus());
+        System.out.println("////////////////////////////");
         task.setStatus(TaskStatus.APPROVED);
         task.updateGoalProgress();
 
@@ -163,7 +178,7 @@ public class TaskController {
 
     @GetMapping("/tasks/completed/{id}")
     @ResponseBody
-    public String completeTask(@PathVariable Long id) {
+    public String completeTask(@PathVariable Long id, Model model) {
         Task task = taskDao.findOne(id);
         task.setStatus(TaskStatus.REQUEST_APPROVAL);
         taskDao.save(task);
@@ -177,14 +192,13 @@ public class TaskController {
     public String showTaskToBeDeleted(@PathVariable Long id, Model viewModel) {
         Task task = service.findById(id);
         viewModel.addAttribute("task", task);
+        System.out.println(task.getStatus());
+        viewModel.addAttribute("status", task.getStatus());
         return "tasks/edit";
     }
 
     @PostMapping("/tasks/delete")
-    public String deleteTask (@RequestParam(value = "taskId") Long id, @RequestParam(name = "goalId") long goalId) {
-        System.out.println("////////////////////");
-        System.out.println(id);
-        System.out.println("////////////////////");
+    public String deleteTask(@RequestParam(value = "taskId") Long id, @RequestParam(name = "goalId") long goalId) {
         service.delete(id);
         return "redirect:/tasks/create?id=" + goalId;
     }
