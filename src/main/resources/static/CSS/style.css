@@ -152,3 +152,26 @@ body{
     font-size: 30px;
     margin-bottom: 45px;
 }
+
+/*Parent profile page*/
+#child-panel{
+    width:300px;
+    display: inline-block;
+    height: 400px;
+}
+.child-panel-heading{
+    font-size: 40px;
+    color:#fff;
+    text-align: center;
+}
+.panel-body{
+    font-size:20px;
+    text-align: center;
+}
+.panel-heading{
+    color: white;
+}
+.panel-default.panel-heading{
+    background-color: #7ECFC8;
+
+}
