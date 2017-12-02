@@ -20,13 +20,12 @@
         <!--<p th:text="#{'Hello, ' + ${parent.username}}"></p>-->
         <li><a href="/profile">Home</a></li>
         <li><a href="/goals/create">Set a Goal</a></li>
-        <li><a href="/goals">View your Goals</a></li>
-        <li><a href="/tasks">Task</a></li>
+        <li><a href="/tasks/create">Create a task</a></li>
         <li><a href="/children/new">Add New Saver</a></li>
 
         <li class="nav-links">
             <form th:action="@{/logout}" th:method="post">
-                <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+                <button class="btn-link btn" style="margin-top: 8px"> | Logout</button>
             </form>
         </li>
     </ul>
