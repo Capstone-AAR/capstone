@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    var testColor = 'red';
 
     var goalId = $("#goalId").val();
     $('#calendar').fullCalendar({
@@ -13,7 +14,6 @@ $(document).ready(function () {
             var eventStart = moment(date).format("YYYY-MM-DD");
             $('#startDateMoment').val(eventStart);
             $('#createModal').modal('show');
-
         },
 
         navLinks: true, // can click day/week names to navigate views
@@ -23,11 +23,14 @@ $(document).ready(function () {
         events: {
             url: '/tasks.json',
             type: 'GET',
-            data: {goalId: goalId},
-            error: function () {
+            color: testColor,
+            data: {goalId: goalId}
+        },
+        error:
+            function () {
                 alert("There was an error getting the event dates");
             }
-        },
+        ,
 
         eventClick: function (calEvent, jsEvent, view) {
             var $modalBody = $('#modalBody');
@@ -37,10 +40,11 @@ $(document).ready(function () {
             $('#modalTitle').html(calEvent.title);
             $modalBody.html(calEvent.taskDescription);
             $modalBody.append(calEvent.id);
-            console.log(calEvent.status);
-            console.log(calEvent.id);
-            console.log(calEvent.status);
+            console.log(jsEvent);
+            console.log("/////////////////");
+            console.log(calEvent);
             if (calEvent.status === 'REQUEST_APPROVAL') {
+                testColor = 'black';
                 $('#taskStatus').show();
                 var $approve = $('#approve-task');
                 $approve.val('Approve');
@@ -55,8 +59,8 @@ $(document).ready(function () {
                 });
             }
             $modal.modal("show");
-            console.log(calEvent);
             if (calEvent.status === 'NEW') {
+                // console.log(calEvent.source.color.);
                 $('#taskStatus').hide();
                 var completedTask = $('#completed-task');
                 completedTask.val('completed');
@@ -71,7 +75,21 @@ $(document).ready(function () {
                 });
             }
             $modal.modal("show");
-            console.log(calEvent);
+        },
+
+        eventRender: function(event, element) {
+            if(event.status === 'REQUEST_APPROVAL') {
+               element.css({
+                   'background-color': '#F27A33'
+               })
+            }
+
+            if(event.status === 'NEW') {
+                element.css({
+                    'background-color': '#438052'
+                })
+            }
+
         }
 
     });
