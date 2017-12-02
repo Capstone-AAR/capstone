@@ -19,6 +19,18 @@ li{
     width: 75%
 }
 
+#main-nav {
+    background-color: white;
+    font-weight: 400;
+    position: relative;
+    z-index: 100;
+    height: 15em;
+    font-family: 'Raleway', sans-serif;
+    color: #605f5d;
+    text-align: center;
+    width: 100%;
+}
+
 #my-nav{
     background-color: white;
     font-weight: 400;
@@ -49,12 +61,12 @@ body{
     font-family: 'Raleway', sans-serif;
     background-color: #FAF8F2;
 }
-#login-buttons{
+.login-buttons{
     width:100%;
     text-align: center;
 
 }
-#register{
+.register{
     text-align: center;
     position: relative;
     display: inline-block;

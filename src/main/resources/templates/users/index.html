@@ -14,10 +14,28 @@
 </div>
 
 <div id="login-buttons">
-<a href="/register"><input type="submit" value="Register" id="register"/></a>
+<a href="/register"><input type="submit" value="Register" class="register"/></a>
 <br/>
+    <a href="/login"><input type="submit" value="Login" id="login"/></a>
+</div>
 
-<a href="/login"><input type="submit" value="Login" id="login"/></a>
+<!--middle div-->
+<hr/>
+<div>
+    <h1>HELP YOUR KIDS LEARN THE VALUE OF MONEY</h1>
+    <ul>
+        <li>Set goals</li>
+        <li>Assign them tasks to help them attain their goals</li>
+        <li>Have fun learning tha value of saving</li>
+    </ul>
+</div>
+<hr/>
+<!--ending div with register button-->
+<div class="col-lg-6 register-text">
+    <p>
+        Sign up and begin setting goals and tasks for your kids!
+    </p>
+    <a href="/register"><input type="submit" value="Register" class="register"/></a>
 </div>
 
 <footer th:replace="fragments/footer :: mainFooter"></footer>
