@@ -6,26 +6,22 @@
     <link rel="stylesheet" href="CSS/style.css"/>
 </head>
 <body>
-<!--using main navbar as a placeholder, but will need to make a custom nav for child profile bc child profile has different constraints-->
-<nav th:replace="fragments/navbar :: mainNavbar"></nav>
+<nav th:replace="fragments/child-navbar :: childNavbar"></nav>
 
 
-    <th:block th:each="task : ${tasks}">
+
+<th:block th:each="task : ${tasks}">
 
         <div th:if="${task.goal.user.id == loggedUser.id}">
 
         <h3 th:text="${task.taskName}"></h3>
         <p th:text="${task.taskDescription}"></p>
-            <a th:href="${'/tasks/edit/' + task.id}">Edit Task</a>
+            <button th:if="${#authentication.principal.role == 'child'}" type="submit" class="btn btn-primary" data-dismiss="modal" id="completed-task">
+                completed
+            </button>
 
         </div>
     </th:block>
-
-<!--trying to get approved tasks-->
-<th:block th:switch="${tasks}">
-    <p th:case="#{tasks.pendingTasks}">needs approval</p>
-    <p th:case="*">complete or pending</p>
-</th:block>
 
 <footer th:replace="fragments/footer :: mainFooter"></footer>
 </body>

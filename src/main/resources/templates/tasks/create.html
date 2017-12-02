@@ -45,18 +45,23 @@
                             <form th:if="${#authentication.principal.role == 'parent'}" id="deleteTask" th:action="@{/tasks/delete}" th:method="post"
                                   th:object="${task}">
                                 <input type="hidden" name="goalId" th:value="${id}"/>
-                                <input type="hidden" id="taskId" name="taskId" />
+                                <input type="hidden" id="taskId" name="taskId"/>
+                                <p th:text="${'this should work!'}"></p>
                                 <input type="submit" class="btn btn-danger" id="deleteButton" value="Delete"/>
                             </form>
+                            <div>
 
-                            <button th:if="${#authentication.principal.role == 'parent'}" type="submit" class="btn btn-primary" data-dismiss="modal" id="approve-task">
-                                Approve
-                            </button>
-
-                            <button th:if="${#authentication.principal.role == 'child'}" type="submit" class="btn btn-primary" data-dismiss="modal" id="completed-task">
+                            </div>
+                            <div id="taskStatus">
+                                <button th:if="${#authentication.principal.role == 'parent'}" type="submit"
+                                        class="btn btn-primary" data-dismiss="modal" id="approve-task">
+                                    Approve
+                                </button>
+                            </div>
+                            <button th:if="${#authentication.principal.role == 'child'}" type="submit"
+                                    class="btn btn-primary" data-dismiss="modal" id="completed-task">
                                 completed
                             </button>
-
                         </div>
                     </div>
                 </div>
@@ -74,7 +79,7 @@
                         </div>
                         <div class="modal-body">
                             <form id="createTaskForm" th:action="@{/tasks/create}" th:method="post" th:object="${task}">
-                                <input type="hidden" name="goalId" id="goalId" th:value="${id}" />
+                                <input type="hidden" name="goalId" id="goalId" th:value="${id}"/>
                                 <label for="title">Title:</label>
                                 <input th:field="*{taskName}" id="title"/>
                                 <label for="description">Description:</label>
