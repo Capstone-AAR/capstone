@@ -48,7 +48,7 @@ li{
     text-align: center;
 }
 
-#logo{
+.logo {
     position: relative;
     left: 0;
     display:inline-block;
@@ -57,6 +57,7 @@ li{
     color: #F27A33;
     font-weight: bold;
 }
+
 body{
     font-family: 'Raleway', sans-serif;
     background-color: #FAF8F2;
@@ -66,7 +67,7 @@ body{
     text-align: center;
 
 }
-.register{
+#register{
     text-align: center;
     position: relative;
     display: inline-block;
@@ -88,6 +89,20 @@ body{
     background-color: #377FBF;
     color: white;
 }
+
+#get-started{
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    height: 50px;
+    width: 300px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    background-color: #444858;
+    color: white;
+    margin-top:100px;
+}
+
 #homepage{
     text-align: center;
     position: relative;

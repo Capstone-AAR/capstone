@@ -13,8 +13,8 @@
 <h3>Help your child learn the value of money</h3>
 </div>
 
-<div id="login-buttons">
-<a href="/register"><input type="submit" value="Register" class="register"/></a>
+<div class="login-buttons">
+<a href="/register"><input type="submit" value="Register" id="register"/></a>
 <br/>
     <a href="/login"><input type="submit" value="Login" id="login"/></a>
 </div>
@@ -35,7 +35,9 @@
     <p>
         Sign up and begin setting goals and tasks for your kids!
     </p>
-    <a href="/register"><input type="submit" value="Register" class="register"/></a>
+    <div class="login-buttons">
+        <a href="/register"><input type="submit" value="Get Started" id="get-started"/></a>
+    </div>
 </div>
 
 <footer th:replace="fragments/footer :: mainFooter"></footer>
