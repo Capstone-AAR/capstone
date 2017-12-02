@@ -21,6 +21,25 @@
         </div>
     </th:block>
 
+
+
 <footer th:replace="fragments/footer :: mainFooter"></footer>
+
+
+<script src='/lib/jquery-3.2.1.min.js'></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script src='/lib/moment.min.js'></script>
+<script src="/fullcalendar/fullcalendar.js"></script>
+<script src='/js/main.js'></script>
+<script src='/js/deleteTask.js'></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var tasks = /*[[${tasks}]]*/ '';
+    tasks = JSON.parse(tasks);
+    /*]]>*/
+</script>
+<script src='/js/jsonTasks.js'></script>
 </body>
 </html>

@@ -25,11 +25,12 @@
         <div>
             <a th:href="@{/view-child-profile/{id}(id=${child.user.id})}">View Child's Goals</a>
         </div>
-
         <div>
             <a th:href="@{/goals/completed/{id}(id=${child.user.id})}">View Completed Goals</a>
         </div>
-
+        <div>
+            <a th:href="@{/goals/update}">Add tasks</a>
+        </div>
         <!--<div>-->
             <!--<p th:text="${goal.goalName}"></p>-->
         <!--</div>-->

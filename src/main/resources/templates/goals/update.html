@@ -4,18 +4,28 @@
 
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
-<form th:action="@{/goals/{id}/update(id=${goal.id})}" method ="post" th:object = "${goal}">
-    Goal:
-    <input th:field="${goal.goalName}"/>
-    <br/>
+goals
 
-    Total Points:
-    <input th:field="${goal.totalPoints}"/>
-    <br/>
-    <input th:field="${goal.trackProgress}"/>
-    <br/>
-    <input type="submit" value="Update Goal"/>
-</form>
+<th:block th:each="goal : ${goals}">
+    <h2>
+
+    <a th:href="@{/tasks/create(id=${goal.id})}" th:text="${goal.goalName}"></a>
+    </h2>
+
+
+</th:block>
+<!--<form th:action="@{/goals/{id}/update(id=${goal.id})}" method ="post" th:object = "${goal}">-->
+    <!--Goal:-->
+    <!--<input th:field="${goal.goalName}"/>-->
+    <!--<br/>-->
+
+    <!--Total Points:-->
+    <!--<input th:field="${goal.totalPoints}"/>-->
+    <!--<br/>-->
+    <!--<input th:field="${goal.trackProgress}"/>-->
+    <!--<br/>-->
+    <!--<input type="submit" value="Update Goal"/>-->
+<!--</form>-->
 
 <footer th:replace="fragments/footer :: mainFooter"></footer>
 </body>
