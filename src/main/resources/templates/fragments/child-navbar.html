@@ -16,10 +16,7 @@
     <br/>
 
     <ul class="nav navbar-nav">
-        <!--<p th:text="#{'Hello, ' + ${parent.username}}"></p>-->
         <li><a href="/profile">Home</a></li>
-        <li><a href="/goals/child">View your Goals</a></li>
-        <li><a href="/tasks">Task</a></li>
         <li>
             <form th:action="@{/logout}" th:method="post">
                 <button class="btn-link btn" style="margin-top: 8px">Logout</button>

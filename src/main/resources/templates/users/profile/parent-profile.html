@@ -13,9 +13,10 @@
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 
-<div th:each="parent :${parent}">
-<h1>Welcome, <span th:text="${parent.user.username}"></span>!</h1>
-</div>
+<!--possibly get rid of?-->
+<!--<div th:each="parent :${parent}">-->
+<!--<h1>Welcome, <span th:text="${parent.user.username}"></span>!</h1>-->
+<!--</div>-->
 
 
 <div th:each="child:${children}" class="panel panel-default" id="child-panel">
@@ -35,8 +36,6 @@
             <a th:href="@{/goals/completed/{id}(id=${child.user.id})}">View Completed Goals</a>
         </div>
 
-
-        <p th:text="${child.user.email}"></p>
         <!--<div>-->
             <!--<p th:text="${goal.goalName}"></p>-->
         <!--</div>-->
