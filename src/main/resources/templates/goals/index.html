@@ -3,6 +3,11 @@
 <head>
     <head th:replace="fragments/header :: main-header('View Goals')"></head>
     <link rel="stylesheet" href="/CSS/style.css"/>
+    <style>
+        .myBar.progress-bar{
+            width:0%;
+        }
+    </style>
 </head>
 <body>
 
@@ -24,16 +29,16 @@
     </div>
     <div class="panel-body">
         <ul>
-            Total Points: <li th:text="${goal.totalPoints}"></li>
+            Total Points: <li class="total-points" th:text="${goal.totalPoints}"></li>
             <br />
-            Current Points: <li th:text="${goal.trackProgress}"></li>
+            Current Points: <li class="track-progress" th:text="${goal.trackProgress}"></li>
             <br />
             <a th:href="@{/goals/{id}(id=${goal.id})}">View Goal</a>
             <br />
             <a th:href="@{/tasks/create/(id=${goal.id})}">Add tasks</a>
         </ul>
         <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+            <div th:text="${goal.trackProgress}" class="myBar progress-bar" role="progressbar" aria-valuenow="${goal.totalPoints}"></div>
         </div>
     </div>
 
@@ -41,5 +46,10 @@
 <br/>
 <hr/>
 <footer th:replace="fragments/footer :: mainFooter"></footer>
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<script src="/js/progress-bar.js"></script>
 </body>
 </html>
