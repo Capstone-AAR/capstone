@@ -9,7 +9,15 @@
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 <br/>
 <div class="container">
-    <h1>Register for Thrifty!</h1>
+
+    <div class="col-lg-6 register-text">
+        <p>
+        Sign up and begin setting goals and tasks for your kids!
+        </p>
+    </div>
+
+    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 register-form">
+        <h2 id="sign-up">Sign Up!</h2>
     <form th:action="@{/users/register}" method="post" th:object="${parent}">
         <div class="form-group">
             <label for="username">Choose a username</label>
@@ -28,11 +36,12 @@
             <label for="confirm-password">Confirm password</label>
             <input id="confirm-password" name="confirm-password" type="password"/>
         </div>
-        <input value="Sign me up" type="submit" class="btn btn-primary"/>
+        <input value="Sign me up" type="submit" class="btn btn-primary" id="signup-button"/>
         <div th:if="${test}">
             <p>You must be logged in to create/edit a Tasks</p>
         </div>
     </form>
+    </div>
 </div>
 
 <footer th:replace="fragments/footer :: mainFooter"></footer>
