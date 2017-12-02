@@ -46,7 +46,7 @@
         </div>
 
         <br/>
-        <ul class="nav navbar-nav">
+        <ul id="navbar-links">
             <!--<p th:text="${#authentication.principal.user}"></p>-->
             <li><a href="">How it works</a></li>
             <li><a href="/register">Register</a></li>
@@ -54,11 +54,7 @@
             <li><a href="/register">View Progress</a></li>
             <li><a href="">Start Today</a></li>
             <li><a href="/register">FAQ's</a></li>
-            <li>
-                <form th:action="@{/login}" th:method="post">
-                    <button class="btn-link btn" style="margin-top: 8px">Login</button>
-                </form>
-            </li>
+
         </ul>
 
     </nav>
