@@ -62,6 +62,9 @@ public class GoalController {
         List<Long> childrenIds = children.stream().map(child -> child.getUser().getId()).collect(Collectors.toList());
         Iterable<Goal> incompleteGoals = goalDao.childrenIncompleteGoals(childrenIds);
 
+        String role=user.getRole();
+
+        viewModel.addAttribute("role",role);
         viewModel.addAttribute("goals", incompleteGoals);
         viewModel.addAttribute("child", children);
         viewModel.addAttribute("parent",parent);
@@ -77,7 +80,7 @@ public class GoalController {
         Parent parent = parentDao.findByUser(user);
         viewModel.addAttribute("child", childDao.findByUser(user));
         viewModel.addAttribute("parent",parent);
-        String role=user.getRole();
+        String role = user.getRole();
         System.out.println(user.getRole());
         viewModel.addAttribute("role",role);
 

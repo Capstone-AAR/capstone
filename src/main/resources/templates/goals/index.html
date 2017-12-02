@@ -6,11 +6,11 @@
 </head>
 <body>
 
-<nav th:if="${#authentication.principal == 'parent'}" th:replace="fragments/navbar :: mainNavbar">
+<nav th:if="${#authentication.principal.role == 'parent'}" th:replace="fragments/navbar :: mainNavbar">
     <h2>Thrifty</h2>
 </nav>
 
-<nav th:if="${#authentication.principal == 'child'}" th:replace="fragments/child-navbar :: childNavbar">
+<nav th:if="${#authentication.principal.role == 'child'}" th:include="fragments/child-navbar :: childNavbar">
     <h2>Thrifty</h2>
 </nav>
 

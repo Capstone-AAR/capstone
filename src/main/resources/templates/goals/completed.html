@@ -7,6 +7,10 @@
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 
+<div>
+    <h1><span th:text="${child.user.username}"></span>'s completed goals</h1>
+</div>
+
 <div th:each="goal:${goals}" class="panel panel-default">
 
     <div th:text="${goal.goalName}" class="panel-heading"></div>

@@ -29,21 +29,149 @@ li{
     color: #605f5d;
     text-align: center;
     width: 100%;
+}
 
+#navbar-links{
+    width:100%;
+    text-align: center;
 }
-#login{
-    position: relative;
-    right: 0;
-    display:inline-block;
-    padding-right: 2em;
-}
+
 #logo{
     position: relative;
     left: 0;
     display:inline-block;
 
     padding-left: 2em;
+    color: #F27A33;
+    font-weight: bold;
+}
+body{
+    font-family: 'Raleway', sans-serif;
+    background-color: #FAF8F2;
+}
+#login-buttons{
+    width:100%;
+    text-align: center;
+
+}
+#register{
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    height: 50px;
+    width: 300px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    background-color: #444858;
+    color: white;
+    margin-top:100px;
+}
+#login{
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    height: 50px;
+    width: 300px;
+    font-size: 20px;
+    background-color: #377FBF;
+    color: white;
+}
+#homepage{
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    width:100%;
+    font-weight: bold;
+}
+#homepage h1{
+    font-size: 100px;
+    color: #5A6075;
 
 }
 
 
+/*On the register page*/
+.register-text{
+    font-size: 50px;
+    width: 500px;
+    margin-left: 1em;
+}
+.register-form{
+    padding: 40px;
+    background-color: white;
+    font-size: 20px;
+    color: #5A6075;
+    border-radius: 10px;
+}
+#sign-up{
+    text-align: center;
+}
+#signup-button{
+    background-color: #5A6075;
+    color: white;
+}
+
+/*Text forms:*/
+#username{
+    margin-left: 5px;
+    position: relative;
+    float: right;
+}
+#email{
+    margin-left: 5px;
+    position: relative;
+    float: right;
+}
+#password{
+    margin-left: 5px;
+    position: relative;
+    float: right;
+}
+#confirm-password{
+    margin-left: 5px;
+    position: relative;
+    float: right;
+}
+.login-form{
+    padding: 40px;
+    background-color: white;
+    font-size: 20px;
+    color: #5A6075;
+    border-radius: 10px;
+    height: 450px;
+    padding-top: 60px;
+
+}
+#login-title{
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: 50px;
+}
+#text{
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 45px;
+}
+
+/*Parent profile page*/
+#child-panel{
+    width:300px;
+    display: inline-block;
+    height: 400px;
+}
+.child-panel-heading{
+    font-size: 40px;
+    color:#fff;
+    text-align: center;
+}
+.panel-body{
+    font-size:20px;
+    text-align: center;
+}
+.panel-heading{
+    color: white;
+}
+.panel-default.panel-heading{
+    background-color: #7ECFC8;
+
+}

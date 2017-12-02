@@ -10,7 +10,8 @@
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 
-<h1>Create new task</h1>
+<h1 th:if="${#authentication.principal.role == 'parent'}">Create new task</h1>
+<h1 th:if="${#authentication.principal.role == 'child'}">Tasks</h1>
 <hr/>
 <div class="container">
     <div id="remote_container">
@@ -41,7 +42,7 @@
                             <!--///////////////////////////////////////////////////////////////////////////-->
                             <!--///////////////// Delete event button form inside modal /////////////////////-->
                             <!--///////////////////////////////////////////////////////////////////////////-->
-                            <form id="deleteTask" th:action="@{/tasks/delete}" th:method="post"
+                            <form th:if="${#authentication.principal.role == 'parent'}" id="deleteTask" th:action="@{/tasks/delete}" th:method="post"
                                   th:object="${task}">
                                 <input type="hidden" name="goalId" th:value="${id}"/>
                                 <input type="hidden" id="taskId" name="taskId"/>

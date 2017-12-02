@@ -14,7 +14,7 @@
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 
 <div>
-    <h1>Welcome, <span th:text="${user.username}"></span>!</h1>
+    <h1>Welcome, <span th:text="${child.user.username}"></span>!</h1>
 </div>
 
 
@@ -36,9 +36,7 @@
             <br />
             <a th:href="@{/tasks/create(id=${goal.id})}">Add tasks</a>
         </ul>
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-        </div>
+
     </div>
 
 </div>
