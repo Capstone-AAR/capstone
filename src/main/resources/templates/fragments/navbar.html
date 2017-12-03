@@ -11,38 +11,41 @@
 
 <div sec:authorize="isAuthenticated()" id="my-nav" class="navbar navbar-default" th:fragment="mainNavbar">
     <div class="logo">
-        <h2>Thrifty</h2>
-    </div>
+        <h2 class="thrifty-title">Thrifty</h2>
 
-    <br/>
 
-    <ul class="nav navbar-nav">
+    <ul class="navbar-links">
         <!--<p th:text="#{'Hello, ' + ${parent.username}}"></p>-->
         <li><a href="/profile">Home</a></li>
         <li><a href="/goals/create">Set a Goal</a></li>
         <li><a href="/tasks/create">Create a task</a></li>
         <li><a href="/children/new">Add New Saver</a></li>
-
-        <li class="nav-links">
-            <form th:action="@{/logout}" th:method="post">
-                <button class="btn-link btn" style="margin-top: 8px"> | Logout</button>
-            </form>
+        <li>
+            <a href="/login?logout" th:action="@{/logout}" th:method="post">
+                 | Logout
+            </a>
         </li>
+
+        <!--<li>-->
+            <!--<form th:action="@{/logout}" th:method="post">-->
+                <!--<button class="btn-link btn" style="margin-top: 8px"> | Logout</button>-->
+            <!--</form>-->
+        <!--</li>-->
     </ul>
+    </div>
 
 </div>
 
     <nav sec:authorize="isAnonymous()" id="main-nav" class="navbar navbar-default" th:fragment="mainNavbar">
         <div class="logo">
-            <h2>Thrifty</h2>
-        </div>
+            <h2 class="thrifty-title">Thrifty</h2>
+        <ul class="navbar-links">
 
-        <br/>
-        <ul id="navbar-links">
             <!--<p th:text="${#authentication.principal.user}"></p>-->
             <li><a href="/login">login</a></li>
             <li><a href="/register">Sign Up Today!</a></li>
         </ul>
+        </div>
 
     </nav>
 

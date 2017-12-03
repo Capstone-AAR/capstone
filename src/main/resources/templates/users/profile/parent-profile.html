@@ -18,7 +18,7 @@
 <!--<h1>Welcome, <span th:text="${parent.user.username}"></span>!</h1>-->
 <!--</div>-->
 
-
+<div class="profile">
 <div th:each="child:${children}" class="panel panel-default" id="child-panel">
 
     <div th:text="${child.user.username}" class="panel-heading child-panel-heading">
@@ -49,19 +49,19 @@
 
 
         <!--<ul>-->
-            <!--Total Points: <li th:text="${goal.totalPoints}"></li>-->
+            <!--Total Points: <li class="total-points" th:text="${goal.totalPoints}"></li>-->
             <!--<br />-->
-            <!--Current Points: <li th:text="${goal.trackProgress}"></li>-->
+            <!--Current Points: <li class="track-progress" th:text="${goal.trackProgress}"></li>-->
             <!--<br />-->
             <!--<a th:href="@{/goals/{id}(id=${child.user.id})}">View Goal</a>-->
             <!--<br />-->
             <!--<a th:href="@{/tasks/create(id=${goal.id})}">Add tasks</a>-->
         <!--</ul>-->
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-        </div>
+        <!--<div class="progress">-->
+            <!--<div th:text="${goal.trackProgress}" class="myBar progress-bar" role="progressbar" aria-valuenow="${goal.totalPoints}"></div>-->
+        <!--</div>-->
     </div>
-
+</div>
 </div>
 
 <div>
@@ -81,6 +81,7 @@
 <script src='/lib/moment.min.js'></script>
 <script src="/fullcalendar/fullcalendar.js"></script>
 <script src='/js/main.js'></script>
+<script src="/js/progress-bar"></script>
 
 <footer th:replace="fragments/footer :: mainFooter"></footer>
 </body>

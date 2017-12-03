@@ -1,39 +1,50 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <head th:replace="fragments/header :: main-header('Create new goal')">
+    <head th:replace="fragments/header :: main-header('Create new goal')"></head>
         <link rel="stylesheet" href="/CSS/style.css"/>
-    </head>
+
 </head>
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
+<div class="profile">
 <br/>
 <h1>Create a New Goal</h1>
-<div class="container">
+<div class="col-md-6 col-md-offset-3 register-form">
 <form th:action="@{/goals/create}" method ="post" th:object = "${goal}">
-
-
-
+<div class="form-group">
     <label for="goalName">Goal:</label>
-    <input th:field="*{goalName}" id="goalName"/>
+    <input th:field="*{goalName}" id="goalName" type="text"/>
+</div>
     <!--<p th:if="${#fields.hasErrors('goal_name')}" th:errors="*{goal_name}"/>-->
-    <br/>
+
+
+    <div class="form-group">
     <label for="totalPoints">Point Value:</label>
-    <input th:field="*{totalPoints}" id="totalPoints"/>
+    <input th:field="*{totalPoints}" id="totalPoints" type="text"/>
+    </div>
     <!--<p th:if="${#fields.hasErrors('start_date')}" th:errors="*{start_date}"/>-->
-    <br/>
+
+
+    <div class="form-group">
     <label for="trackProgress">Current Points:</label>
-    <input th:field="*{trackProgress}" id="trackProgress"/>
+    <input th:field="*{trackProgress}" id="trackProgress" type="text"/>
+    </div>
     <!--<p th:if="${#fields.hasErrors('end_date')}" th:errors="*{end_date}"/>-->
-    <label for="child_id">Child</label>
-    <select name="child_id" id="child_id">
+<div class="form-group">
+    <label for="child_id">Select which child:</label>
+
+    <div>
+    <select name="child_id" id="child_id" type="text">
         <option th:each="child: ${children}" th:value="${child.id}" th:text="${child.user.username}"></option>
     </select>
-
-    <input type="submit" />
+    </div>
+    </div>
+    <br/>
+    <input type="submit" class="login-buttons" id="createGoalButton" />
 
 </form>
-<br/>
+</div>
 </div>
 <!--<footer th:replace="fragments/footer :: mainFooter"></footer>-->
 </body>

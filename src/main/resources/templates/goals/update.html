@@ -6,6 +6,7 @@
 </head>
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
+<div class="profile">
 <form th:action="@{/goals/{id}/update(id=${goal.id})}" method ="post" th:object = "${goal}">
     Goal:
     <input th:field="${goal.goalName}"/>
@@ -18,7 +19,7 @@
     <br/>
     <input type="submit" value="Update Goal"/>
 </form>
-
+</div>
 <footer th:replace="fragments/footer :: mainFooter"></footer>
 </body>
 </html>

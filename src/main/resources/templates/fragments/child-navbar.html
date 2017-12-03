@@ -9,20 +9,19 @@
 <body>
 
 
-<nav id="my-nav" class="navbar navbar-default" th:fragment="childNavbar">
-    <div id="logo">
-        <h2>Thrifty</h2>
-    </div>
-    <br/>
+<nav id="child-nav" class="navbar navbar-default" th:fragment="childNavbar">
+    <div class="logo">
+        <h2 class="thrifty-title">Thrifty</h2>
 
-    <ul class="nav navbar-nav">
+    <ul class="navbar-links">
         <li><a href="/profile">Home</a></li>
         <li>
-            <form th:action="@{/logout}" th:method="post">
-                <button class="btn-link btn" style="margin-top: 8px">Logout</button>
-            </form>
+            <a href="/login?logout" th:action="@{/logout}" th:method="post">
+                | Logout
+            </a>
         </li>
     </ul>
+    </div>
 
 </nav>
 

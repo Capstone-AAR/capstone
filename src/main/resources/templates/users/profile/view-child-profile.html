@@ -7,12 +7,12 @@
     <meta charset="UTF-8"/>
     <link rel='stylesheet' href='/lib/bootstrap-3.3.7.min.css'/>
     <link rel='stylesheet' href='/fullcalendar/fullcalendar.min.css'/>
-    <link rel="stylesheet" href="CSS/style.css"/>
+    <link rel="stylesheet" href="/CSS/style.css"/>
     <link href="https://fonts.googleapis.com/css?family=Lato|Raleway" rel="stylesheet"/>
 </head>
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
-
+<div class="profile">
 <div>
     <h1><span th:text="${child.user.username}"></span>'s Goals</h1>
 </div>
@@ -32,11 +32,11 @@
 
         <!--For Progress Bar-->
         <div class="progress">
-            <div class="myBar progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        <div th:text="${goal.trackProgress}" class="myBar progress-bar" role="progressbar" aria-valuenow="${goal.totalPoints}"></div>
         </div>
 
     </div>
-
+</div>
 </div>
 
 
@@ -49,9 +49,9 @@
 <script src='/lib/moment.min.js'></script>
 <script src="/fullcalendar/fullcalendar.js"></script>
 <script src='/js/main.js'></script>
+<script src="/js/progress-bar.js"></script>
 
 <footer th:replace="fragments/footer :: mainFooter"></footer>
 
-<script src="/js/progress-bar.js"></script>
 </body>
 </html>
