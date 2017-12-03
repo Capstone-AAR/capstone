@@ -12,7 +12,7 @@
 <!--<h1>Welcome, <span th:text="${parent.user.username}"></span>!</h1>-->
 <!--</div>-->
 
-
+<div class="profile">
 <div th:each="child:${children}" class="panel panel-default" id="child-panel">
 
     <div th:text="${child.user.username}" class="panel-heading child-panel-heading">
@@ -67,6 +67,7 @@
 <script src='/lib/moment.min.js'></script>
 <script src="/fullcalendar/fullcalendar.js"></script>
 <script src='/js/main.js'></script>
+<script src="/js/progress-bar"></script>
 
 <footer th:replace="fragments/footer :: mainFooter"></footer>
 </body>

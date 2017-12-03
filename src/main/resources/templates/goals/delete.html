@@ -5,6 +5,7 @@
 
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
+<div class="profile">
 <form th:action="@{/goals/{id}/delete(id=${goal.id})}" method ="post" th:object = "${goal}">
     Goal:
     <input th:field="${goal.goalName}"/>
@@ -14,6 +15,7 @@
     <input th:field="${goal.trackProgress}"/>
 <input type="submit" value="Delete Goal"/>
 </form>
+</div>
 
 <footer th:replace="fragments/footer :: mainFooter"></footer>
 </body>

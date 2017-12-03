@@ -7,6 +7,7 @@
 
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 <br/>
+<div class="profile">
 <div class="container">
 
     <div class="col-lg-6 register-text">
@@ -18,14 +19,18 @@
         <div class="form-group">
             <label for="username">Choose a username</label>
             <input th:field="*{username}" id="username" name="username"/>
+            <p class="card-panel red darken-1" th:if="${#fields.hasErrors('username')}" th:field="*{username}"></p>
         </div>
         <div class="form-group">
             <label for="email">Enter your email</label>
             <input th:field="*{email}" id="email" name="email"/>
+            <p class="card-panel  red darken-1" th:if="${#fields.hasErrors('email')}" th:field="*{email}"></p>
         </div>
         <div class="form-group">
             <label for="password">Choose a password</label>
             <input th:field="*{password}" id="password" type="password"/>
+            <p class="card-panel  red darken-1" th:if="${#fields.hasErrors('password')}" th:field="*{password}"></p>
+
         </div>
 
         <div class="form-group">
@@ -38,6 +43,7 @@
         </div>
     </form>
     </div>
+</div>
 </div>
 
 <footer th:replace="fragments/footer :: mainFooter"></footer>

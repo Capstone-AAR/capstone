@@ -1,14 +1,17 @@
 .footer{
-    position: relative;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    color: black;
     text-align: center;
-    font-size: small;
-    height: 2em;
+    clear: both;
+    position:relative;
+    bottom:0;
+    width:100%;
+    height: 100px;
+    padding-top: 5em;
+
+
 
 }
+
+
 
 li{
     display: inline-block;
@@ -18,41 +21,53 @@ li{
 .panel{
     width: 75%
 }
+.thrifty-title{
+    display: inline-block;
+}
 
 #main-nav {
     background-color: white;
     font-weight: 400;
-    position: relative;
+    position: fixed;
     z-index: 100;
-    height: 15em;
+    height: 5em;
     font-family: 'Raleway', sans-serif;
     color: #605f5d;
-    text-align: center;
     width: 100%;
 }
 
 #my-nav{
     background-color: white;
     font-weight: 400;
-    position: relative;
+    position: fixed;
     z-index: 100;
-    height: 15em;
+    height: 5em;
     font-family: 'Raleway', sans-serif;
     color: #605f5d;
-    text-align: center;
     width: 100%;
 }
-
-#navbar-links{
-    width:100%;
-    text-align: center;
+#child-nav{
+    background-color: white;
+    font-weight: 400;
+    position: fixed;
+    z-index: 100;
+    height: 5em;
+    font-family: 'Raleway', sans-serif;
+    color: #605f5d;
+    width: 100%;
+}
+.navbar-links{
+    display: inline-block;
+    float: right;
+    padding-top: 1em;
+    padding-right: 1em;
 }
 
 .logo {
     position: relative;
     left: 0;
     display:inline-block;
-
+    width: 100%;
     padding-left: 2em;
     color: #F27A33;
     font-weight: bold;
@@ -63,26 +78,27 @@ body{
     background-color: #FAF8F2;
 }
 .login-buttons{
-    width:100%;
-    text-align: center;
 
-}
-#register{
+    width:100%;
     text-align: center;
     position: relative;
     display: inline-block;
-    height: 50px;
-    width: 300px;
-    font-size: 20px;
+
+
+
+}
+#register{
     margin-bottom: 10px;
     background-color: #444858;
     color: white;
     margin-top:100px;
+    height: 50px;
+    width: 300px;
+    font-size: 20px;
 }
 #login{
-    text-align: center;
-    position: relative;
-    display: inline-block;
+
+
     height: 50px;
     width: 300px;
     font-size: 20px;
@@ -109,6 +125,7 @@ body{
     display: inline-block;
     width:100%;
     font-weight: bold;
+    padding-top: 175px;
 }
 #homepage h1{
     font-size: 100px;
@@ -139,6 +156,21 @@ body{
 }
 
 /*Text forms:*/
+#child-username{
+    margin-left: 5px;
+    position: relative;
+    float: right;
+}
+#child-password{
+    margin-left: 5px;
+    position: relative;
+    float: right;
+}
+#child-email{
+    margin-left: 5px;
+    position: relative;
+    float: right;
+}
 #username{
     margin-left: 5px;
     position: relative;
@@ -201,6 +233,39 @@ body{
 .panel-default.panel-heading{
     background-color: #7ECFC8;
 
+}
+#goalName{
+    position: relative;
+    float: right;
+}
+#totalPoints{
+    position: relative;
+    float: right;
+}
+#trackProgress{
+    position: relative;
+    float: right;
+}
+#child_id{
+    width: 300px;
+    background-color: white;
+}
+#createGoalButton{
+    margin-bottom: 10px;
+    background-color: #444858;
+    color: white;
+    height: 50px;
+    width: 300px;
+
+}
+#el {
+}
+
+#el:hover {
+    --box-shadow-color: goldenrod;
+}
+.profile{
+    padding-top: 100px;
 }
 
 .myBar.progress-bar{

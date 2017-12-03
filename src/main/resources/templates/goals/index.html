@@ -18,7 +18,7 @@
     <h2>Thrifty</h2>
 </nav>
 
-
+<div class="profile">
 <div th:each="goal:${goals}" class="panel panel-default">
 
     <div th:text="${goal.goalName}" class="panel-heading">
@@ -40,7 +40,7 @@
             <div th:text="${goal.trackProgress}" class="myBar progress-bar" role="progressbar" aria-valuenow="${goal.totalPoints}"></div>
         </div>
     </div>
-
+</div>
 </div>
 <br/>
 <hr/>

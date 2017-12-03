@@ -4,6 +4,7 @@
 
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
+<div class="profile">
 <div th:each="goal :${goal}">
     <h1>Your goal:</h1>
     <h1 th:text="${goal.goalName}">
@@ -17,6 +18,7 @@
 </div>
 <div class="progress">
     <div th:text="${goal.trackProgress}" id="myBar" class="progress-bar" role="progressbar" style="width:10px" aria-valuenow="${goal.totalPoints}"></div>
+</div>
 </div>
 <button class="progress">Click Me</button>
 <a th:href="@{/goals/{id}/update(id=${goal.id})}"><input type="submit" value="Update Goal"/></a>

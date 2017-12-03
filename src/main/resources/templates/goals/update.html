@@ -5,6 +5,11 @@
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 goals
+<div class="profile">
+<form th:action="@{/goals/{id}/update(id=${goal.id})}" method ="post" th:object = "${goal}">
+    Goal:
+    <input th:field="${goal.goalName}"/>
+    <br/>
 
 <th:block th:each="goal : ${goals}">
     <h2>
