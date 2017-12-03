@@ -79,6 +79,7 @@ public class AuthenticationController {
         viewModel.addAttribute("child", child);
         viewModel.addAttribute("child",child);
         viewModel.addAttribute("user",user);
+        viewModel.addAttribute("parent", parent);
 
         System.out.println("hi");
 

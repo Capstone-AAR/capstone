@@ -19,6 +19,7 @@
         <li><a href="/profile">Home</a></li>
         <li><a href="/goals/create">Set a Goal</a></li>
         <li><a href="/children/new">Add New Saver</a></li>
+        <!--<li><a  th:text="${parent.user.username}"></a> </li>-->
         <li>
             <a href="/login?logout" th:action="@{/logout}" th:method="post">
                  | Logout
@@ -42,7 +43,7 @@
 
             <!--<p th:text="${#authentication.principal.user}"></p>-->
             <li><a href="/login">login</a></li>
-            <li><a href="/register">Sign Up Today!</a></li>
+            <li><a href="/register" class="circle-border">Sign Up Today!</a></li>
         </ul>
         </div>
 

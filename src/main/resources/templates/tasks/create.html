@@ -11,6 +11,7 @@
 <h1 th:if="${#authentication.principal.role == 'parent'}">Create new task</h1>
 <h1 th:if="${#authentication.principal.role == 'child'}">Tasks</h1>
 <hr/>
+<div class="profile">
 <div class="container">
     <div id="remote_container">
 
@@ -94,6 +95,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <!--///////////////////////////////////////////////////////////////////////////-->

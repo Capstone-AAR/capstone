@@ -15,9 +15,9 @@
 
     <ul class="navbar-links">
         <li><a href="/profile">Home</a></li>
+        <!--<li><a  th:text="${child.user.username}"></a> </li>-->
         <li>
-            <a href="/login?logout" th:action="@{/logout}" th:method="post">
-                | Logout
+            <a href="/login?logout" th:action="@{/logout}" th:method="post">| Logout
             </a>
         </li>
     </ul>
