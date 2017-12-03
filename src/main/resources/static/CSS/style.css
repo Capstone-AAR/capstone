@@ -1,3 +1,13 @@
+/*////////////////////////*/
+/*/////welcome page*/
+/*////////////////////////*/
+.about {
+    height: 500px;
+    width: auto;
+    background-color: #59617F;
+    color: white;
+}
+
 .footer{
     position: relative;
     left: 0;
