@@ -1,15 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://www.w3.org/1999/xhtml">
-<head>
+
     <head th:replace="fragments/header :: main-header('Your Profile')"></head>
-    <title>Calendar</title>
-    <meta charset="UTF-8"/>
-    <link rel='stylesheet' href='/lib/bootstrap-3.3.7.min.css'/>
-    <link rel='stylesheet' href='/fullcalendar/fullcalendar.min.css'/>
-    <link rel="stylesheet" href="CSS/style.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Lato|Raleway" rel="stylesheet"/>
-</head>
+
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 
@@ -31,11 +25,12 @@
         <div>
             <a th:href="@{/view-child-profile/{id}(id=${child.user.id})}">View Child's Goals</a>
         </div>
-
         <div>
             <a th:href="@{/goals/completed/{id}(id=${child.user.id})}">View Completed Goals</a>
         </div>
-
+        <div>
+            <a th:href="@{/goals/update}">Add tasks</a>
+        </div>
         <!--<div>-->
             <!--<p th:text="${goal.goalName}"></p>-->
         <!--</div>-->
@@ -43,8 +38,6 @@
         <!--<div>-->
             <!--<a th:href="@{/view-child-profile/{id}(id=${child.user.email})}">View Child Profile</a>-->
         <!--</div>-->
-
-
 
 
 
@@ -57,18 +50,11 @@
             <!--<br />-->
             <!--<a th:href="@{/tasks/create(id=${goal.id})}">Add tasks</a>-->
         <!--</ul>-->
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-        </div>
     </div>
 
 </div>
 
-<div>
-<a href="/tasks/create"><input type="submit" value="Create a new task"/></a>
-<a href="/goals"><input type="submit" value="View all tasks"/></a>
-<a href="/tasks"><input type="submit" value="View current tasks"/></a>
-</div>
+
 
 
 
