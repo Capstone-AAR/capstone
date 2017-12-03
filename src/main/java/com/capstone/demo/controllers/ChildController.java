@@ -1,11 +1,13 @@
 package com.capstone.demo.controllers;
 
 import com.capstone.demo.models.Child;
+import com.capstone.demo.models.Goal;
 import com.capstone.demo.models.Parent;
 import com.capstone.demo.models.User;
 import com.capstone.demo.repositories.ChildRepository;
 import com.capstone.demo.repositories.ParentRepository;
 import com.capstone.demo.repositories.UserRepository;
+import com.capstone.demo.services.GoalsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,12 +17,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class ChildController {
     private ChildRepository childDao;
     private ParentRepository parentDao;
     private PasswordEncoder encoder;
     private UserRepository userDao;
+    private GoalsService goalsService;
 
 
     @Autowired
@@ -28,12 +33,14 @@ public class ChildController {
         ChildRepository childDao,
         ParentRepository parentDao,
         PasswordEncoder encoder,
-        UserRepository userDao
+        UserRepository userDao,
+        GoalsService goalsService
     ) {
         this.childDao=childDao;
         this.parentDao = parentDao;
         this.encoder = encoder;
         this.userDao = userDao;
+        this.goalsService = goalsService;
     }
 
 //    @GetMapping("/child-profile")
@@ -57,6 +64,12 @@ public class ChildController {
         user.isAChild();
         userDao.save(user);
 
+        Iterable<Goal> goals = goalsService.findAll();
+
+        System.out.println("/////////////////");
+        System.out.println(goals);
+        System.out.println("/////////////////");
+
         Child child = new Child();
         child.setUser(user);
         child.setParent(parent);
@@ -64,4 +77,6 @@ public class ChildController {
 
         return "redirect:/profile";
     }
+
+
 }
