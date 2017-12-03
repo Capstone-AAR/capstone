@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:="http://www.w3.org/1999/xhtml">
 
-<head th:replace="fragments/header :: main-header('Your Profile')"></head>
+<head th:replace="fragments/header :: main-header('Your Profile')">
+</head>
 
 
 <body>
 <!--using main navbar as a placeholder, but will need to make a custom nav for child profile bc child profile has different constraints-->
 <nav th:replace="fragments/child-navbar :: childNavbar"></nav>
-
 
 
 <div th:each="child :${child}">
@@ -25,7 +25,7 @@
             <br/>
             <li><a th:href="@{/goals/completed/{id}(id=${child.user.id})}">View Completed Goals</a></li>
             <br/>
-            <li><a href="/tasks">View your Tasks</a></li>
+            <li><a href="/tasks/create">View your Tasks</a></li>
         </ul>
     </div>
 
