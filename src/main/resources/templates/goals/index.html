@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <head th:replace="fragments/header :: main-header('View Goals')"></head>
-    <link rel="stylesheet" href="/CSS/style.css"/>
-    <style>
-        .myBar.progress-bar{
-            width:0%;
-        }
-    </style>
-</head>
+<head th:replace="fragments/header :: main-header('View Goals')"></head>
+
+    <!--<style>-->
+        <!--.myBar.progress-bar{-->
+            <!--width:0%;-->
+        <!--}-->
+    <!--</style>-->
+
 <body>
 
 <nav th:if="${#authentication.principal.role == 'parent'}" th:replace="fragments/navbar :: mainNavbar">

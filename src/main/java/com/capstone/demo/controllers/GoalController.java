@@ -140,15 +140,28 @@ public class GoalController {
         return "redirect:/goals";
     }
 
-    @GetMapping("/goals/{id}/update")
-    public String showGoalToBeEdited (@PathVariable Long id,  Model viewModel){
-        Goal existingGoal = service.findById(id);
-        viewModel.addAttribute("goal", existingGoal);
+    /////might need id in url
+    @GetMapping("/goals/update")
+    public String showGoalToBeEdited (Model viewModel){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Parent parent = parentDao.findByUser(user);
+
+        List<Child> children = childDao.findAllByParentId(parent.getId());
+
+        List<Long> childrenIds = children.stream().map(child -> child.getUser().getId()).collect(Collectors.toList());
+        Iterable<Goal> incompleteGoals = goalDao.childrenIncompleteGoals(childrenIds);
+
+        String role=user.getRole();
+
+        viewModel.addAttribute("role",role);
+        viewModel.addAttribute("goals", incompleteGoals);
+        viewModel.addAttribute("child", children);
+        viewModel.addAttribute("parent",parent);
 
         return "goals/update";
     }
 
-    @PostMapping("/goals/{id}/update")
+    @PostMapping("/goals/update")
     public String editGoal(@ModelAttribute Goal goal){
         User user = userDao.findByGoalId(goal.getId());
         goal.setUser(user);

@@ -267,3 +267,7 @@ body{
 .profile{
     padding-top: 100px;
 }
+
+.myBar.progress-bar{
+    width:0%;
+}

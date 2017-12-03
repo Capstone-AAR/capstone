@@ -1,25 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <head th:replace="fragments/header :: main-header('Update Goals')"></head>
-    <link rel="stylesheet" href="/CSS/style.css"/>
-</head>
+<head th:replace="fragments/header :: main-header('Update Goals')"></head>
+
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
+goals
 <div class="profile">
 <form th:action="@{/goals/{id}/update(id=${goal.id})}" method ="post" th:object = "${goal}">
     Goal:
     <input th:field="${goal.goalName}"/>
     <br/>
 
-    Total Points:
-    <input th:field="${goal.totalPoints}"/>
-    <br/>
-    <input th:field="${goal.trackProgress}"/>
-    <br/>
-    <input type="submit" value="Update Goal"/>
-</form>
-</div>
+<th:block th:each="goal : ${goals}">
+    <h2>
+
+    <a th:href="@{/tasks/create(id=${goal.id})}" th:text="${goal.goalName}"></a>
+    </h2>
+
+
+</th:block>
+<!--<form th:action="@{/goals/{id}/update(id=${goal.id})}" method ="post" th:object = "${goal}">-->
+    <!--Goal:-->
+    <!--<input th:field="${goal.goalName}"/>-->
+    <!--<br/>-->
+
+    <!--Total Points:-->
+    <!--<input th:field="${goal.totalPoints}"/>-->
+    <!--<br/>-->
+    <!--<input th:field="${goal.trackProgress}"/>-->
+    <!--<br/>-->
+    <!--<input type="submit" value="Update Goal"/>-->
+<!--</form>-->
+
 <footer th:replace="fragments/footer :: mainFooter"></footer>
 </body>
 </html>

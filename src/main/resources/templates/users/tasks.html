@@ -1,28 +1,50 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:="http://www.w3.org/1999/xhtml">
-<head>
+
 <head th:replace="fragments/header :: main-header('Your Profile')"></head>
-    <link rel="stylesheet" href="CSS/style.css"/>
-</head>
+
 <body>
 <nav th:replace="fragments/child-navbar :: childNavbar"></nav>
 
 
 
-<th:block th:each="task : ${tasks}">
+<div id="testJson">
 
-        <div th:if="${task.goal.user.id == loggedUser.id}">
+</div>
 
-        <h3 th:text="${task.taskName}"></h3>
-        <p th:text="${task.taskDescription}"></p>
-            <button th:if="${#authentication.principal.role == 'child'}" type="submit" class="btn btn-primary" data-dismiss="modal" id="completed-task">
-                completed
-            </button>
 
-        </div>
-    </th:block>
+<!--<th:block th:each="task : ${tasks}">-->
+
+        <!--<div th:if="${task.goal.user.id == loggedUser.id}">-->
+
+        <!--<h3 th:text="${task.taskName}"></h3>-->
+        <!--<p th:text="${task.taskDescription}"></p>-->
+            <!--<button th:if="${#authentication.principal.role == 'child'}" type="submit" class="btn btn-primary" data-dismiss="modal" id="completed-task">-->
+                <!--completed-->
+            <!--</button>-->
+
+        <!--</div>-->
+    <!--</th:block>-->
+
+
 
 <footer th:replace="fragments/footer :: mainFooter"></footer>
+
+
+<script src='/lib/jquery-3.2.1.min.js'></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script src='/lib/moment.min.js'></script>
+<script src="/fullcalendar/fullcalendar.js"></script>
+<script src='/js/main.js'></script>
+<script src='/js/deleteTask.js'></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var tasks = /*[[${tasks}]]*/ '';
+    tasks = JSON.parse(tasks);
+    /*]]>*/
+</script>
+<script src='/js/jsonTasks.js'></script>
 </body>
 </html>

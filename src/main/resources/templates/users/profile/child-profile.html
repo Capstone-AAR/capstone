@@ -14,21 +14,22 @@
 <div th:each="child :${child}">
     <h1>Hi, <span th:text="${child.user.username}"></span>!</h1>
 
-    <h1 th:text="${child.user.username}"></h1>
 </div>
 
-<div th:each="child :${child}">
-    <!--<p th:text="${child}"></p>-->
-</div>
-
-<div clas="panel panel-default" th:each="goal :${goals}">
+<div class="panel panel-default">
     <div class="panel-heading">
-        <h3 th:text="${goal.goalName}"></h3>
+        My Profile
     </div>
     <div class="panel-body">
-        <p th:text="${goal.totalPoints}"></p>
-        <p th:text="${goal.trackProgress}"></p>
+        <ul>
+            <li><a href="/goals/child">View Goals</a></li>
+            <br/>
+            <li><a th:href="@{/goals/completed/{id}(id=${child.user.id})}">View Completed Goals</a></li>
+            <br/>
+            <li><a href="/tasks">View your Tasks</a></li>
+        </ul>
     </div>
+
 </div>
 
 

@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Create tasks</title>
-    <meta charset="UTF-8"/>
-    <link rel='stylesheet' href='/fullcalendar/fullcalendar.min.css'/>
-    <link rel='stylesheet' href='/lib/bootstrap-3.3.7.min.css'/>
-    <link rel="stylesheet" href="/CSS/style.css"/>
-</head>
+
+    <head th:replace="fragments/header :: main-header('Create Tasks')">
+        <link rel='stylesheet' href='/fullcalendar/fullcalendar.min.css'/>
+    </head>
+
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 
