@@ -121,7 +121,7 @@ body{
     height: 50px;
     width: 300px;
     font-size: 20px;
-    background-color: #377FBF;
+    background-color: #6AC7C1;
     color: white;
 }
 
@@ -170,8 +170,12 @@ body{
     text-align: center;
 }
 #signup-button{
-    background-color: #5A6075;
+    height: 50px;
+    width: 300px;
+    font-size: 20px;
+    background-color: #6AC7C1;
     color: white;
+    margin-top: 1em;
 }
 
 /*Text forms:*/
@@ -216,7 +220,7 @@ body{
     font-size: 20px;
     color: #5A6075;
     border-radius: 10px;
-    height: 450px;
+    height: 550px;
     padding-top: 60px;
 
 }
@@ -289,4 +293,5 @@ body{
 
 .myBar.progress-bar{
     width:0%;
+    background-color: #6AC7C1;
 }
