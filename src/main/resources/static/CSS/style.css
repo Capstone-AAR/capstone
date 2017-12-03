@@ -81,6 +81,12 @@ li{
     padding-left: 2em;
     color: #F27A33;
     font-weight: bold;
+
+}
+.circle-border{
+    border: solid #377FBF 2px;
+    border-radius: 35px;
+    padding:1em;
 }
 
 body{
