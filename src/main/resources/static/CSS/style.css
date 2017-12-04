@@ -1,13 +1,6 @@
 /*////////////////////////*/
 /*/////welcome page*/
 /*////////////////////////*/
-.about {
-    height: 600px;
-    width: auto;
-    background-color: #59617F;
-    color: white;
-}
-
 
 
 #help {
@@ -49,7 +42,10 @@
 
 }
 
-
+.index-nav {
+    color: #6AC7C1;
+    text-decoration: none;
+}
 
 li{
     display: inline-block;
@@ -62,6 +58,7 @@ li{
 
 .thrifty-title{
     display: inline-block;
+    color: #6AC7C1
 
 }
 
@@ -72,7 +69,6 @@ li{
     z-index: 100;
     height: 6em;
     font-family: 'Raleway', sans-serif;
-    color: #605f5d;
     width: 100%;
 }
 
@@ -102,6 +98,13 @@ li{
     float: right;
     padding-top: 1em;
     padding-right: 1em;
+    color: #7ECFC8;
+    text-decoration: none;
+
+}
+
+.navbar-links:hover {
+    color: lightgray;
 }
 
 .logo {
@@ -115,7 +118,8 @@ li{
 
 }
 .circle-border{
-    border: solid #377FBF 2px;
+    border: solid #6AC7C1 2px;
+    /*border: solid #377FBF 2px;*/
     border-radius: 35px;
     padding:1em;
     font-size: 14px;
@@ -190,6 +194,7 @@ body{
     font-size: 50px;
     width: 500px;
     margin-left: 1em;
+    text-align: center;
 
 }
 
@@ -232,27 +237,6 @@ body{
     position: relative;
     float: right;
 }
-/*#username{*/
-    /*!*margin-bottom: 30px;*!*/
-    /*!*margin-left: 5px;*!*/
-    /*!*position: relative;*!*/
-    /*!*float: right;*!*/
-/*}*/
-/*#email{*/
-    /*!*margin-left: 5px;*!*/
-    /*!*position: relative;*!*/
-    /*float: right;*/
-/*}*/
-/*#password{*/
-    /*!*margin-left: 5px;*!*/
-    /*!*position: relative;*!*/
-    /*!*float: right;*!*/
-/*}*/
-/*#confirm-password{*/
-    /*margin-left: 5px;*/
-    /*position: relative;*/
-    /*float: right;*/
-/*}*/
 
 .login-form{
     padding: 40px;
@@ -339,11 +323,15 @@ body{
 }
 
 .circle-border:hover {
-    background-color: #377FBF;
+    background-color: #6AC7C1;
     color: white;
     text-decoration: none;
 }
 
+#main-nav-login:hover {
+    text-decoration: none;
+    color: lightgray;
+}
 /*Infographic Styling*/
 
 .info{
@@ -392,9 +380,11 @@ body{
     text-justify: distribute-all-lines;
 }
 .index-pics{
-    width: 100%;
-    /*background-color: #59617F;*/
-    /*color: white;*/
+    padding-top: 6em;
+    width: auto;
+    background-color: #828DAA;
+    color: white;
+    height: 600px;
 }
 .three-pics p{
     margin-top: 20px;
@@ -412,11 +402,9 @@ body{
     /*margin-left: 35px;*/
     /*margin-right: 10px;*/
 /*}*/
-/*#info-2{*/
-    /*display: inline-block;*/
-    /*margin-left: 10px;*/
-    /*margin-right: 10px;*/
-/*}*/
+#info-2{
+    margin-top: 2em;
+}
 /*#info-3{*/
     /*display: inline-block;*/
     /*margin-left: 5px;*/
