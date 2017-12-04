@@ -56,9 +56,10 @@ li {
 }
 
 .thrifty-title {
+    position: relative;
     display: inline-block;
     color: #6AC7C1;
-
+    top: 13px;
 }
 
 #main-nav {
@@ -180,7 +181,7 @@ html {
     background-color: #444858;
     color: white;
     margin-top: 100px;
-    left: -55px;
+    right: -20px;
 }
 
 #homepage {
@@ -202,11 +203,12 @@ html {
 
 /*On the register page*/
 .register-text {
+    position: relative;
     font-size: 50px;
     width: 730px;
     margin-left: 6em;
     text-align: center;
-
+    right: -65px;
 }
 
 .register-form {
@@ -362,27 +364,31 @@ html {
 }
 
 .first {
+
     position: absolute;
     top: 220px;
-    left: 450px;
+    left: 747px;
 }
 
 .second {
+    max-width: 340px;
     position: absolute;
     top: 480px;
-    right: 1137px;
+    right: 730px;
 }
 
 .third {
+    max-width: 340px;
     position: absolute;
     top: 770px;
-    left: 470px;
+    left: 747px;
 }
 
 .fourth {
+    max-width: 340px;
     position: absolute;
     top: 1000px;
-    right: 1148px;
+    right: 735px;
 }
 
 .info-titles {
@@ -396,12 +402,14 @@ html {
 
 /*This is for the 3 pics*/
 .three-pics {
+    position: relative;
     display: inline-block;
     font-size: 22px;
     /*text-align: center;*/
     width: 400px;
     margin-left: auto;
     margin-right: auto;
+    right: -100px;
 
     text-align: center;
     -ms-text-justify: distribute-all-lines;
@@ -446,5 +454,4 @@ html {
 
 #index-present {
     margin: 0;
-    /*text-align: left;*/
 }
