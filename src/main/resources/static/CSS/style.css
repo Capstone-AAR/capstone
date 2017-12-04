@@ -292,3 +292,33 @@ body{
     width:0%;
     background-color: #6AC7C1;
 }
+
+/*Infographic Styling*/
+
+.info{
+    position: relative;
+    text-align: center;
+}
+.first{
+    position: absolute;
+    top: 220px;
+    left: 450px;
+}
+.second{
+    position: absolute;
+    top: 480px;
+    right: 250px;
+}
+.third{
+    position: absolute;
+    top: 770px;
+    left: 470px;
+}
+.fourth{
+    position: absolute;
+    top: 1000px;
+    right: 250px;
+}
+.info-titles{
+    display: inline-block;
+}
