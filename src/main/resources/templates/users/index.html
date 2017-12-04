@@ -9,16 +9,17 @@
 <div id="homepage">
 <h1>Saving made easy</h1>
 <h3>Help your child learn the value of money</h3>
-</div>
+
 
 <div class="login-buttons">
 <a href="/register"><input type="submit" value="Register" id="register"/></a>
 <br/>
     <a href="/login"><input type="submit" value="Login" id="login"/></a>
 </div>
-
+</div>
 <!--middle div-->
-<hr/>
+
+
 
     <h1 id="index-title">HELP YOUR KIDS LEARN THE VALUE OF MONEY</h1>
 <div class="index-pics">
@@ -48,15 +49,7 @@
     <!--</ul>-->
 
 <hr/>
-<!--ending div with register button-->
-<div class="col-lg-6 register-text">
-    <p>
-        Sign up and begin setting goals and tasks for your kids!
-    </p>
-    <div class="login-buttons">
-        <a href="/register"><input type="submit" value="Get Started" id="get-started"/></a>
-    </div>
-</div>
+
 
 <div class="col-md-6 col-md-offset-2 info">
 <img th:src="@{/img/cropped-info.png}" alt="infographic" class=""/>
@@ -75,6 +68,16 @@
     <div class="fourth">
         <h3 class="info-titles">Success!</h3>
         <p class="info-text">After completing their tasks, children earn their goals! Iterate the importance of working to earn something by rewarding your child's work</p>
+    </div>
+</div>
+
+<!--ending div with register button-->
+<div class="col-lg-6 register-text">
+    <p>
+        Sign up and begin setting goals and tasks for your kids!
+    </p>
+    <div class="login-buttons">
+        <a href="/register"><input type="submit" value="Get Started" id="get-started"/></a>
     </div>
 </div>
 <footer th:replace="fragments/footer :: mainFooter"></footer>
