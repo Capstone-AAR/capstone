@@ -118,6 +118,10 @@ li{
     border: solid #377FBF 2px;
     border-radius: 35px;
     padding:1em;
+    font-size: 14px;
+    line-height: 1.1428571429;
+    text-transform: uppercase;
+
 }
 
 body{
@@ -308,8 +312,7 @@ body{
     width: 300px;
 
 }
-#el {
-}
+
 
 #el:hover {
     --box-shadow-color: goldenrod;
@@ -321,4 +324,10 @@ body{
 .myBar.progress-bar{
     width:0%;
     background-color: #6AC7C1;
+}
+
+.circle-border:hover {
+    background-color: #377FBF;
+    color: white;
+    text-decoration: none;
 }
