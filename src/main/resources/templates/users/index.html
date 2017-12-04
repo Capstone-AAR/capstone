@@ -38,9 +38,26 @@
     </div>
 </div>
 
-<img th:src="@{/img/empty-info.png}" alt="infographic"/>
-
+<div class="col-md-6 col-md-offset-2 info">
+<img th:src="@{/img/empty-info.png}" alt="infographic" class=""/>
+    <div class="first">
+        <h3 class="info-titles">Start with the basics.</h3>
+        <p class="info-text">Sign up for Thrifty! Create a user profile for yourself and your children.</p>
+</div>
+    <div class="second">
+        <h3 class="info-titles">Get the family involved!</h3>
+        <p class="info-text">Begin explaining the importance of learning about money to your kids, and add goals for them.</p>
+    </div>
+    <div class="third">
+        <h3 class="info-titles">Help your kids login and view their tasks.</h3>
+        <p class="info-text">Explain which tasks must be completed in order for them to earn their goals.</p>
+    </div>
+    <div class="fourth">
+        <h3 class="info-titles">Success!</h3>
+        <p class="info-text">After completing their tasks, children earn their goals! Iterate the importance of working to earn something by rewarding your child's work</p>
+    </div>
 <footer th:replace="fragments/footer :: mainFooter"></footer>
+</div>
 
 </body>
 </html>
