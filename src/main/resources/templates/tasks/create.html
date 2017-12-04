@@ -8,6 +8,7 @@
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 
+<div class="profile">
 <h1 th:if="${#authentication.principal.role == 'parent'}">Create new task</h1>
 <h1 th:if="${#authentication.principal.role == 'child'}">Tasks</h1>
 <hr/>
@@ -97,7 +98,7 @@
     </div>
 </div>
 </div>
-
+</div>
 <!--///////////////////////////////////////////////////////////////////////////-->
 <!--///////////////////////JS and Jquery Scripts //////////////////////////////-->
 <!--///////////////////////////////////////////////////////////////////////////-->

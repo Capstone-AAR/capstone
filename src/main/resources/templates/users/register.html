@@ -17,25 +17,20 @@
     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 register-form">
     <form th:action="@{/users/register}" method="post" th:object="${parent}">
         <div class="form-group">
-            <label for="username">Choose a username</label>
-            <input th:field="*{username}" id="username" name="username"/>
+            <input th:field="*{username}" class="input-field placeholder-text" id="username" name="username" placeholder="username"/>
             <p class="card-panel red darken-1" th:if="${#fields.hasErrors('username')}" th:field="*{username}"></p>
         </div>
         <div class="form-group">
-            <label for="email">Enter your email</label>
-            <input th:field="*{email}" id="email" name="email"/>
+            <input th:field="*{email}" class="input-field" id="email" name="email" placeholder="email"/>
             <p class="card-panel  red darken-1" th:if="${#fields.hasErrors('email')}" th:field="*{email}"></p>
         </div>
         <div class="form-group">
-            <label for="password">Choose a password</label>
-            <input th:field="*{password}" id="password" type="password"/>
+            <input th:field="*{password}" class="input-field" id="password" type="password" placeholder="password"/>
             <p class="card-panel  red darken-1" th:if="${#fields.hasErrors('password')}" th:field="*{password}"></p>
-
         </div>
 
         <div class="form-group">
-            <label for="confirm-password">Confirm password</label>
-            <input id="confirm-password" name="confirm-password" type="password"/>
+            <input id="confirm-password" class="input-field" name="confirm-password" type="password" placeholder="confirm password"/>
         </div>
         <input value="Sign me up" type="submit" class="btn btn-primary" id="signup-button"/>
         <div th:if="${test}">
