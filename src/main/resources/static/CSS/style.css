@@ -2,12 +2,13 @@
 /*/////welcome page*/
 /*////////////////////////*/
 
+
 #help {
     padding-top: 6em;
 }
 
 /*.story-category {*/
-/*font-size: 80px;*/
+    /*font-size: 80px;*/
 /*}*/
 
 /*///////////////////////////*/
@@ -203,6 +204,7 @@ html {
 
 }
 
+
 /*On the register page*/
 .register-text {
     position: relative;
@@ -279,30 +281,8 @@ html {
 }
 
 /*Parent profile page*/
-#child-panel {
-    width: 300px;
-    display: inline-block;
-    height: 400px;
-}
 
-.child-panel-heading {
-    font-size: 40px;
-    color: #fff;
-    text-align: center;
-}
-
-.panel-body {
-    font-size: 20px;
-    text-align: center;
-}
-
-.panel-heading {
-    color: white;
-}
-
-.panel-default.panel-heading {
-    background-color: #7ECFC8;
-
+#goalName{
 }
 
 #goalName {
@@ -334,6 +314,7 @@ html {
 
 }
 
+
 #el:hover {
     --box-shadow-color: goldenrod;
 }
@@ -341,6 +322,7 @@ html {
 .profile {
     padding-top: 100px;
 }
+
 
 .myBar.progress-bar {
     width: 0%;
@@ -357,7 +339,6 @@ html {
     text-decoration: none;
     color: lightgray;
 }
-
 /*Infographic Styling*/
 
 .info {
@@ -396,7 +377,6 @@ html {
 .info-titles {
     display: inline-block;
 }
-
 /*#index-pic{*/
 /*height: 300px;*/
 /*margin-left:25px;*/
@@ -438,7 +418,6 @@ html {
 .squirrel-o {
     margin-bottom: 12px;
 }
-
 /*#info-1{*/
 /*display: inline-block;*/
 /*margin-left: 35px;*/

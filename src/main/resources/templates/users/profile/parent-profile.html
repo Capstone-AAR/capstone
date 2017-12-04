@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://www.w3.org/1999/xhtml">
 
-    <head th:replace="fragments/header :: main-header('Your Profile')"></head>
+<head th:replace="fragments/header :: main-header('Your Profile')"></head>
 
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
@@ -11,34 +11,35 @@
 <!--<div th:each="parent :${parent}">-->
 <!--<h1>Welcome, <span th:text="${parent.user.username}"></span>!</h1>-->
 <!--</div>-->
+<div class="container">
+    <div class="row">
+        <div class="profile kid-goal-panels">
+<h1 id="my-kids-title">My Kids</h1>
+            <div th:each="child:${children}" class="panel panel-default" style="max-width:75%;margin-left:auto; margin-right:auto;" id="child-panel">
 
-<div class="profile">
-<div th:each="child:${children}" class="panel panel-default" id="child-panel">
-
-    <div th:text="${child.user.username}" class="panel-heading child-panel-heading">
+                <div th:text="${child.user.username}" class="panel-heading child-panel-heading">
 
 
+                </div>
+
+                <div class="panel-body">
+                    <div>
+                        <a class="child-goal-links" th:href="@{/view-child-profile/{id}(id=${child.user.id})}">View Child's Goals</a>
+                    </div>
+                    <div>
+                        <a class="child-goal-links" th:href="@{/goals/completed/{id}(id=${child.user.id})}">View Completed Goals</a>
+                    </div>
+                    <div>
+                        <a class="child-goal-links" th:href="@{/goals/update}">Add tasks</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
-
-    <div class="panel-body">
-        <div>
-            <a th:href="@{/view-child-profile/{id}(id=${child.user.id})}">View Child's Goals</a>
-        </div>
-        <div>
-            <a th:href="@{/goals/completed/{id}(id=${child.user.id})}">View Completed Goals</a>
-        </div>
-        <div>
-            <a th:href="@{/goals/update}">Add tasks</a>
-        </div>
-
-    </div>
-
-</div>
-
-
-
-
 
 
 </div>

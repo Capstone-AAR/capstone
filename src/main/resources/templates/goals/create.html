@@ -10,22 +10,19 @@
 <div class="col-md-6 col-md-offset-3 register-form">
 <form th:action="@{/goals/create}" method ="post" th:object = "${goal}">
 <div class="form-group">
-    <label for="goalName">Goal:</label>
-    <input th:field="*{goalName}" id="goalName" type="text"/>
+    <input th:field="*{goalName}" id="goalName" class="input-field" placeholder="Goal Name" type="text"/>
 </div>
     <!--<p th:if="${#fields.hasErrors('goal_name')}" th:errors="*{goal_name}"/>-->
 
 
     <div class="form-group">
-    <label for="totalPoints">Point Value:</label>
-    <input th:field="*{totalPoints}" id="totalPoints" type="text"/>
+    <input th:field="*{totalPoints}" id="totalPoints" class="input-field" placeholder="Point value" type="text"/>
     </div>
     <!--<p th:if="${#fields.hasErrors('start_date')}" th:errors="*{start_date}"/>-->
 
 
     <div class="form-group">
-    <label for="trackProgress">Current Points:</label>
-    <input th:field="*{trackProgress}" id="trackProgress" type="text"/>
+    <input th:field="*{trackProgress}" id="trackProgress" class="input-field" placeholder="Current Points" type="text"/>
     </div>
     <!--<p th:if="${#fields.hasErrors('end_date')}" th:errors="*{end_date}"/>-->
 <div class="form-group">
