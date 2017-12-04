@@ -2,11 +2,11 @@
 /*/////welcome page*/
 /*////////////////////////*/
 .about {
-    height: 500px;
+    height: 600px;
     width: auto;
     background-color: #59617F;
     color: white;
-    position: relative;
+    /*position: relative;*/
 }
 
 #about-image {
@@ -14,9 +14,12 @@
     width: 400px;
     border-radius: 50%;
     background-color: #c7254e;
-    padding-right: 50px;
-    padding-bottom: 250px;
-    float: right;
+    float: left;
+    margin-left: 54em;
+}
+
+#help {
+    padding-top: 6em;
 }
 
 /*.story-category {*/
@@ -39,20 +42,22 @@
 .input-field {
     border: 0;
     outline: 0;
-    /*background: transparent;*/
+    background: transparent;
     border-bottom: 1px solid #5A6075;
     -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    -o-appearance: none;
-    appearance: none;
-    background-color: transparent;
+    /*-moz-appearance: none;*/
+    /*-ms-appearance: none;*/
+    /*-o-appearance: none;*/
+    /*appearance: none;*/
     border-radius: 0;
-    border: none;
+    /*border: none;*/
     border-bottom: 1px solid #b2b2b2;
     outline: none !important;
     width: 100%;
+
 }
+
+
 
 li{
     display: inline-block;
@@ -62,8 +67,10 @@ li{
 .panel{
     width: 75%
 }
+
 .thrifty-title{
     display: inline-block;
+
 }
 
 #main-nav {
@@ -71,7 +78,7 @@ li{
     font-weight: 400;
     position: fixed;
     z-index: 100;
-    height: 5em;
+    height: 6em;
     font-family: 'Raleway', sans-serif;
     color: #605f5d;
     width: 100%;
@@ -97,6 +104,7 @@ li{
     color: #605f5d;
     width: 100%;
 }
+
 .navbar-links{
     display: inline-block;
     float: right;
@@ -128,12 +136,13 @@ body{
     font-family: 'Raleway', sans-serif;
     background-color: #FAF8F2;
 }
+
 .login-buttons{
     width:100%;
     text-align: center;
     position: relative;
     display: inline-block;
-    padding-bottom: 200px;
+
 }
 
 #register{
@@ -145,9 +154,8 @@ body{
     width: 300px;
     font-size: 20px;
 }
+
 #login{
-
-
     height: 50px;
     width: 300px;
     font-size: 20px;
@@ -175,6 +183,7 @@ body{
     width:100%;
     font-weight: bold;
     padding-top: 175px;
+    padding-bottom: 12em;
 
 }
 #homepage h1{
@@ -189,17 +198,23 @@ body{
     font-size: 50px;
     width: 500px;
     margin-left: 1em;
+
 }
+
 .register-form{
     padding: 40px;
     background-color: white;
     font-size: 20px;
     color: #5A6075;
     border-radius: 10px;
+    width: 20em;
+
 }
+
 #sign-up{
     text-align: center;
 }
+
 #signup-button{
     height: 50px;
     width: 300px;
@@ -225,26 +240,28 @@ body{
     position: relative;
     float: right;
 }
-#username{
-    margin-left: 5px;
-    position: relative;
-    float: right;
-}
-#email{
-    margin-left: 5px;
-    position: relative;
-    float: right;
-}
-#password{
-    margin-left: 5px;
-    position: relative;
-    float: right;
-}
-#confirm-password{
-    margin-left: 5px;
-    position: relative;
-    float: right;
-}
+/*#username{*/
+    /*!*margin-bottom: 30px;*!*/
+    /*!*margin-left: 5px;*!*/
+    /*!*position: relative;*!*/
+    /*!*float: right;*!*/
+/*}*/
+/*#email{*/
+    /*!*margin-left: 5px;*!*/
+    /*!*position: relative;*!*/
+    /*float: right;*/
+/*}*/
+/*#password{*/
+    /*!*margin-left: 5px;*!*/
+    /*!*position: relative;*!*/
+    /*!*float: right;*!*/
+/*}*/
+/*#confirm-password{*/
+    /*margin-left: 5px;*/
+    /*position: relative;*/
+    /*float: right;*/
+/*}*/
+
 .login-form{
     padding: 40px;
     background-color: white;
@@ -252,14 +269,15 @@ body{
     color: #5A6075;
     border-radius: 10px;
     height: 550px;
-    padding-top: 60px;
-
+    /*padding-top: 60px;*/
 }
+
 #login-title{
     text-align: center;
     font-size: 50px;
     margin-bottom: 50px;
 }
+
 #text{
     text-align: center;
     font-size: 30px;
@@ -304,6 +322,7 @@ body{
     width: 300px;
     background-color: white;
 }
+
 #createGoalButton{
     margin-bottom: 10px;
     background-color: #444858;
