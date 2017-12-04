@@ -2,23 +2,22 @@
 /*/////welcome page*/
 /*////////////////////////*/
 
-
 #help {
     padding-top: 6em;
 }
 
 /*.story-category {*/
-    /*font-size: 80px;*/
+/*font-size: 80px;*/
 /*}*/
 
- /*///////////////////////////*/
+/*///////////////////////////*/
 
-.footer{
+.footer {
     text-align: center;
     clear: both;
-    position:relative;
-    bottom:0;
-    width:100%;
+    position: relative;
+    bottom: 0;
+    width: 100%;
     height: 100px;
     padding-top: 5em;
 
@@ -47,18 +46,18 @@
     text-decoration: none;
 }
 
-li{
+li {
     display: inline-block;
     margin: 8px;
 }
 
-.panel{
+.panel {
     width: 75%
 }
 
-.thrifty-title{
+.thrifty-title {
     display: inline-block;
-    color: #6AC7C1
+    color: #6AC7C1;
 
 }
 
@@ -72,17 +71,7 @@ li{
     width: 100%;
 }
 
-#my-nav{
-    background-color: white;
-    font-weight: 400;
-    position: fixed;
-    z-index: 100;
-    height: 5em;
-    font-family: 'Raleway', sans-serif;
-    color: #605f5d;
-    width: 100%;
-}
-#child-nav{
+#my-nav {
     background-color: white;
     font-weight: 400;
     position: fixed;
@@ -93,7 +82,18 @@ li{
     width: 100%;
 }
 
-.navbar-links{
+#child-nav {
+    background-color: white;
+    font-weight: 400;
+    position: fixed;
+    z-index: 100;
+    height: 5em;
+    font-family: 'Raleway', sans-serif;
+    color: #605f5d;
+    width: 100%;
+}
+
+.navbar-links {
     display: inline-block;
     float: right;
     padding-top: 1em;
@@ -110,48 +110,58 @@ li{
 .logo {
     position: relative;
     left: 0;
-    display:inline-block;
+    display: inline-block;
     width: 100%;
     padding-left: 2em;
     color: #F27A33;
     font-weight: bold;
 
 }
-.circle-border{
+
+.circle-border {
     border: solid #6AC7C1 2px;
     /*border: solid #377FBF 2px;*/
     border-radius: 35px;
-    padding:1em;
+    padding: 1em;
     font-size: 14px;
     line-height: 1.1428571429;
     text-transform: uppercase;
 
 }
 
-body{
+body {
     font-family: 'Raleway', sans-serif;
     background-color: #FAF8F2;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.login-buttons{
-    width:100%;
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.login-buttons {
+    width: 100%;
     text-align: center;
     position: relative;
     display: inline-block;
 
 }
 
-#register{
+#register {
     margin-bottom: 10px;
     background-color: #444858;
     color: white;
-    margin-top:100px;
+    margin-top: 100px;
     height: 50px;
     width: 300px;
     font-size: 20px;
 }
 
-#login{
+#login {
     height: 50px;
     width: 300px;
     font-size: 20px;
@@ -159,7 +169,7 @@ body{
     color: white;
 }
 
-#get-started{
+#get-started {
     text-align: center;
     position: relative;
     display: inline-block;
@@ -169,29 +179,29 @@ body{
     margin-bottom: 10px;
     background-color: #444858;
     color: white;
-    margin-top:100px;
+    margin-top: 100px;
     left: -55px;
 }
 
-#homepage{
+#homepage {
     text-align: center;
     position: relative;
-    display: inline-block;
-    width:100%;
+    display: block;
+    width: 100%;
     font-weight: bold;
     padding-top: 175px;
     padding-bottom: 12em;
 
 }
-#homepage h1{
+
+#homepage h1 {
     font-size: 100px;
     color: #5A6075;
 
 }
 
-
 /*On the register page*/
-.register-text{
+.register-text {
     font-size: 50px;
     width: 730px;
     margin-left: 6em;
@@ -199,7 +209,7 @@ body{
 
 }
 
-.register-form{
+.register-form {
     padding: 40px;
     background-color: white;
     font-size: 20px;
@@ -209,11 +219,11 @@ body{
 
 }
 
-#sign-up{
+#sign-up {
     text-align: center;
 }
 
-#signup-button{
+#signup-button {
     height: 50px;
     width: 300px;
     font-size: 20px;
@@ -223,23 +233,25 @@ body{
 }
 
 /*Text forms:*/
-#child-username{
-    margin-left: 5px;
-    position: relative;
-    float: right;
-}
-#child-password{
-    margin-left: 5px;
-    position: relative;
-    float: right;
-}
-#child-email{
+#child-username {
     margin-left: 5px;
     position: relative;
     float: right;
 }
 
-.login-form{
+#child-password {
+    margin-left: 5px;
+    position: relative;
+    float: right;
+}
+
+#child-email {
+    margin-left: 5px;
+    position: relative;
+    float: right;
+}
+
+.login-form {
     padding: 40px;
     background-color: white;
     font-size: 20px;
@@ -250,58 +262,66 @@ body{
 
 }
 
-#login-title{
+#login-title {
     text-align: center;
     font-size: 50px;
     margin-bottom: 50px;
 }
 
-#text{
+#text {
     text-align: center;
     font-size: 30px;
     margin-bottom: 45px;
 }
 
 /*Parent profile page*/
-#child-panel{
-    width:300px;
+#child-panel {
+    width: 300px;
     display: inline-block;
     height: 400px;
 }
-.child-panel-heading{
+
+.child-panel-heading {
     font-size: 40px;
-    color:#fff;
+    color: #fff;
     text-align: center;
 }
-.panel-body{
-    font-size:20px;
+
+.panel-body {
+    font-size: 20px;
     text-align: center;
 }
-.panel-heading{
+
+.panel-heading {
     color: white;
 }
-.panel-default.panel-heading{
+
+.panel-default.panel-heading {
     background-color: #7ECFC8;
 
 }
-#goalName{
+
+#goalName {
     position: relative;
     float: right;
 }
-#totalPoints{
+
+#totalPoints {
     position: relative;
     float: right;
 }
-#trackProgress{
+
+#trackProgress {
     position: relative;
     float: right;
 }
-#child_id{
+
+#child_id {
     width: 300px;
     background-color: white;
 }
 
-#createGoalButton{
+#createGoalButton {
     margin-bottom: 10px;
     background-color: #444858;
     color: white;
@@ -310,16 +330,16 @@ body{
 
 }
 
-
 #el:hover {
     --box-shadow-color: goldenrod;
 }
-.profile{
+
+.profile {
     padding-top: 100px;
 }
 
-.myBar.progress-bar{
-    width:0%;
+.myBar.progress-bar {
+    width: 0%;
     background-color: #6AC7C1;
 }
 
@@ -333,42 +353,49 @@ body{
     text-decoration: none;
     color: lightgray;
 }
+
 /*Infographic Styling*/
 
-.info{
+.info {
     position: relative;
     text-align: center;
 }
-.first{
+
+.first {
     position: absolute;
     top: 220px;
     left: 450px;
 }
-.second{
+
+.second {
     position: absolute;
     top: 480px;
     right: 1137px;
 }
-.third{
+
+.third {
     position: absolute;
     top: 770px;
     left: 470px;
 }
-.fourth{
+
+.fourth {
     position: absolute;
     top: 1000px;
     right: 1148px;
 }
-.info-titles{
+
+.info-titles {
     display: inline-block;
 }
+
 /*#index-pic{*/
-    /*height: 300px;*/
-    /*margin-left:25px;*/
+/*height: 300px;*/
+/*margin-left:25px;*/
 /*}*/
 
 /*This is for the 3 pics*/
-.three-pics{
+.three-pics {
     display: inline-block;
     font-size: 22px;
     /*text-align: center;*/
@@ -380,34 +407,44 @@ body{
     -ms-text-justify: distribute-all-lines;
     text-justify: distribute-all-lines;
 }
-.index-pics{
+
+.index-pics {
     padding-top: 6em;
     width: auto;
     background-color: #828DAA;
     color: white;
     height: 600px;
 }
-.three-pics p{
+
+.three-pics p {
     margin-top: 20px;
 }
-#index-title{
+
+#index-title {
     text-align: center;
 
 }
 
-.squirrel-o{
+.squirrel-o {
     margin-bottom: 12px;
 }
+
 /*#info-1{*/
-    /*display: inline-block;*/
-    /*margin-left: 35px;*/
-    /*margin-right: 10px;*/
+/*display: inline-block;*/
+/*margin-left: 35px;*/
+/*margin-right: 10px;*/
 /*}*/
-#info-2{
+#info-2 {
     margin-top: 2em;
 }
+
 /*#info-3{*/
-    /*display: inline-block;*/
-    /*margin-left: 5px;*/
-    /*margin-right: 0;*/
+/*display: inline-block;*/
+/*margin-left: 5px;*/
+/*margin-right: 0;*/
 /*}*/
+
+#index-present {
+    margin: 0;
+    /*text-align: left;*/
+}
