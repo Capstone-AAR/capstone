@@ -29,7 +29,7 @@
                 <br />
                 <a th:href="@{/goals/{id}(id=${goal.id})}">View Goal</a>
                 <br />
-                <a th:href="@{/tasks/create/(id=${goal.id})}">Add tasks</a>
+                <a th:href="@{/tasks/create/(id=${goal.id})}">View tasks</a>
             </ul>
             <div class="progress">
                 <div th:text="${goal.trackProgress}" class="myBar progress-bar" role="progressbar" aria-valuenow="${goal.totalPoints}"></div>
