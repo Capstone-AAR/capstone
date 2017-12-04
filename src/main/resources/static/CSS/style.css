@@ -170,6 +170,7 @@ body{
     background-color: #444858;
     color: white;
     margin-top:100px;
+    left: -55px;
 }
 
 #homepage{
@@ -192,8 +193,8 @@ body{
 /*On the register page*/
 .register-text{
     font-size: 50px;
-    width: 500px;
-    margin-left: 1em;
+    width: 730px;
+    margin-left: 6em;
     text-align: center;
 
 }
@@ -336,7 +337,7 @@ body{
 
 .info{
     position: relative;
-    text-align: center;
+    /*text-align: center;*/
 }
 .first{
     position: absolute;
@@ -346,7 +347,7 @@ body{
 .second{
     position: absolute;
     top: 480px;
-    right: 250px;
+    right: 1137px;
 }
 .third{
     position: absolute;
@@ -356,7 +357,7 @@ body{
 .fourth{
     position: absolute;
     top: 1000px;
-    right: 250px;
+    right: 1148px;
 }
 .info-titles{
     display: inline-block;
