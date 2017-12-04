@@ -18,12 +18,12 @@
 
     <ul class="navbar-links">
         <!--<p th:text="#{'Hello, ' + ${parent.username}}"></p>-->
-        <li><a href="/profile">Home</a></li>
-        <li><a href="/goals/create">Set a Goal</a></li>
-        <li><a href="/children/new">Add New Saver</a></li>
+        <li><a class="index-nav" href="/profile">Home</a></li>
+        <li><a class="index-nav" href="/goals/create">Set a Goal</a></li>
+        <li><a class="index-nav" href="/children/new">Add New Saver</a></li>
         <!--<li><a  th:text="${parent.user.username}"></a> </li>-->
         <li>
-            <a href="/login?logout" th:action="@{/logout}" th:method="post">
+            <a class="index-nav" href="/login?logout" th:action="@{/logout}" th:method="post">
                  Logout
             </a>
         </li>
