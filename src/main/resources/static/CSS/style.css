@@ -322,3 +322,46 @@ body{
 .info-titles{
     display: inline-block;
 }
+/*#index-pic{*/
+    /*height: 300px;*/
+    /*margin-left:25px;*/
+/*}*/
+
+/*This is for the 3 pics*/
+.three-pics{
+    display: inline-block;
+    font-size: 22px;
+    /*text-align: center;*/
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: center;
+    -ms-text-justify: distribute-all-lines;
+    text-justify: distribute-all-lines;
+}
+.index-pics{
+    width: 100%;
+}
+.three-pics p{
+    margin-top: 20px;
+}
+#index-title{
+    text-align: center;
+
+}
+/*#info-1{*/
+    /*display: inline-block;*/
+    /*margin-left: 35px;*/
+    /*margin-right: 10px;*/
+/*}*/
+/*#info-2{*/
+    /*display: inline-block;*/
+    /*margin-left: 10px;*/
+    /*margin-right: 10px;*/
+/*}*/
+/*#info-3{*/
+    /*display: inline-block;*/
+    /*margin-left: 5px;*/
+    /*margin-right: 0;*/
+/*}*/
