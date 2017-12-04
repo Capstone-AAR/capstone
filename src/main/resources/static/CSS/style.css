@@ -8,14 +8,7 @@
     color: white;
 }
 
-#about-image {
-    height: 400px;
-    width: 400px;
-    border-radius: 50%;
-    background-color: #c7254e;
-    float: left;
-    margin-left: 54em;
-}
+
 
 #help {
     padding-top: 6em;
@@ -400,6 +393,8 @@ body{
 }
 .index-pics{
     width: 100%;
+    /*background-color: #59617F;*/
+    /*color: white;*/
 }
 .three-pics p{
     margin-top: 20px;
