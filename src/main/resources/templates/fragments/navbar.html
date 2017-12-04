@@ -11,6 +11,8 @@
 
 <div sec:authorize="isAuthenticated()" id="my-nav" class="navbar navbar-default" th:fragment="mainNavbar">
     <div class="logo">
+        <img th:src="@{/img/squirrel.png}" alt="facebook" height="50" width="50" class="squirrel-o"/>
+
         <h2 class="thrifty-title">Thrifty</h2>
 
 
@@ -38,7 +40,7 @@
 
     <nav sec:authorize="isAnonymous()" id="main-nav" class="navbar navbar-default" th:fragment="mainNavbar">
         <div class="logo">
-            <img th:src="@{/img/squirrel.png}" alt="facebook" height="50" width="50" id="squirrel-o"/>
+            <img th:src="@{/img/squirrel.png}" alt="facebook" height="50" width="50" class="squirrel-o"/>
             <h2 class="thrifty-title">Thrifty</h2>
         <ul class="navbar-links">
             <!--<p th:text="${#authentication.principal.user}"></p>-->
