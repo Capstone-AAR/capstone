@@ -6,7 +6,6 @@
     width: auto;
     background-color: #59617F;
     color: white;
-    /*position: relative;*/
 }
 
 #about-image {
@@ -269,7 +268,8 @@ body{
     color: #5A6075;
     border-radius: 10px;
     height: 550px;
-    /*padding-top: 60px;*/
+    padding-top: 60px;
+
 }
 
 #login-title{
@@ -350,3 +350,76 @@ body{
     color: white;
     text-decoration: none;
 }
+
+/*Infographic Styling*/
+
+.info{
+    position: relative;
+    text-align: center;
+}
+.first{
+    position: absolute;
+    top: 220px;
+    left: 450px;
+}
+.second{
+    position: absolute;
+    top: 480px;
+    right: 250px;
+}
+.third{
+    position: absolute;
+    top: 770px;
+    left: 470px;
+}
+.fourth{
+    position: absolute;
+    top: 1000px;
+    right: 250px;
+}
+.info-titles{
+    display: inline-block;
+}
+/*#index-pic{*/
+    /*height: 300px;*/
+    /*margin-left:25px;*/
+/*}*/
+
+/*This is for the 3 pics*/
+.three-pics{
+    display: inline-block;
+    font-size: 22px;
+    /*text-align: center;*/
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: center;
+    -ms-text-justify: distribute-all-lines;
+    text-justify: distribute-all-lines;
+}
+.index-pics{
+    width: 100%;
+}
+.three-pics p{
+    margin-top: 20px;
+}
+#index-title{
+    text-align: center;
+
+}
+/*#info-1{*/
+    /*display: inline-block;*/
+    /*margin-left: 35px;*/
+    /*margin-right: 10px;*/
+/*}*/
+/*#info-2{*/
+    /*display: inline-block;*/
+    /*margin-left: 10px;*/
+    /*margin-right: 10px;*/
+/*}*/
+/*#info-3{*/
+    /*display: inline-block;*/
+    /*margin-left: 5px;*/
+    /*margin-right: 0;*/
+/*}*/
