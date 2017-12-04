@@ -35,7 +35,7 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                                 <span class="sr-only">close</span></button>
-                            <h4 id="modalTitle" class="modal-title"></h4>
+                            <h2 id="modalTitle" class="modal-title"></h2>
                         </div>
                         <div id="modalBody" class="modal-body"></div>
                         <div class="modal-footer">
@@ -46,7 +46,6 @@
                                   th:object="${task}">
                                 <input type="hidden" name="goalId" th:value="${id}"/>
                                 <input type="hidden" id="taskId" name="taskId"/>
-                                <p th:text="${'this should work!'}"></p>
                                 <input type="submit" class="btn btn-danger" id="deleteButton" value="Delete"/>
                             </form>
                             <div>
@@ -78,19 +77,27 @@
                             <h4 class="modal-title">Create new task</h4>
                         </div>
                         <div class="modal-body">
-                            <form id="createTaskForm" th:action="@{/tasks/create}" th:method="post" th:object="${task}">
+                            <form class="createTaskForm" th:action="@{/tasks/create}" th:method="post" th:object="${task}">
                                 <input type="hidden" name="goalId" id="goalId" th:value="${id}"/>
                                 <label for="title">Title:</label>
-                                <input th:field="*{taskName}" id="title"/>
+                                <input class="input-field" th:field="*{taskName}" id="title"/>
+                                <br />
+                                <br />
                                 <label for="description">Description:</label>
-                                <input th:field="*{taskDescription}" id="description"/>
+                                <textarea class="input-field" th:field="*{taskDescription}" id="description">
+                                </textarea>
+                                <br />
+                                <br />
                                 <label for="points">points:</label>
-                                <input th:field="*{points}" id="points"/>
-                                <br/>
+                                <input class="input-field" th:field="*{points}" id="points"/>
+                                <br />
+                                <br />
                                 <input type="hidden" id="startDateMoment" name="startDateMoment"/>
                                 <input class="btn btn-primary" type="submit" th:value="Create"/>
                             </form>
                         </div>
+
+
                     </div>
                 </div>
             </div>

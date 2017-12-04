@@ -80,13 +80,17 @@ $(document).ready(function () {
         eventRender: function(event, element) {
             if(event.status === 'REQUEST_APPROVAL') {
                element.css({
-                   'background-color': '#F27A33'
+                   'background-color': '#F27A33',
+                   'border-color': '#438052',
+                   'font-weight' : 'bold'
                })
             }
 
             if(event.status === 'NEW') {
                 element.css({
-                    'background-color': '#438052'
+                    'background-color': '#438052',
+                    'border-color': '#438052',
+                    'font-weight' : 'bold'
                 })
             }
 
