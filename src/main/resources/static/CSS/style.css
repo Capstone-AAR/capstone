@@ -403,18 +403,18 @@ body{
     text-align: center;
 
 }
-#info-1{
-    display: inline-block;
-    margin-left: 35px;
-    margin-right: 10px;
-}
-#info-2{
-    display: inline-block;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-#info-3{
-    display: inline-block;
-    margin-left: 5px;
-    margin-right: 0;
-}
+/*#info-1{*/
+    /*display: inline-block;*/
+    /*margin-left: 35px;*/
+    /*margin-right: 10px;*/
+/*}*/
+/*#info-2{*/
+    /*display: inline-block;*/
+    /*margin-left: 10px;*/
+    /*margin-right: 10px;*/
+/*}*/
+/*#info-3{*/
+    /*display: inline-block;*/
+    /*margin-left: 5px;*/
+    /*margin-right: 0;*/
+/*}*/
