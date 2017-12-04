@@ -78,15 +78,21 @@
                             <h4 class="modal-title">Create new task</h4>
                         </div>
                         <div class="modal-body">
-                            <form id="createTaskForm" th:action="@{/tasks/create}" th:method="post" th:object="${task}">
+                            <form class="createTaskForm" th:action="@{/tasks/create}" th:method="post" th:object="${task}">
                                 <input type="hidden" name="goalId" id="goalId" th:value="${id}"/>
                                 <label for="title">Title:</label>
-                                <input th:field="*{taskName}" id="title"/>
+                                <input class="input-field" th:field="*{taskName}" id="title"/>
+                                <br />
+                                <br />
                                 <label for="description">Description:</label>
-                                <input th:field="*{taskDescription}" id="description"/>
+                                <textarea class="input-field" th:field="*{taskDescription}" id="description">
+                                </textarea>
+                                <br />
+                                <br />
                                 <label for="points">points:</label>
-                                <input th:field="*{points}" id="points"/>
-                                <br/>
+                                <input class="input-field" th:field="*{points}" id="points"/>
+                                <br />
+                                <br />
                                 <input type="hidden" id="startDateMoment" name="startDateMoment"/>
                                 <input class="btn btn-primary" type="submit" th:value="Create"/>
                             </form>
