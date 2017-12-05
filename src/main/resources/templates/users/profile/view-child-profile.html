@@ -15,12 +15,14 @@
 <div class="profile">
 
 <div>
-    <h1><span th:text="${child.user.username}"></span>'s Goals</h1>
+    <h1 class="goals-header"><span th:text="${child.user.username}"></span>'s Goals</h1>
 </div>
 
-<div th:each="goal:${goals}" class="panel panel-default">
+<div th:each="goal:${goals}" class="panel panel-default" style="max-width:75%;margin-left:auto; margin-right:auto;">
+    <div class="panel-heading">
+    <h3 th:text="${goal.goalName}">
 
-    <div th:text="${goal.goalName}" class="panel-heading">
+    </h3>
     </div>
     <div class="panel-body">
         <ul>

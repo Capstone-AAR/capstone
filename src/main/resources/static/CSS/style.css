@@ -49,6 +49,7 @@
 .index-nav {
     color: #6AC7C1;
     text-decoration: none;
+    font-size: 1.1em;
 }
 
 li {
@@ -451,4 +452,8 @@ html {
 
 #index-present {
     margin: 0;
+}
+
+.goals-header {
+    text-align: center;
 }
