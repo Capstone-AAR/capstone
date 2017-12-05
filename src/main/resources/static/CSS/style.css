@@ -452,3 +452,7 @@ html {
 #index-present {
     margin: 0;
 }
+
+.goals-header {
+    text-align: center;
+}
