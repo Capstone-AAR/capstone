@@ -5,7 +5,7 @@
 
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
-<div class="profile">
+<div class="profile login-page">
 <div class="container">
     <div class="row">
         <div th:if="${param.error}">
@@ -26,9 +26,9 @@
         </div>
     </div>
 </div>
-</div>
 
 
 <footer th:replace="fragments/footer :: mainFooter"></footer>
+</div>
 </body>
 </html>
