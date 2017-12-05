@@ -21,3 +21,8 @@
     font-size: 20px;
     font-weight: 200;
 }
+.modal-body{
+    border-color: #5A6075;
+    border-width: 5px;
+
+}
