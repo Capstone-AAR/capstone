@@ -1,73 +1,75 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-    <head th:replace="fragments/header :: main-header('Home')"></head>
+<head th:replace="fragments/header :: main-header('Home')"></head>
 
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 
 <div id="homepage">
-<h1>Saving made easy</h1>
-<h3>Help your child learn the value of money</h3>
+    <h1>Saving made easy</h1>
+    <h3>Help your child learn the value of money</h3>
 
 
-<div class="login-buttons">
-<a href="/register"><input type="submit" value="Register" id="register"/></a>
-<br/>
-    <a href="/login"><input type="submit" value="Login" id="login"/></a>
-</div>
+    <div class="login-buttons">
+        <a href="/register"><input type="submit" value="Register" id="register"/></a>
+        <br/>
+        <a href="/login"><input type="submit" value="Login" id="login"/></a>
+    </div>
 </div>
 <!--middle div-->
 
 
-
+    <div class="row">
 <div class="index-pics">
     <h1 id="index-title">HELP YOUR KIDS LEARN THE VALUE OF MONEY</h1>
-<div class="three-pics">
-<img th:src="@{/img/book.png}" alt="infographic" height="200" width="200" id="info-1"/>
-    <p>Set goals</p>
-</div>
+        <div class="three-pics col-lg-4">
+            <img th:src="@{/img/book.png}" alt="infographic" height="200" width="200" id="info-1"/>
+            <p>Set goals</p>
+        </div>
 
-<div class="three-pics">
-    <img th:src="@{/img/web-design.png}" alt="infographic" height="200" width="200" id="info-2"/>
-    <p>Assign them tasks to help them attain their goals</p>
+        <div class="three-pics col-lg-4">
+            <img th:src="@{/img/web-design.png}" alt="infographic" height="200" width="200" id="info-2"/>
+            <p>Assign them tasks to help them attain their goals</p>
 
-</div>
+        </div>
 
-<div class="three-pics">
-    <img th:src="@{/img/cash-point.png}" alt="infographic" height="200" width="200" id="info-3"/>
-    <p>Have fun learning tha value of saving</p>
+        <div class="three-pics col-lg-4">
+            <img th:src="@{/img/cash-point.png}" alt="infographic" height="200" width="200" id="info-3"/>
+            <p>Have fun learning tha value of saving</p>
 
-</div>
-
-</div>
-
-
-<div class="col-md-12 col-md-offset-2 info" id="index-present">
-<img th:src="@{/img/cropped-info.png}" alt="infographic" class=""/>
-    <div class="first">
-        <h3 class="info-titles">Start with the basics.</h3>
-        <p class="info-text">Sign up for Thrifty! Create a user profile for yourself and your children.</p>
-</div>
-    <div class="second">
-        <h3 class="info-titles">Get the family involved!</h3>
-        <p class="info-text">Begin explaining the importance of learning about money to your kids, and add goals for them.</p>
-    </div>
-    <div class="third">
-        <h3 class="info-titles">Help your kids login and view their tasks.</h3>
-        <p class="info-text">Explain which tasks must be completed in order for them to earn their goals.</p>
-    </div>
-    <div class="fourth">
-        <h3 class="info-titles">Success!</h3>
-        <p class="info-text">After completing their tasks, children earn their goals! Iterate the importance of working to earn something by rewarding your child's work</p>
+        </div>
     </div>
 </div>
 
-<hr />
+<div class="row">
+    <div class="col-md-12 col-md-offset-2 info" id="index-present">
+        <img th:src="@{/img/cropped-info.png}" alt="infographic" class=""/>
+        <div class="first col-lg-6 col-lg-offset-5">
+            <h3 class="info-titles">Start with the basics.</h3>
+            <p class="info-text">Sign up for Thrifty! Create a user profile for yourself and your children.</p>
+        </div>
+        <div class="second col-lg-6 col-lg-offset-3">
+            <h3 class="info-titles">Get the family involved!</h3>
+            <p class="info-text">Begin explaining the importance of learning about money to your kids, and add goals for
+                them.</p>
+        </div>
+        <div class="third col-lg-6 col-lg-offset-7">
+            <h3 class="info-titles">Help your kids login and view their tasks.</h3>
+            <p class="info-text">Explain which tasks must be completed in order for them to earn their goals.</p>
+        </div>
+        <div class="fourth fourth col-lg-6 col-lg-offset-3">
+            <h3 class="info-titles">Success!</h3>
+            <p class="info-text">After completing their tasks, children earn their goals! Iterate the importance of
+                working to earn something by rewarding your child's work</p>
+        </div>
+    </div>
+</div>
+<hr/>
 
 <!--ending div with register button-->
-<div class="col-lg-12 col-md-12">
-    <p class="register-text">
+<div class="col-md-12">
+    <p class="register-text col-lg-12 col-lg-offset-4">
         Sign up and begin setting goals and tasks for your kids!
     </p>
     <div class="login-buttons">
