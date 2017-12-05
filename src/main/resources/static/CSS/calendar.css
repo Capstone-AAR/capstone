@@ -1,0 +1,23 @@
+.fc-content,  .fc-divider,  .fc-list-heading td, .fc-list-view, .fc-popover, .fc-row, .fc-unthemed tbody,  .fc-unthemed th, .fc-unthemed thead{
+    border-color: #5A6075;
+    border-width: 5px;
+}
+
+.fc-unthemed td{
+    border-color: #5A6075;
+    border-width: 5px;
+
+}
+.fc-widget-content{
+
+}
+.fc-day-number{
+    color: #609CCC;
+    font-size: 20px;
+    font-weight: 200;
+}
+.fc-widget-header{
+    color: #609CCC;
+    font-size: 20px;
+    font-weight: 200;
+}
