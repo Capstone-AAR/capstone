@@ -11,7 +11,7 @@
 <!--<div th:each="parent :${parent}">-->
 <!--<h1>Welcome, <span th:text="${parent.user.username}"></span>!</h1>-->
 <!--</div>-->
-<div class="container">
+<div class="container parent-goal-view">
     <div class="row">
         <div class="profile kid-goal-panels">
 <h1 id="my-kids-title">My Kids</h1>
@@ -43,6 +43,7 @@
 
 
 </div>
+<footer th:replace="fragments/footer :: mainFooter"></footer>
 
 <!--///////////////////////////////////////////////////////////////////////////-->
 <!--///////////////////////JS and Jquery Scripts //////////////////////////////-->
@@ -52,6 +53,5 @@
 <script src="/fullcalendar/fullcalendar.js"></script>
 <script src='/js/main.js'></script>
 <script src="/js/progress-bar"></script>
-<footer th:replace="fragments/footer :: mainFooter"></footer>
 </body>
 </html>

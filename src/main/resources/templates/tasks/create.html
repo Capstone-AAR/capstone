@@ -10,8 +10,8 @@
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 
 <div class="profile">
-    <h1 th:if="${#authentication.principal.role == 'parent'}">Create new task</h1>
-    <h1 th:if="${#authentication.principal.role == 'child'}">Tasks</h1>
+    <h1 th:if="${#authentication.principal.role == 'parent'}" class="task-page">Add A New Task</h1>
+    <h1 th:if="${#authentication.principal.role == 'child'}" class="task-page">Tasks</h1>
     <hr/>
     <div class="profile">
         <div class="container">
