@@ -38,11 +38,18 @@ $(document).ready(function () {
             var taskId = $('#taskId');
             taskId.val(calEvent.id);
             $('#modalTitle').html(calEvent.title);
-            $modalBody.html(calEvent.taskDescription);
-            $modalBody.append(calEvent.id);
-            console.log(jsEvent);
-            console.log("/////////////////");
-            console.log(calEvent);
+            $modalBody.html('Description:  <br>' + calEvent.taskDescription);
+            if(calEvent.points == 1 || calEvent.points == '1') {
+                console.log();
+                $modalBody.append('<br><br>' + 'Value:  <br>' + calEvent.points + ' point');
+            }
+
+            if(calEvent.points !== '1') {
+                console.log();
+                $modalBody.append('<br><br>' + 'Value:  <br>' + calEvent.points + ' points');
+            }
+            // $modalBody.append('<br><br>' + 'Value:  <br>' + calEvent.points + ' points');
+            $modalBody.css("font-size", "20px");
             if (calEvent.status === 'REQUEST_APPROVAL') {
                 testColor = 'black';
                 $('#taskStatus').show();
@@ -78,11 +85,23 @@ $(document).ready(function () {
         },
 
         eventRender: function(event, element) {
+
+            if(event.status === 'APPROVED') {
+                element.css({
+                    'background-color': '#ff0017',
+                    'border-color': '#ff0017',
+                    'font-weight' : 'bold',
+                    'height' :  '30px'
+                })
+            }
+
+
             if(event.status === 'REQUEST_APPROVAL') {
                element.css({
                    'background-color': '#F27A33',
-                   'border-color': '#438052',
-                   'font-weight' : 'bold'
+                   'border-color': '#F27A33',
+                   'font-weight' : 'bold',
+                   'height' :  '30px'
                })
             }
 
@@ -90,7 +109,10 @@ $(document).ready(function () {
                 element.css({
                     'background-color': '#438052',
                     'border-color': '#438052',
-                    'font-weight' : 'bold'
+                    'font-weight' : 'bold',
+                    'height' :  '30px',
+                    'font-size' : '20px'
+
                 })
             }
 

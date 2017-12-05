@@ -121,9 +121,10 @@ li {
     left: 0;
     display: inline-block;
     width: 100%;
-    padding-left: 2em;
+    padding-left: 4em;
     color: #F27A33;
     font-weight: bold;
+
 
 }
 
@@ -467,4 +468,14 @@ html {
 
 .goals-header {
     text-align: center;
+}
+#bicycle{
+    display: inline-block;
+    margin-top:150px;
+    margin-left:150px;
+}
+
+#points {
+    text-align: right;
+    font-weight: bolder;
 }

@@ -137,7 +137,7 @@ public class GoalController {
     @PostMapping("/goals/{id}/delete")
     public String deleteGoal (@ModelAttribute Goal goal, @PathVariable Long id) {
         service.delete(id);
-        return "redirect:/goals";
+        return "redirect:/goals/child";
     }
 
     /////might need id in url
