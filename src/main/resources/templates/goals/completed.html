@@ -7,12 +7,14 @@
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 <div class="profile">
 <div>
-    <h1><span th:text="${child.user.username}"></span>'s completed goals</h1>
+    <h1 class="complete-goals-header"><span th:text="${child.user.username}"></span>'s completed goals</h1>
 </div>
 
-<div th:each="goal:${goals}" class="panel panel-default">
+<div th:each="goal:${goals}" class="panel panel-default" style="max-width:75%;margin-left:auto; margin-right:auto;">
 
-    <div th:text="${goal.goalName}" class="panel-heading"></div>
+    <div class="panel-heading done-goals-panel">
+        <h3 th:text="${goal.goalName}"></h3>
+    </div>
 
 
 

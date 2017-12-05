@@ -10,11 +10,15 @@
 
 
 <div class="profile">
+    <div class="jumbotron child-background">
+        <div class="container">
+            <h1>Hello, <span th:text="${child.user.username}"></span>!</h1>
+        </div>
 <div th:each="child :${child}">
 </div>
 <div class=".css-p8dlsh">
 <div class="panel panel-default" style="max-width:75%;margin-left:auto; margin-right:auto;">
-    <div class="panel-heading">
+    <div class="panel-heading dashboard-heading">
         <h3>Dashboard</h3>
     </div>
     <div class="panel-body">
@@ -29,6 +33,7 @@
 </div>
 </div>
 </div>
+    </div>
 
 <footer th:replace="fragments/footer :: mainFooter"></footer>
 <script

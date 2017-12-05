@@ -201,6 +201,7 @@ html {
     font-weight: bold;
     padding-top: 175px;
     padding-bottom: 12em;
+    background-color: #FCFAF7;
 
 }
 
@@ -256,6 +257,15 @@ html {
     margin-top: 1em;
 }
 
+#new-saver-button {
+    height: 72px;
+    width: 300px;
+    font-size: 20px;
+    background-color: #6AC7C1;
+    color: white;
+    margin-top: 1em;
+}
+
 /*Text forms:*/
 #child-username {
     margin-left: 5px;
@@ -283,6 +293,7 @@ html {
     border-radius: 10px;
     height: 550px;
     padding-top: 60px;
+    margin-bottom: 60px;
 
 }
 
@@ -338,7 +349,7 @@ html {
 }
 
 .profile {
-    padding-top: 100px;
+    padding-top: 85px;
 }
 
 
