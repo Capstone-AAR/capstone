@@ -426,6 +426,20 @@ html {
     -ms-text-justify: distribute-all-lines;
     text-justify: distribute-all-lines;
 }
+.about-pics{
+    position: relative;
+    display: inline-block;
+    font-size: 22px;
+    /*text-align: center;*/
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    right: -100px;
+
+    text-align: center;
+    -ms-text-justify: distribute-all-lines;
+    text-justify: distribute-all-lines;
+}
 
 .index-pics {
     padding-top: 6em;
@@ -478,6 +492,9 @@ html {
 #points {
     text-align: right;
     font-weight: bolder;
+}
+#about-heading{
+    text-align: center;
 }
 
 .x {
