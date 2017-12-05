@@ -215,15 +215,21 @@ html {
     right: -65px;
 }
 
+
+
 .register-form {
     padding: 40px;
+    padding-top: 60px;
     background-color: white;
-    font-size: 20px;
+    font-size: 25px;
     color: #5A6075;
     border-radius: 10px;
-    width: 20em;
+    width: 400px;
+    height: 500px;
+
 
 }
+
 
 #sign-up {
     text-align: center;
