@@ -46,9 +46,10 @@
 }
 
 .child-background {
-    background-image: url(../../img/orangeTri.png);
-    /*background-repeat: no-repeat;*/
-    background-size: cover;
+    background-color: #70c6c1;
+    /*background-image: url(../../img/orangeTri.png);*/
+    /*!*background-repeat: no-repeat;*!*/
+    /*background-size: cover;*/
 }
 
 .dashboard-heading, .done-goals-panel {
