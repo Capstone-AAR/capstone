@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head th:replace="fragments/header :: main-header('Log in')"></head>
+
+<body>
+<nav th:replace="fragments/navbar :: mainNavbar"></nav>
+<div class="profile login-page">
+    <div class="container">
+        <div class="row">
+            <div class="about-pics col-lg-4">
+                <img th:src="@{/img/book.png}" alt="rosalie" height="200" width="200" id="rosalie"/>
+                <p>Rosalie Gomez</p>
+            </div>
+
+            <div class="about-pics col-lg-4">
+                <img th:src="@{/img/web-design.png}" alt="anderson" height="200" width="200" id="anderson"/>
+                <p>Anderson Cardoso</p>
+
+            </div>
+
+            <div class="about-pics col-lg-4">
+                <img th:src="@{/img/cash-point.png}" alt="alex" height="200" width="200" id="alex"/>
+                <p>Alex Potter</p>
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+
+</div>
+<footer th:replace="fragments/footer :: mainFooter"></footer>
+</body>
+</html>

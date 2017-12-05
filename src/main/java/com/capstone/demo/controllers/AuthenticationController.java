@@ -88,4 +88,11 @@ public class AuthenticationController {
 
 
     }
+
+
+    ///////FOR ABOUT US PAGE//////////////
+    @GetMapping("/about-us")
+    public String aboutUsPage() {
+        return "users/about-us";
+    }
 }
