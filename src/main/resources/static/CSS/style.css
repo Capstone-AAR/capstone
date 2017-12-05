@@ -208,11 +208,13 @@ html {
 /*On the register page*/
 .register-text {
     position: relative;
-    font-size: 50px;
-    width: 730px;
+    font-size: 100px;
+    width: 500px;
     margin-left: 6em;
     text-align: center;
     right: -65px;
+    display:inline-block;
+    margin-top: 50px;
 }
 
 
