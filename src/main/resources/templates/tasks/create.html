@@ -49,19 +49,19 @@
                                           th:object="${task}">
                                         <input type="hidden" name="goalId" th:value="${id}"/>
                                         <input type="hidden" id="taskId" name="taskId"/>
-                                        <input type="submit" class="btn btn-danger" id="deleteButton" value="Delete"/>
+                                        <input type="submit" class="btn btn-danger x" id="deleteButton" value="Delete"/>
                                     </form>
                                     <div>
 
                                     </div>
                                     <div id="taskStatus">
                                         <button th:if="${#authentication.principal.role == 'parent'}" type="submit"
-                                                class="btn btn-primary" data-dismiss="modal" id="approve-task">
+                                                class="btn btn-primary x" data-dismiss="modal" id="approve-task">
                                             Approve
                                         </button>
                                     </div>
                                     <button th:if="${#authentication.principal.role == 'child'}" type="submit"
-                                            class="btn btn-primary" data-dismiss="modal" id="completed-task">
+                                            class="btn btn-primary x" data-dismiss="modal" id="completed-task">
                                         completed
                                     </button>
                                 </div>

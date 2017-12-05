@@ -39,16 +39,8 @@ $(document).ready(function () {
             taskId.val(calEvent.id);
             $('#modalTitle').html(calEvent.title);
             $modalBody.html('Description:  <br>' + calEvent.taskDescription);
-            if(calEvent.points == 1 || calEvent.points == '1') {
-                console.log();
-                $modalBody.append('<br><br>' + 'Value:  <br>' + calEvent.points + ' point');
-            }
 
-            if(calEvent.points !== '1') {
-                console.log();
-                $modalBody.append('<br><br>' + 'Value:  <br>' + calEvent.points + ' points');
-            }
-            // $modalBody.append('<br><br>' + 'Value:  <br>' + calEvent.points + ' points');
+            $modalBody.append('<br><br>' + 'Value:  <br>' + calEvent.points + ' points');
             $modalBody.css("font-size", "20px");
             if (calEvent.status === 'REQUEST_APPROVAL') {
                 testColor = 'black';
@@ -91,7 +83,8 @@ $(document).ready(function () {
                     'background-color': '#ff0017',
                     'border-color': '#ff0017',
                     'font-weight' : 'bold',
-                    'height' :  '30px'
+                    'height' :  '30px',
+                    'font-size' : '20px'
                 })
             }
 
@@ -101,7 +94,8 @@ $(document).ready(function () {
                    'background-color': '#F27A33',
                    'border-color': '#F27A33',
                    'font-weight' : 'bold',
-                   'height' :  '30px'
+                   'height' :  '30px',
+                   'font-size' : '20px'
                })
             }
 

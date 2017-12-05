@@ -479,3 +479,14 @@ html {
     text-align: right;
     font-weight: bolder;
 }
+
+.x {
+    width: 80px;
+    font-weight: bold;
+}
+
+#approve-task {
+    position: relative;
+    top: -33px;
+    left: -96px;
+}
