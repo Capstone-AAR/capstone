@@ -496,3 +496,14 @@ html {
 #about-heading{
     text-align: center;
 }
+
+.x {
+    width: 80px;
+    font-weight: bold;
+}
+
+#approve-task {
+    position: relative;
+    top: -33px;
+    left: -96px;
+}
