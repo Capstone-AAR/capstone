@@ -434,7 +434,7 @@ html {
     width: 300px;
     margin-left: auto;
     margin-right: auto;
-    /*right: -100px;*/
+    right: -100px;
 
     text-align: center;
     -ms-text-justify: distribute-all-lines;
@@ -492,4 +492,7 @@ html {
 #points {
     text-align: right;
     font-weight: bolder;
+}
+#about-heading{
+    text-align: center;
 }
