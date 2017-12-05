@@ -39,7 +39,16 @@ $(document).ready(function () {
             taskId.val(calEvent.id);
             $('#modalTitle').html(calEvent.title);
             $modalBody.html('Description:  <br>' + calEvent.taskDescription);
-            $modalBody.append('<br><br>' + 'Points:  <br>' + calEvent.points);
+            if(calEvent.points == 1 || calEvent.points == '1') {
+                console.log();
+                $modalBody.append('<br><br>' + 'Value:  <br>' + calEvent.points + ' point');
+            }
+
+            if(calEvent.points !== '1') {
+                console.log();
+                $modalBody.append('<br><br>' + 'Value:  <br>' + calEvent.points + ' points');
+            }
+            // $modalBody.append('<br><br>' + 'Value:  <br>' + calEvent.points + ' points');
             $modalBody.css("font-size", "20px");
             if (calEvent.status === 'REQUEST_APPROVAL') {
                 testColor = 'black';
