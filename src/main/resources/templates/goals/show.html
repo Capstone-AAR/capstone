@@ -5,7 +5,7 @@
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 <div class="profile">
-<div th:each="goal :${goal}">
+<div th:each="goal :${goal}" style="max-width:75%;margin-left:auto; margin-right:auto;">
     <h1>Your goal:</h1>
     <h1 th:text="${goal.goalName}">
 
