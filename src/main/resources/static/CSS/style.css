@@ -12,6 +12,10 @@
 /*}*/
 
 /*///////////////////////////*/
+.h2, h2 {
+    font-size: 45px;
+    line-height: 0.2;
+}
 
 .footer {
     text-align: center;
@@ -128,7 +132,7 @@ li {
     border-radius: 35px;
     padding: 1em;
     font-size: 14px;
-    line-height: 1.1428571429;
+    line-height: 2.142857;
     text-transform: uppercase;
 
 }
@@ -160,13 +164,13 @@ html {
     background-color: #444858;
     color: white;
     margin-top: 100px;
-    height: 50px;
+    height: 72px;
     width: 300px;
     font-size: 20px;
 }
 
 #login {
-    height: 50px;
+    height: 72px;
     width: 300px;
     font-size: 20px;
     background-color: #6AC7C1;
@@ -177,7 +181,7 @@ html {
     text-align: center;
     position: relative;
     display: inline-block;
-    height: 50px;
+    height: 72px;
     width: 300px;
     font-size: 20px;
     margin-bottom: 10px;
@@ -204,15 +208,20 @@ html {
 
 }
 
+.home-page-bottom {
+    font-size: 50px;
+    width: 730px;
+    text-align: center;
+    margin-top: 50px;
+}
 
 /*On the register page*/
 .register-text {
     position: relative;
-    font-size: 100px;
-    width: 500px;
+    font-size: 50px;
+    width: 730px;
     margin-left: 6em;
     text-align: center;
-    right: -65px;
     display:inline-block;
     margin-top: 50px;
 }
@@ -232,13 +241,12 @@ html {
 
 }
 
-
 #sign-up {
     text-align: center;
 }
 
 #signup-button {
-    height: 50px;
+    height: 72px;
     width: 300px;
     font-size: 20px;
     background-color: #6AC7C1;
@@ -358,28 +366,28 @@ html {
 
     position: absolute;
     top: 220px;
-    left: 747px;
+
 }
 
 .second {
     max-width: 340px;
     position: absolute;
     top: 480px;
-    right: 730px;
+
 }
 
 .third {
     max-width: 340px;
     position: absolute;
     top: 770px;
-    left: 747px;
+
 }
 
 .fourth {
     max-width: 340px;
     position: absolute;
     top: 1000px;
-    right: 735px;
+
 }
 
 .info-titles {
