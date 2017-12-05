@@ -463,3 +463,8 @@ html {
     margin-top:150px;
     margin-left:150px;
 }
+
+#points {
+    text-align: right;
+    font-weight: bolder;
+}
