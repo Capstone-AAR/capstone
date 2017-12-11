@@ -41,9 +41,6 @@
 
 /*//////////child profile panels/////////*/
 
-.profile{
-    padding-top: 100px;
-}
 
 .child-background {
     background-color: #70c6c1;
@@ -63,4 +60,8 @@
 .complete-goals-header {
     text-align: center;
 }
-
+@media screen and (min-width:480px) {
+    .profile {
+        padding-top: 100px;
+    }
+}
