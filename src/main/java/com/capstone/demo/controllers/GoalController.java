@@ -124,7 +124,7 @@ public class GoalController {
 
         goal.setUser(userDao.findByChildId(childId));
         service.save(goal);
-        return "redirect:/goals";
+        return "redirect:/profile";
     }
 
     @GetMapping("/goals/delete")
