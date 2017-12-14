@@ -29,9 +29,9 @@ import java.util.stream.Collectors;
 public class AuthenticationController {
 
     //////// ATTRIBUTES //////////
-    //////////////////////////////
+    ////////////////////////////////
     // Private fields(attributes)
-    //////////////////////////////
+    ////////////////////////////////
     private ParentRepository parentDao;
     private ChildRepository childDao;
     private GoalRepository goalDao;
