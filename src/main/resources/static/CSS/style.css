@@ -717,23 +717,23 @@ FOR MOBILE PHONES
     }
 
     /*Parent profile page*/
-    #goalName {
-    }
+    /*#goalName {*/
+    /*}*/
 
-    #goalName {
-        position: relative;
-        float: right;
-    }
+    /*#goalName {*/
+        /*position: relative;*/
+        /*float: right;*/
+    /*}*/
 
-    #totalPoints {
-        position: relative;
-        float: right;
-    }
+    /*#totalPoints {*/
+        /*position: relative;*/
+        /*float: right;*/
+    /*}*/
 
-    #trackProgress {
-        position: relative;
-        float: right;
-    }
+    /*#trackProgress {*/
+        /*position: relative;*/
+        /*float: right;*/
+    /*}*/
 
     #child_id {
         width: 300px;
@@ -919,3 +919,17 @@ FOR MOBILE PHONES
         left: -96px;
     }
 }
+
+#logoutBtn {
+    color: #6AC7C1;
+    text-decoration: none;
+    font-size: 15px;
+    position: relative;
+    top: -4px;
+}
+
+#updateGoal {
+    padding-top: 100px;
+}
+
+

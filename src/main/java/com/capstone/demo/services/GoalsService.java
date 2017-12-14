@@ -33,7 +33,8 @@ public class GoalsService {
     }
 
     public void delete (long id){
-        goalDao.delete(id);}
+        goalDao.delete(id);
+    }
 
     //Trying to find completed goals!!
 

@@ -2,7 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
     <link href="https://fonts.googleapis.com/css?family=Lato|Raleway" rel="stylesheet"/>
     <title>Title</title>
 </head>
@@ -16,40 +17,39 @@
         <h2 class="thrifty-title">Thrifty</h2>
 
 
-    <ul class="navbar-links">
-        <!--<p th:text="#{'Hello, ' + ${parent.username}}"></p>-->
-        <li><a class="index-nav" href="/profile">Home</a></li>
-        <li><a class="index-nav" href="/goals/create">Set a Goal</a></li>
-        <li><a class="index-nav" href="/children/new">Add New Saver</a></li>
-        <!--<li><a  th:text="${parent.user.username}"></a> </li>-->
-        <li>
-            <a class="index-nav" href="/login?logout" th:action="@{/logout}" th:method="post">
-                 Logout
-            </a>
-        </li>
-
-        <!--<li>-->
-            <!--<form th:action="@{/logout}" th:method="post">-->
-                <!--<button class="btn-link btn" style="margin-top: 8px"> | Logout</button>-->
-            <!--</form>-->
-        <!--</li>-->
-    </ul>
+        <ul class="navbar-links">
+            <!--<p th:text="#{'Hello, ' + ${parent.username}}"></p>-->
+            <li><a class="index-nav" href="/profile">Home</a></li>
+            <li><a class="index-nav" href="/goals/create">Set a Goal</a></li>
+            <li><a class="index-nav" href="/children/new">Add New Saver</a></li>
+            <!--<li><a  th:text="${parent.user.username}"></a> </li>-->
+            <!--<li>-->
+                <!--<a class="index-nav" href="/login?logout" th:action="@{/logout}" th:method="post">-->
+                    <!--Logout-->
+                <!--</a>-->
+            <!--</li>-->
+            <li>
+                <form th:action="@{/logout}" th:method="post">
+                    <button id="logoutBtn" class="btn-link btn" style="margin-top: 8px">Logout</button>
+                </form>
+            </li>
+        </ul>
     </div>
 
 </div>
 
-    <nav sec:authorize="isAnonymous()" id="main-nav" class="navbar navbar-default" th:fragment="mainNavbar">
-        <div class="logo">
-            <img th:src="@{/img/squirrel.png}" alt="facebook" height="50" width="50" class="squirrel-o"/>
-            <h2 class="thrifty-title">Thrifty</h2>
+<nav sec:authorize="isAnonymous()" id="main-nav" class="navbar navbar-default" th:fragment="mainNavbar">
+    <div class="logo">
+        <img th:src="@{/img/squirrel.png}" alt="facebook" height="50" width="50" class="squirrel-o"/>
+        <h2 class="thrifty-title">Thrifty</h2>
         <ul class="navbar-links">
             <!--<p th:text="${#authentication.principal.user}"></p>-->
             <li><a id="main-nav-login" class="index-nav" href="/login">login</a></li>
             <li><a href="/register" class="circle-border index-nav">Sign Up Today!</a></li>
         </ul>
-        </div>
+    </div>
 
-    </nav>
+</nav>
 
 
 </body>

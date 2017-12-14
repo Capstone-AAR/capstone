@@ -31,6 +31,8 @@
             Current Points: <li class="track-progress" th:text="${goal.trackProgress}"></li>
             <br />
             <a th:href="@{/tasks/create(id=${goal.id})}">Add tasks</a>
+            <br />
+            <a th:href="@{/goals/update/{id}(id=${goal.id})}">Update goal</a>
         </ul>
 
         <!--For Progress Bar-->
