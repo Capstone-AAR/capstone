@@ -23,8 +23,9 @@ import java.util.stream.Collectors;
 // and can be used to view certain pages that need authentication.
 ///////////////////////////////////////////////////////////////////
 
-
+//////////////////////////////
 // Controller annotation. Indicating spring framework how this specific class behaves.
+//////////////////////////////
 @Controller
 public class AuthenticationController {
 
