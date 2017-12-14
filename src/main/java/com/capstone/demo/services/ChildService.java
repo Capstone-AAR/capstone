@@ -11,21 +11,25 @@ public class ChildService {
     private final ChildRepository childDao;
 
     @Autowired
-    public ChildService(ChildRepository childDao){
+    public ChildService(ChildRepository childDao) {
         this.childDao = childDao;
     }
 
     //View parent users//
 
-    public Iterable<Child> findAll(){return childDao.findAll();}
+    public Iterable<Child> findAll() {
+        return childDao.findAll();
+    }
 
-    public Child findById(Long id){
+    public Child findById(Long id) {
         return childDao.findOne(id);
     }
-    public Child save (Child child){
+
+    public Child save(Child child) {
         return childDao.save(child);
     }
-    public void delete(long id){
+
+    public void delete(long id) {
         childDao.delete(id);
     }
 

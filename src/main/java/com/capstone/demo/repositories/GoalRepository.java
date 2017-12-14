@@ -21,5 +21,6 @@ public interface GoalRepository extends CrudRepository<Goal,Long> {
 
     @Query("select g from Goal g join g.user u where g.totalPoints <> g.trackProgress and u.id IN ?1")
     List<Goal> childrenIncompleteGoals(List<Long> childrenId);
+
 }
 
