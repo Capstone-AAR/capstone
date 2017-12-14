@@ -908,10 +908,10 @@ FOR MOBILE PHONES
         font-weight: bolder;
     }
 
-    .x {
-        width: 80px;
-        font-weight: bold;
-    }
+.x {
+    width: 85px;
+    font-weight: bold;
+}
 
     #approve-task {
         position: relative;
