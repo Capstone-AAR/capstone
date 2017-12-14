@@ -3,7 +3,6 @@ package com.capstone.demo.controllers;
 /////////////////////////////////////////////////////
 // Libraries imported and being used in this class.
 /////////////////////////////////////////////////////
-
 import com.capstone.demo.models.Child;
 import com.capstone.demo.models.Goal;
 import com.capstone.demo.models.Parent;
@@ -20,14 +19,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import java.util.List;
 
 
 @Controller
 public class ChildController {
 
-    //////// ATTRIBUTES //////////
+    //////// ATTRIBUTES ////////////
     ////////////////////////////////
     // Private fields(attributes)
     ////////////////////////////////
@@ -105,6 +103,9 @@ public class ChildController {
         child.setParent(parent);
         childDao.save(child);
 
+        ///////////////////////////////////////////////
+        // Redirect new user to profile view interface
+        ///////////////////////////////////////////////
         return "redirect:/profile";
     }
 
