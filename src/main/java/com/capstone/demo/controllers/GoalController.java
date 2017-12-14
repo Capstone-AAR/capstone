@@ -127,17 +127,17 @@ public class GoalController {
         return "redirect:/goals";
     }
 
-    @GetMapping("/goals/{id}/delete")
+    @GetMapping("/goals/delete")
     public String showGoalToBeDeleted(@PathVariable Long id, Model viewModel){
         Goal goal = service.findById(id);
         viewModel.addAttribute("goal", goal);
-        return "goals/delete";
+        return "goals/update";
     }
 
-    @PostMapping("/goals/{id}/delete")
-    public String deleteGoal (@ModelAttribute Goal goal, @PathVariable Long id) {
-        service.delete(id);
-        return "redirect:/goals/child";
+    @PostMapping("/goals/delete")
+    public String deleteGoal (@ModelAttribute Goal goal, @RequestParam(name = "goalIdy") long goalIdy) {
+        service.delete(goalIdy);
+        return "redirect:/profile";
     }
 
     /////might need id in url
