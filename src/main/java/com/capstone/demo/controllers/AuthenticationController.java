@@ -1,5 +1,8 @@
 package com.capstone.demo.controllers;
 
+/////////////////////////////////////////////////////
+// Libraries imported and being used in this class.
+/////////////////////////////////////////////////////
 import com.capstone.demo.models.Child;
 import com.capstone.demo.models.Goal;
 import com.capstone.demo.models.Parent;
@@ -29,7 +32,7 @@ import java.util.stream.Collectors;
 @Controller
 public class AuthenticationController {
 
-    //////// ATTRIBUTES //////////
+    //////// ATTRIBUTES ////////////
     ////////////////////////////////
     // Private fields(attributes)
     ////////////////////////////////
