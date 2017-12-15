@@ -1,5 +1,9 @@
 package com.capstone.demo.controllers;
 
+/////////////////////////////////////////////////////
+// Libraries imported and being used in this class.
+/////////////////////////////////////////////////////
+
 import com.capstone.demo.models.*;
 import com.capstone.demo.repositories.ChildRepository;
 import com.capstone.demo.repositories.ParentRepository;
@@ -32,6 +36,10 @@ import java.util.Locale;
 @Controller
 public class TaskController {
 
+    //////// ATTRIBUTES ////////////
+    ////////////////////////////////
+    // Private fields(attributes)
+    ////////////////////////////////
     private final TasksService service;
     private final TaskRepository taskDao;
     private final ParentsService parentsService;
@@ -41,6 +49,10 @@ public class TaskController {
     private final ParentRepository parentDao;
     private final ChildRepository childDao;
 
+    /////////////////////////////////////////////////////////////////////////////
+    // Autowire annotation when used in a constructor method it allows you to
+    // skip configurations elsewhere of what to inject and just does it for you.
+    //////////////////////////////////////////////////////////////////////////////
     @Autowired
     public TaskController(TasksService service, TaskRepository taskDao, ParentsService parentsService, GoalsService goalsService, UserService userService, UserRepository userDao, ParentRepository parentDao, ChildRepository childDao) {
         this.service = service;
@@ -53,16 +65,29 @@ public class TaskController {
         this.childDao = childDao;
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////// METHODS ///////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     ///////////////////////////////////////////////////////////////////////
-    // See all tasks created by this user
+    // See all tasks created by user in session.
     ///////////////////////////////////////////////////////////////////////
     @GetMapping("/tasks")
     public String showAll(Model viewModel) {
+
+        ////////////////////////
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        ///////////////////////
         Parent parent = parentDao.findByUser(user);
+
+        ///////////////////////
         viewModel.addAttribute("parent", parent);
+
+        ////////////////////////
         viewModel.addAttribute("child", childDao.findByUser(user));
 
+        ///////////////////////
         String role = user.getRole();
         System.out.println(role);
         viewModel.addAttribute("role", role);
@@ -73,19 +98,32 @@ public class TaskController {
         return "users/tasks";
     }
 
-    //////////////////////////////////////////////////////////////////////
-    // Create new task
-    //////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    // Display create new tak page with access to necessary object attributes.
+    ////////////////////////////////////////////////////////////////////////////
     @GetMapping("/tasks/create")
     public String showCreateTaskForm(Model viewModel, @RequestParam(value = "id", required = false) Long goalId) throws JsonProcessingException {
+
+        //////////////////////
         Iterable<Task> tasks = taskDao.findAll();
+
+        //////////////////////
         ObjectMapper mapper = new ObjectMapper();
+
+        /////////////////////
         viewModel.addAttribute("id", goalId);
         viewModel.addAttribute("tasks", mapper.writeValueAsString(tasks));
         viewModel.addAttribute("task", new Task());
+
+        /////////////////////
         return "tasks/create";
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////
+    // Persist new task data to task table. NOTE; this method is receiving two inputs,
+    // in the body pf the form in the view page. The method receives these inputs with
+    // ths use of request param.
+    ////////////////////////////////////////////////////////////////////////////////////
     @PostMapping("/tasks/create")
     public String createNewTask(@ModelAttribute Task task,
                                 @RequestParam(name = "startDateMoment") String startDate,
@@ -95,6 +133,9 @@ public class TaskController {
                                 RedirectAttributes redirect
     ) throws ParseException {
 
+        /////////////////////////////////////////////////////////////////////////////
+        // Validate task for errors.
+        //////////////////////////////////////////////////////////////////////////////
         if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
             model.addAttribute("task", task);
@@ -103,38 +144,65 @@ public class TaskController {
 
         }
 
+        /////////////////////////////////////////////////////////////////////////////
+        // Validate if user has a session. (is logged in)
+        //////////////////////////////////////////////////////////////////////////////
         if (!parentsService.isLoggedIn()) {
             redirect.addFlashAttribute("test", true);
             return "redirect:/register";
         }
 
+
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-        System.out.println(startDate);
+
         Date start = format.parse(startDate);
+
         task.setStartDate(start);
-        System.out.println(start.toString());
-        System.out.println(goalsService.findById(goalId).getGoalName());
+
         task.setGoal(goalsService.findById(goalId));
+
         task.setStatus(TaskStatus.NEW);
+
         service.save(task);
+
+        ///////////////////////////////////////////////////////////////////////
+        // Take user back to same calendar display now modified with new task.
+        ///////////////////////////////////////////////////////////////////////
         return "redirect:/tasks/create?id=" + goalId;
     }
 
-    //////////////////////////////////////////////////////////////////////
-    // View all tasks using Json
-    ////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////
+    // Display all tasks that are not approved in JSON format.
+    ////////////////////////////////////////////////////////////
     @GetMapping("/tasks.json")
     public @ResponseBody
     Iterable<Task> viewAllTasksInJsonFormat(@RequestParam(name = "goalId") Long goalId) {
 
+        //////////////////////////////////////////////////////////////////////
+        // List of tasks that belong to specified goal.
+        //////////////////////////////////////////////////////////////////////
         Iterable<Task> tasks = taskDao.findByGoalId(goalId);
+
+        ////////////////////////////
+        // Empty list of type Task.
+        ////////////////////////////
         ArrayList<Task> notApproved = new ArrayList<>();
 
+        ///////////////////////////// ENHANCED FOR LOOP ///////////////////////////
+        ///////////////////////////////////////////////////////////////////////////
+        // Iterate through list of tasks that belong to specified goal and assign
+        //  not approved tasks to newly created list of tasks.
+        ///////////////////////////////////////////////////////////////////////////
         for (Task task : tasks) {
-            if(task.getStatus() != TaskStatus.APPROVED) {
+
+            if (task.getStatus() != TaskStatus.APPROVED) {
                 notApproved.add(task);
             }
         }
+
+        /////////////////////////
+        // Return modified list.
+        /////////////////////////
         return notApproved;
     }
 
@@ -144,54 +212,77 @@ public class TaskController {
     //////////////////////////////////////////////////////////////////////
     @GetMapping("/tasks/tasks")
     public String viewAllTasksWithAjax() {
+
+        //////////////////////////////////////////////////////////////////////
+        // Page now being used. However, method is functional (it works!)
+        //////////////////////////////////////////////////////////////////////
         return "tasks/tasks";
     }
 
-
-    ////querying approved tasks from repo using enum
+    /////////////////////////////////////////////////
+    // querying approved tasks from repo using enum.
+    /////////////////////////////////////////////////
     @PostMapping("/tasks")
     public String getStatus(Model model) {
+
         List<Task> completedTasks = taskDao.findByStatus(TaskStatus.REQUEST_APPROVAL);
+
         model.addAttribute("pendingTasks", completedTasks);
 
         return "users/tasks";
     }
 
+    /////////////////////////////////////////////////
+    //
+    /////////////////////////////////////////////////
     @GetMapping("/tasks/approve/{id}")
     @ResponseBody
     public String approveTask(@PathVariable Long id, Model model) {
         Task task = taskDao.findOne(id);
-        System.out.println("////////////////////////////");
-        System.out.println(service.findById(id).getStatus());
+
         model.addAttribute("taskStatus", service.findById(id).getStatus());
-        System.out.println("////////////////////////////");
+
         task.setStatus(TaskStatus.APPROVED);
+
         task.updateGoalProgress();
 
         if (task.completesGoal()) {
+
             Child child = childDao.findByUserId(task.childUserId());
+
             child.increasScore(task.getGoal());
+
             childDao.save(child);
         }
 
         taskDao.save(task);
+
         return "";
     }
 
+    /////////////////////////////////////////////////
+    // Querying approved tasks from repo using enum.
+    /////////////////////////////////////////////////
     @GetMapping("/tasks/completed/{id}")
     @ResponseBody
     public String completeTask(@PathVariable Long id, Model model) {
+
         Task task = taskDao.findOne(id);
+
         task.setStatus(TaskStatus.REQUEST_APPROVAL);
+
         taskDao.save(task);
+
         return "";
     }
 
-    //////////////////////////////////////////////////////////////////////
-    // Delete event.
-    //////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////
+    // Display the task that is about to be deleted
+    ////////////////////////////////////////////////
     @GetMapping("/tasks/delete")
     public String showTaskToBeDeleted(@PathVariable Long id, Model viewModel) {
+
+
         Task task = service.findById(id);
         viewModel.addAttribute("task", task);
         System.out.println(task.getStatus());
@@ -199,9 +290,14 @@ public class TaskController {
         return "tasks/edit";
     }
 
+    //////////////////////////////////////////////////////////////////////////
+    // Delete task and redirect user back to same calendar view now modified.
+    //////////////////////////////////////////////////////////////////////////
     @PostMapping("/tasks/delete")
     public String deleteTask(@RequestParam(value = "taskId") Long id, @RequestParam(name = "goalId") long goalId) {
+
         service.delete(id);
+
         return "redirect:/tasks/create?id=" + goalId;
     }
 }
