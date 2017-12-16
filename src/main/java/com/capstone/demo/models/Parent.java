@@ -1,22 +1,38 @@
 package com.capstone.demo.models;
 
+/////////////////////////////////////////////////////
+// Libraries imported and being used in this class.
+/////////////////////////////////////////////////////
 import org.hibernate.validator.constraints.NotBlank;
-
 import javax.persistence.*;
 import java.util.List;
 
+//////////////////////////////////////////////////////////////////////////////
+// Annotation indicating this class is an entity that will
+// model a table inside my database. NOTE; the table annotation
+// tells Spring what to name the table that will be modeled after this entity.
+///////////////////////////////////////////////////////////////////////////////
 @Entity
 @Table(name = "parents")
 public class Parent {
 
-    //////////////////////////////////////////////////////////
-    // Fields (Attributes)
-    //////////////////////////////////////////////////////////
+    //////// ATTRIBUTES ////////////
+    ////////////////////////////////
+    // Private fields(attributes)
+    ////////////////////////////////
+
+    ////////////////////////////////////////
+    // Annotations connecting table columns
+    // to equivalent fields.
+    ////////////////////////////////////////
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    //////////////////////////////////////////////////////////
+    // One to one relation to User model
+    //////////////////////////////////////////////////////////
     @OneToOne
     private User user;
 
@@ -27,7 +43,6 @@ public class Parent {
     // Child object list populated by children retrieved
     // from the many to many connection.
     //////////////////////////////////////////////////////////
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "parent")
     private List<Child> children;
 
@@ -45,26 +60,33 @@ public class Parent {
     //////////////////////////////////////////////////////////
     // Setters and getters.
     //////////////////////////////////////////////////////////
+
+    ////////////////////////
     public long getId() {
         return id;
     }
 
+    ////////////////////////
     public void setId(long id) {
         this.id = id;
     }
 
+    ////////////////////////
     public List<Child> getChildren() {
         return children;
     }
 
+    ////////////////////////
     public void setChildren(List<Child> children) {
         this.children = children;
     }
 
+    ////////////////////////
     public User getUser() {
         return user;
     }
 
+    ////////////////////////
     public void setUser(User user) {
         this.user = user;
     }
