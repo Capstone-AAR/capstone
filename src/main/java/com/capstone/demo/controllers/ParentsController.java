@@ -3,7 +3,6 @@ package com.capstone.demo.controllers;
 /////////////////////////////////////////////////////
 // Libraries imported and being used in this class.
 /////////////////////////////////////////////////////
-
 import com.capstone.demo.models.Parent;
 import com.capstone.demo.models.User;
 import com.capstone.demo.repositories.ChildRepository;
