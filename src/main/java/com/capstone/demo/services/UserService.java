@@ -9,8 +9,13 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+/////////////////////////////////////////////////////////////////////////
+// Service class is a special class used to provide more elaborate ways
+// to query and interact with data, and tables.
+/////////////////////////////////////////////////////////////////////////
 @Service
 public class UserService {
+
     private final UserRepository userDao;
 
     public boolean isLoggedIn() {
