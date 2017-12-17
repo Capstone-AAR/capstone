@@ -12,9 +12,17 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import com.capstone.demo.repositories.ParentRepository;
 import org.springframework.stereotype.Service;
 
+/////////////////////////////////////////////////////////////////////////
+// Service class is a special class used to provide more elaborate ways
+// to query and interact with data, and tables.
+/////////////////////////////////////////////////////////////////////////
 @Service
 public class UserDetailLoader implements UserDetailsService {
 
+    //////// ATTRIBUTES ////////////
+    ////////////////////////////////
+    // Private fields(attributes)
+    ////////////////////////////////
     private final UserRepository repository;
 
     @Autowired
@@ -24,11 +32,15 @@ public class UserDetailLoader implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
         User parent = repository.findByUsername(username);
 
         if (parent == null) {
+
             throw new UsernameNotFoundException(String.format("The parent with username %s cannot be found", username));
+
         }
+
         return new UserWithRoles(parent);
     }
 }

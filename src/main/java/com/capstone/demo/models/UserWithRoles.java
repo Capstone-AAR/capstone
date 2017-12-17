@@ -3,7 +3,6 @@ package com.capstone.demo.models;
 /////////////////////////////////////////////////////
 // Libraries imported and being used in this class.
 /////////////////////////////////////////////////////
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
