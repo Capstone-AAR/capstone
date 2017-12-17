@@ -1,12 +1,22 @@
 package com.capstone.demo.repositories;
 
+/////////////////////////////////////////////////////
+// Libraries imported and being used in this class.
+/////////////////////////////////////////////////////
 import com.capstone.demo.models.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+/////////////////////////////////////////////////////////////////
+// Repository is an interface used create simple queries used to
+// create, reade, update, delete data in my database.
+/////////////////////////////////////////////////////////////////
 public interface UserRepository extends CrudRepository<User, Long> {
+
     User findByUsername(String username);
+
     User findById(Long id);
+
     User findByRole(String role);
 
 
