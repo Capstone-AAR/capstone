@@ -11,23 +11,26 @@
         <form th:action="@{/children/new}" method="post" th:object="${user}">
             <h2 id="login-title">Add Child</h2>
             <div class="form-group">
-                <input class="input-field" th:field="*{username}" id="child-username" name="username" placeholder="child username" type="text"/>
+                <input class="input-field" th:field="*{username}" id="child-username" name="username"
+                       placeholder="child username" type="text"/>
             </div>
             <div class="form-group">
-                <input class="input-field" th:field="*{email}" id="child-email" name="email" placeholder="child's email" type="text"/>
+                <input class="input-field" th:field="*{email}" id="child-email" name="email" placeholder="child's email"
+                       type="text"/>
             </div>
             <div class="form-group">
-                <input class="input-field" th:field="*{password}" id="child-password" placeholder="password" type="password"/>
+                <input class="input-field" th:field="*{password}" id="child-password" placeholder="password"
+                       type="password"/>
             </div>
-            <br />
-            <br />
+            <br/>
+            <br/>
             <input value="Sign me up" type="submit" class="btn btn-primary login-buttons" id="new-saver-button"/>
 
         </form>
     </div>
 </div>
 
-    <footer th:replace="fragments/footer :: mainFooter"></footer>
+<footer th:replace="fragments/footer :: mainFooter"></footer>
 
 </body>
 
