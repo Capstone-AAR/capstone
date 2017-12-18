@@ -3,11 +3,14 @@ package com.capstone.demo.controllers;
 /////////////////////////////////////////////////////
 // Libraries imported and being used in this class.
 /////////////////////////////////////////////////////
+
+import com.capstone.demo.models.Child;
 import com.capstone.demo.models.Parent;
 import com.capstone.demo.models.User;
 import com.capstone.demo.repositories.ChildRepository;
 import com.capstone.demo.repositories.ParentRepository;
 import com.capstone.demo.repositories.UserRepository;
+import com.capstone.demo.services.ChildService;
 import com.capstone.demo.services.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -15,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
@@ -32,6 +36,7 @@ public class ParentsController {
     private final ParentRepository parentRepository;
     private final ChildRepository childRepository;
     private final UserService userService;
+    private final ChildService childService;
 
 
     ///////////////////// CONSTRUCTOR METHOD /////////////////////////////
@@ -45,13 +50,15 @@ public class ParentsController {
             UserRepository repository,
             ParentRepository parentRepository,
             ChildRepository childRepository,
-            UserService userService
+            UserService userService,
+            ChildService childService
     ) {
         this.repository = repository;
         this.encoder = encoder;
         this.parentRepository = parentRepository;
         this.childRepository = childRepository;
         this.userService = userService;
+        this.childService = childService;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -126,6 +133,19 @@ public class ParentsController {
         // Redirect user to login page in order to login with new account.
         /////////////////////////////////////////////////////////////////////
         return "redirect:/login";
+    }
+
+    /////////////////////////////////////////////////////////////////////
+    // Take logged in parent user to edit-child-account page.
+    /////////////////////////////////////////////////////////////////////
+    @GetMapping("/users/edit-kid/{id}")
+    public String editKidProfile(@PathVariable long id, Model viewModel) {
+
+        User child = userService.findById(id);
+
+        viewModel.addAttribute("kid", child);
+
+        return "users/edit-kid";
     }
 
 }

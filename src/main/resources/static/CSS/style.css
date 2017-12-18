@@ -273,12 +273,7 @@ FOR MOBILE PHONES
     background: transparent;
     border-bottom: 1px solid #5A6075;
     -webkit-appearance: none;
-    /*-moz-appearance: none;*/
-    /*-ms-appearance: none;*/
-    /*-o-appearance: none;*/
-    /*appearance: none;*/
     border-radius: 0;
-    /*border: none;*/
     border-bottom: 1px solid #b2b2b2;
     outline: none !important;
     width: 100%;
@@ -435,12 +430,7 @@ FOR MOBILE PHONES
         background: transparent;
         border-bottom: 1px solid #5A6075;
         -webkit-appearance: none;
-        /*-moz-appearance: none;*/
-        /*-ms-appearance: none;*/
-        /*-o-appearance: none;*/
-        /*appearance: none;*/
         border-radius: 0;
-        /*border: none;*/
         border-bottom: 1px solid #b2b2b2;
         outline: none !important;
         width: 100%;
@@ -832,16 +822,10 @@ FOR MOBILE PHONES
         font-size: 22px;
     }
 
-    /*#index-pic{*/
-    /*height: 300px;*/
-    /*margin-left:25px;*/
-    /*}*/
-    /*This is for the 3 pics*/
     .three-pics {
         position: relative;
         display: inline-block;
         font-size: 22px;
-        /*text-align: center;*/
         width: 400px;
         margin-left: auto;
         margin-right: auto;
@@ -873,20 +857,6 @@ FOR MOBILE PHONES
         margin-bottom: 12px;
     }
 
-    /*#info-1{*/
-    /*display: inline-block;*/
-    /*margin-left: 35px;*/
-    /*margin-right: 10px;*/
-    /*}*/
-    /*#info-2 {*/
-        /*margin-top: 2em;*/
-    /*}*/
-
-    /*#info-3{*/
-    /*display: inline-block;*/
-    /*margin-left: 5px;*/
-    /*margin-right: 0;*/
-    /*}*/
     #index-present {
         margin: 0;
     }
@@ -908,7 +878,7 @@ FOR MOBILE PHONES
         font-weight: bolder;
     }
 
-.x {
+.task-form-btn {
     width: 85px;
     font-weight: bold;
 }
@@ -932,4 +902,8 @@ FOR MOBILE PHONES
     padding-top: 100px;
 }
 
+#edit-child-title {
+    padding-top: 100px;
+    margin-top: 0px;
+}
 

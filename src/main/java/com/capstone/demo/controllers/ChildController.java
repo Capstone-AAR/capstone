@@ -108,6 +108,4 @@ public class ChildController {
         ///////////////////////////////////////////////
         return "redirect:/profile";
     }
-
-
 }

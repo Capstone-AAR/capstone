@@ -28,12 +28,11 @@
                 <br/>
                 <input type="submit" value="Update Goal"/>
             </form>
-
             <form th:action="@{/goals/delete}" method="post" th:object="${goal}">
 
-                <input type="hidden" name="goalIdy" th:value="${goal.id}" />
+                <input type="hidden" name="goalIdy" th:value="${goal.id}"/>
 
-                <input class="btn btn-danger" type="submit" value="Delete Goal" />
+                <input class="btn btn-danger" type="submit" value="Delete Goal"/>
 
             </form>
 

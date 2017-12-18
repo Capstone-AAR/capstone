@@ -49,19 +49,22 @@
                                           th:object="${task}">
                                         <input type="hidden" name="goalId" th:value="${id}"/>
                                         <input type="hidden" id="taskId" name="taskId"/>
-                                        <input type="submit" class="btn btn-danger x" id="deleteButton" value="Delete"/>
+                                        <input type="submit" class="btn btn-danger task-form-btn" id="deleteButton"
+                                               value="Delete"/>
                                     </form>
                                     <div>
 
                                     </div>
                                     <div id="taskStatus">
                                         <button th:if="${#authentication.principal.role == 'parent'}" type="submit"
-                                                class="btn btn-primary x" data-dismiss="modal" id="approve-task">
+                                                class="btn btn-primary task-form-btn" data-dismiss="modal"
+                                                id="approve-task">
                                             Approve
                                         </button>
                                     </div>
                                     <button th:if="${#authentication.principal.role == 'child'}" type="submit"
-                                            class="btn btn-primary x" data-dismiss="modal" id="completed-task">
+                                            class="btn btn-primary task-form-btn" data-dismiss="modal"
+                                            id="completed-task">
                                         complete
                                     </button>
                                 </div>
@@ -97,10 +100,10 @@
                                             <label for="points">points:</label>
                                             <input class="input-field" th:field="*{points}" id="points"/>
                                         </div>
-                                        <br />
-                                        <br />
-                                        <hr />
-                                        <br />
+                                        <br/>
+                                        <br/>
+                                        <hr/>
+                                        <br/>
                                         <input type="hidden" id="startDateMoment" name="startDateMoment"/>
                                         <input class="btn btn-primary" type="submit" th:value="Create"/>
                                     </form>
