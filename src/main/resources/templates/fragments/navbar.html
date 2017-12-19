@@ -10,8 +10,10 @@
 <body>
 <div sec:authorize="isAuthenticated()" id="my-nav" class="navbar navbar-default" th:fragment="mainNavbar">
     <div class="logo">
-        <img th:src="@{/img/squirrel.png}" alt="facebook" height="50" width="50" class="squirrel-o"/>
-        <h2 class="thrifty-title">Thrifty</h2>
+        <a th:href="@{/profile}">
+            <img th:src="@{/img/squirrel.png}" alt="facebook" height="50" width="50" class="squirrel-o"/>
+            <h2 class="thrifty-title">Thrifty</h2>
+        </a>
         <ul class="navbar-links">
             <li><a class="index-nav" href="/profile">Home</a></li>
             <li><a class="index-nav" href="/goals/create">Set a Goal</a></li>
@@ -26,8 +28,9 @@
 </div>
 <nav sec:authorize="isAnonymous()" id="main-nav" class="navbar navbar-default" th:fragment="mainNavbar">
     <div class="logo">
-        <img th:src="@{/img/squirrel.png}" alt="facebook" height="50" width="50" class="squirrel-o"/>
-        <h2 class="thrifty-title">Thrifty</h2>
+        <a th:href="@{/}"><img th:src="@{/img/squirrel.png}" alt="facebook" height="50" width="50" class="squirrel-o"/>
+            <h2 class="thrifty-title">Thrifty</h2>
+        </a>
         <ul class="navbar-links">
             <li><a id="main-nav-login" class="index-nav" href="/login">login</a></li>
             <li><a href="/register" class="circle-border index-nav">Sign Up Today!</a></li>
