@@ -229,7 +229,8 @@ public class GoalController {
     // and used request param annotation to to use id in order to find goal and edit the same.
     ///////////////////////////////////////////////////////////////////////////////////////////////
     @PostMapping("/goals/update")
-    public String editGoal(@ModelAttribute Goal goal, @RequestParam(name = "goalIdx") long goalIdx){
+    public String editGoal(@ModelAttribute Goal goal,
+                           @RequestParam(name = "goalIdx") long goalIdx){
 
         ////////////////////////////////
         goal.setId(goalIdx);

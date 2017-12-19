@@ -16,10 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -94,7 +91,7 @@ public class ParentsController {
     @PostMapping("/users/register")
     public String registerForm(@Valid User user, Errors validation, Model model) {
 
-        /////////////////////////////////////
+        //////////////////////////////////
         String username = user.getUsername();
 
         //////////////////////////////////
@@ -139,13 +136,43 @@ public class ParentsController {
     // Take logged in parent user to edit-child-account page.
     /////////////////////////////////////////////////////////////////////
     @GetMapping("/users/edit-kid/{id}")
-    public String editKidProfile(@PathVariable long id, Model viewModel) {
+    public String editKidProfilePage(@PathVariable long id, Model viewModel) {
 
         User child = userService.findById(id);
 
         viewModel.addAttribute("kid", child);
 
         return "users/edit-kid";
+    }
+
+    /////////////////////////////////////////////////////////////////////
+    // Persist new modified data to user table.
+    /////////////////////////////////////////////////////////////////////
+    @PostMapping("/users/edit")
+    public String editKidProfile(@ModelAttribute User kid,
+                                 @RequestParam(name = "kidId") long kidId,
+                                 @RequestParam(name = "kidRole") String kidRole,
+                                 @RequestParam(name = "kidPassword") String kidPassword
+    ) {
+
+        //////////////////////////////////
+        User kidTwo = userService.findById(kidId);
+
+        //////////////////////////////////
+        kidTwo.setEmail(kid.getEmail());
+        kidTwo.setUsername(kid.getUsername());
+        kidTwo.setPassword(kidPassword);
+
+        //////////////////////////////////
+        String hash = encoder.encode(kid.getPassword());
+
+        //////////////////////////////////
+        kidTwo.setPassword(hash);
+
+        //////////////////////////////////
+        userService.save(kidTwo);
+
+        return"redirect:/profile";
     }
 
 }
