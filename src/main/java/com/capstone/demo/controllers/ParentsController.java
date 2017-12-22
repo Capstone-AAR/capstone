@@ -164,7 +164,7 @@ public class ParentsController {
         kidTwo.setPassword(kidPassword);
 
         //////////////////////////////////
-        String hash = encoder.encode(kid.getPassword());
+        String hash = encoder.encode(kidTwo.getPassword());
 
         //////////////////////////////////
         kidTwo.setPassword(hash);

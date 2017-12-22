@@ -10,7 +10,7 @@
 <body>
 <div sec:authorize="isAuthenticated()" id="my-nav" class="navbar navbar-default" th:fragment="mainNavbar">
     <div class="logo">
-        <a th:href="@{/profile}">
+        <a class="icon-logo" th:href="@{/profile}">
             <img th:src="@{/img/squirrel.png}" alt="facebook" height="50" width="50" class="squirrel-o"/>
             <h2 class="thrifty-title">Thrifty</h2>
         </a>
@@ -28,7 +28,7 @@
 </div>
 <nav sec:authorize="isAnonymous()" id="main-nav" class="navbar navbar-default" th:fragment="mainNavbar">
     <div class="logo">
-        <a th:href="@{/}"><img th:src="@{/img/squirrel.png}" alt="facebook" height="50" width="50" class="squirrel-o"/>
+        <a class="icon-logo" th:href="@{/}"><img th:src="@{/img/squirrel.png}" alt="facebook" height="50" width="50" class="squirrel-o"/>
             <h2 class="thrifty-title">Thrifty</h2>
         </a>
         <ul class="navbar-links">
