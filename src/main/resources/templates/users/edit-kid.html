@@ -25,11 +25,18 @@
                 <!--<label for="repeatPassword">Repeat Password:</label>-->
                 <!--<input id="repeatPassword" type="password"/>-->
                 <br/>
-                <input name="kidRole" type="hidden" th:value="${kid.role}" />
+                <input name="kidRole" type="hidden" th:value="${kid.role}"/>
                 <br/>
-                <input name="kidId" type="hidden" th:value="${kid.id}" />
+                <input name="kidId" type="hidden" th:value="${kid.id}"/>
                 <br/>
                 <input type="submit" value="Update Profile"/>
+            </form>
+            <form th:action="@{/users/delete}" method="post" th:object="${kid}">
+
+                <input type="hidden" th:value="${kid.id}" name="kidId" />
+
+                <input type="submit" class="btn btn-danger" value="Delete Profile" />
+
             </form>
         </div>
     </div>

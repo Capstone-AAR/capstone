@@ -11,6 +11,7 @@ import com.capstone.demo.repositories.ChildRepository;
 import com.capstone.demo.repositories.ParentRepository;
 import com.capstone.demo.repositories.UserRepository;
 import com.capstone.demo.services.ChildService;
+import com.capstone.demo.services.ParentsService;
 import com.capstone.demo.services.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -34,6 +35,7 @@ public class ParentsController {
     private final ChildRepository childRepository;
     private final UserService userService;
     private final ChildService childService;
+    private final ParentsService parentsService;
 
 
     ///////////////////// CONSTRUCTOR METHOD /////////////////////////////
@@ -48,14 +50,15 @@ public class ParentsController {
             ParentRepository parentRepository,
             ChildRepository childRepository,
             UserService userService,
-            ChildService childService
-    ) {
+            ChildService childService,
+            ParentsService parentsService) {
         this.repository = repository;
         this.encoder = encoder;
         this.parentRepository = parentRepository;
         this.childRepository = childRepository;
         this.userService = userService;
         this.childService = childService;
+        this.parentsService = parentsService;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -173,6 +176,24 @@ public class ParentsController {
         userService.save(kidTwo);
 
         return"redirect:/profile";
+    }
+
+    /////////////////////////////////////////////////////////////////////
+    // Delete kid user from table.
+    /////////////////////////////////////////////////////////////////////
+    @PostMapping("/users/delete")
+    public String deleteKidProfile(@ModelAttribute User kid,
+                                   @RequestParam(name = "kidId") long kidId
+    ) {
+        Child kidDelete = parentsService.findChild(kidId);
+
+        System.out.println(kidDelete.getId());
+
+        childService.delete(kidDelete.getId());
+
+        userService.delete(kidDelete.getUser().getId());
+
+        return "redirect:/profile";
     }
 
 }
