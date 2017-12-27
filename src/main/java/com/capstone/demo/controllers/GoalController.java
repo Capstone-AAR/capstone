@@ -1,5 +1,8 @@
 package com.capstone.demo.controllers;
 
+/////////////////////////////////////////////////////
+// Libraries imported and being used in this class.
+/////////////////////////////////////////////////////
 import com.capstone.demo.models.Child;
 import com.capstone.demo.models.Goal;
 import com.capstone.demo.models.Parent;
@@ -22,9 +25,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 @Controller
 public class GoalController {
 
+    //////// ATTRIBUTES ////////////
+    ////////////////////////////////
+    // Private fields(attributes)
+    ////////////////////////////////
     private final GoalsService service;
     private final GoalRepository goalDao;
     private ParentRepository parentDao;
@@ -33,6 +41,12 @@ public class GoalController {
     private final UserService userService;
     private ChildRepository childDao;
 
+    ///////////////////// CONSTRUCTOR METHOD /////////////////////////////
+    //////////////////////////////////////////////////////////////////////
+    // Constructor method used to initialize this class when instantiated.
+    // Also, dependency injection is being used in order to facilitate the
+    // usage of methods and attributes that belong to other classes.
+    //////////////////////////////////////////////////////////////////////
     @Autowired
     public GoalController(
         GoalsService service,
@@ -52,6 +66,15 @@ public class GoalController {
         this.childDao = childDao;
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////// METHODS ///////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+    ////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////
     @GetMapping("/goals")
     public String showGoals(Model viewModel, @ModelAttribute Goal goal) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -98,16 +121,33 @@ public class GoalController {
 
         return "goals/show";
     }
+    ////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////
 
+    ////////////////////////////////
+    // Parent user create new goal.
+    ////////////////////////////////
     @GetMapping("/goals/create")
     public String showCreateForm(Model viewModel) {
+
+        ////////////////////////////
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        ///////////////////////////
         Parent parent = parentDao.findByUserId(user.getId());
+
+        //////////////////////////
         viewModel.addAttribute("children", childDao.findAllByParentId(parent.getId()));
         viewModel.addAttribute("goal", new Goal());
+
+        /////////////////////////
         return "goals/create";
     }
 
+    ////////////////////////////////////////
+    // Persist new goal data to goal table
+    ////////////////////////////////////////
     @PostMapping("/goals/create")
     public String createGoal(@ModelAttribute Goal goal,
                              Errors validation,
@@ -116,61 +156,103 @@ public class GoalController {
                              RedirectAttributes redirect
     ) {
 
+        ////////////////////////////////
+        // Validate user.
+        ////////////////////////////////
         if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
             model.addAttribute("goal", goal);
             return "goals/create";
         }
 
+        ////////////////////////////////////////////////////////////////////
+        // If user validate create goal and redirect user to parent profile
+        ////////////////////////////////////////////////////////////////////
         goal.setUser(userDao.findByChildId(childId));
         service.save(goal);
-        return "redirect:/goals";
+        return "redirect:/profile";
     }
 
-    @GetMapping("/goals/{id}/delete")
-    public String showGoalToBeDeleted(@PathVariable Long id, Model viewModel){
-        Goal goal = service.findById(id);
-        viewModel.addAttribute("goal", goal);
-        return "goals/delete";
+    //////////////////////////////////////////////
+    // Delete goal; not need for get mapping,
+    // since edit method is retrieving the data.
+    ///////////////////////////////////////////////
+    @PostMapping("/goals/delete")
+    public String deleteGoal (@ModelAttribute Goal goal, @RequestParam(name = "goalIdy") long goalIdy) {
+
+        //////////////////////////////
+        service.delete(goalIdy);
+
+        ///////////////////////////////
+        return "redirect:/profile";
     }
 
-    @PostMapping("/goals/{id}/delete")
-    public String deleteGoal (@ModelAttribute Goal goal, @PathVariable Long id) {
-        service.delete(id);
-        return "redirect:/goals/child";
-    }
+    ////////////////////////////////
+    // Edit goal
+    ////////////////////////////////
+    @GetMapping("/goals/update/{id}")
+    public String showGoalToBeEdited (@PathVariable long id, Model viewModel){
 
-    /////might need id in url
-    @GetMapping("/goals/update")
-    public String showGoalToBeEdited (Model viewModel){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        ///////////////////////////////
         Parent parent = parentDao.findByUser(user);
 
+        //////////////////////////////
+        Goal goal = goalDao.findById(id);
+
+        //////////////////////////////
         List<Child> children = childDao.findAllByParentId(parent.getId());
 
+        //////////////////////////////
         List<Long> childrenIds = children.stream().map(child -> child.getUser().getId()).collect(Collectors.toList());
+
+        //////////////////////////////
         Iterable<Goal> incompleteGoals = goalDao.childrenIncompleteGoals(childrenIds);
 
-        String role=user.getRole();
+        //////////////////////////////
+        String role = user.getRole();
 
+        //////////////////////////////
+        viewModel.addAttribute("goal", goal);
         viewModel.addAttribute("role",role);
         viewModel.addAttribute("goals", incompleteGoals);
         viewModel.addAttribute("child", children);
         viewModel.addAttribute("parent",parent);
 
+        ///////////////////////////
         return "goals/update";
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    // Persist updated data back into goals table. Retrieve goal id as a hidden input from view,
+    // and used request param annotation to to use id in order to find goal and edit the same.
+    ///////////////////////////////////////////////////////////////////////////////////////////////
     @PostMapping("/goals/update")
-    public String editGoal(@ModelAttribute Goal goal){
-        User user = userDao.findByGoalId(goal.getId());
-        goal.setUser(user);
+    public String editGoal(@ModelAttribute Goal goal,
+                           @RequestParam(name = "goalIdx") long goalIdx){
+
+        ////////////////////////////////
+        goal.setId(goalIdx);
+
+        ////////////////////////////////
+        goal.setUser(userDao.findByGoalId(goal.getId()));
+
+        ////////////////////////////////
         service.save(goal);
-        return "redirect:/goals/" + goal.getId();
+
+        ////////////////////////////////
+        return "redirect:/profile";
     }
 
+
+    /////////////////////////////////////////////////////////////
+    // Show goals that are reached. I don't know if this works.
+    //////////////////////////////////////////////////////////////
     @GetMapping("/goals/{id}/reached")
     public String showReachedGoals (@PathVariable long id, Model viewModel, @ModelAttribute Goal goal){
+
+        //////////////////////////////
         User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         //List<Goal> goals = goalDao.findIfGoalIsComplete(user.getId());
         //Goal goal = service.findById(id);
@@ -178,63 +260,45 @@ public class GoalController {
         //viewModel.addAttribute("goal", service.findById(id));
         //viewModel.addAttribute("goals",goals);
 
-
-
+        ///////////////////////////////
         return "goals/reached";
     }
 
+    /////////////////////////////////////////////////////////////
+    // Show goals that are complete. I don't know if this works.
+    //////////////////////////////////////////////////////////////
     @GetMapping("/goals/completed/{id}")
     public String showCompletedGoals(@PathVariable Long id, Model viewModel, @ModelAttribute Goal goal){
+
+        ////////////////////////////////
         User parentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        ////////////////////////////////
         Parent parent = parentDao.findByUser(parentUser);
+
+        ////////////////////////////////
         User user = userDao.findById(id);
+
+        ////////////////////////////////
         viewModel.addAttribute("user", user);
 
-        //User user = userDao.findById(id);
+        ////////////////////////////////
         Child child = childDao.findByUser(user);
-        List<Goal> completeGoals = goalDao.findIfGoalIsComplete(user.getId());
-        //List<User> users = userDao.findAllByParentId(user.getId());
-        viewModel.addAttribute("user", user);
-        //viewModel.addAttribute("children",children);
 
+        ///////////////////////////////
+        List<Goal> completeGoals = goalDao.findIfGoalIsComplete(user.getId());
+
+        ///////////////////////////////
+        viewModel.addAttribute("user", user);
+
+        //////////////////////////////
         viewModel.addAttribute("goals",completeGoals);
         viewModel.addAttribute("parent",parent);
         viewModel.addAttribute("child",child);
-        System.out.println(goalDao.findIfGoalIsComplete(user.getId()));
 
+        //////////////////////////////
         return "goals/completed";
 
-//        User parentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        Parent parent = parentDao.findByUser(parentUser);
-//        User user = userDao.findById(id);
-//        viewModel.addAttribute("goals",goalDao.findIfGoalIsComplete(user.getId()));
-
-
-        //Working on making a points system
-
-        //System.out.println(goals.getTotalPoints());
-        //if (goal.getTotalPoints() == goal.getTrackProgress()) {
-          //  System.out.println("goal complete!!!");
-        //}
-
-
-        //List<Goal>goals =
-//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        Parent parent = parentDao.findByUser(user);
-        //Erased... but used to work for parents' goals
-        //List<Goal> goals = goalDao.findIfGoalIsComplete(goal.getId());
-
-//        List<Child> children = childDao.findAllByParentId(parent.getId());
-//        viewModel.addAttribute("parent",parent);
-        //viewModel.addAttribute("goals", goals);
-        // viewModel.addAttribute("children",children);
-        //System.out.println(goalDao.findIfGoalIsComplete(goal.getId()));
-
-//        if (goal.getTotalPoints() == goal.getTrackProgress()) {
-//
-//
-//            System.out.println(goalDao.findIfGoalIsComplete(user.getId()));
-//        }
     }
 
 }

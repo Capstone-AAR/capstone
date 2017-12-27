@@ -6,6 +6,10 @@ import com.capstone.demo.repositories.GoalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/////////////////////////////////////////////////////////////////////////
+// Service class is a special class used to provide more elaborate ways
+// to query and interact with data, and tables.
+/////////////////////////////////////////////////////////////////////////
 @Service("GoalService")
 public class GoalsService {
     private final GoalRepository goalDao;
@@ -15,7 +19,6 @@ public class GoalsService {
         this.goalDao = goalDao;
     }
 
-    //Get all the goals//
 
     public Iterable<Goal> findAll(){
 
@@ -33,10 +36,7 @@ public class GoalsService {
     }
 
     public void delete (long id){
-        goalDao.delete(id);}
+        goalDao.delete(id);
+    }
 
-    //Trying to find completed goals!!
-
-//    public Iterable<Goal> findIfGoalIsComplete(){
-//        return goalDao.findIfGoalIsComplete(findById(Long id)); }
 }

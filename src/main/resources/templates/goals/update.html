@@ -4,36 +4,39 @@
 
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
-goals
-<div class="profile">
-<form th:action="@{/goals/{id}/update(id=${goal.id})}" method ="post" th:object = "${goal}">
-    Goal:
-    <input th:field="${goal.goalName}"/>
-    <br/>
-
-<th:block th:each="goal : ${goals}">
-    <h2>
-
-    <a th:href="@{/tasks/create(id=${goal.id})}" th:text="${goal.goalName}"></a>
-    </h2>
 
 
-</th:block>
-</form>
+<div class="container">
+
+    <div class="row">
+
+        <div id="updateGoal" class="col text-center">
+
+            <h1>Update Goal</h1>
+
+            <form th:action="@{/goals/update}" method="post" th:object="${goal}">
+                <label for="goalName">Name</label>
+                <input id="goalName" th:field="${goal.goalName}"/>
+                <br/>
+                <label for="totalPoints">Total Points</label>
+                <input id="totalPoints" th:field="${goal.totalPoints}"/>
+                <br/>
+                <label for="progress">Progress</label>
+                <input id="progress" th:field="${goal.trackProgress}"/>
+                <br/>
+                <input type="hidden" name="goalIdx" th:value="${goal.id}"/>
+                <br/>
+                <input type="submit" value="Update Goal"/>
+            </form>
+            <form th:action="@{/goals/delete}" method="post" th:object="${goal}">
+
+                <input type="hidden" name="goalIdy" th:value="${goal.id}"/>
+
+                <input class="btn btn-danger" type="submit" value="Delete Goal"/>
+            </form>
+        </div>
+    </div>
 </div>
-<!--<form th:action="@{/goals/{id}/update(id=${goal.id})}" method ="post" th:object = "${goal}">-->
-    <!--Goal:-->
-    <!--<input th:field="${goal.goalName}"/>-->
-    <!--<br/>-->
-
-    <!--Total Points:-->
-    <!--<input th:field="${goal.totalPoints}"/>-->
-    <!--<br/>-->
-    <!--<input th:field="${goal.trackProgress}"/>-->
-    <!--<br/>-->
-    <!--<input type="submit" value="Update Goal"/>-->
-<!--</form>-->
-
 <footer th:replace="fragments/footer :: mainFooter"></footer>
 </body>
 </html>

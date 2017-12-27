@@ -76,36 +76,36 @@ $(document).ready(function () {
             $modal.modal("show");
         },
 
-        eventRender: function(event, element) {
+        eventRender: function (event, element) {
 
-            if(event.status === 'APPROVED') {
+            if (event.status === 'APPROVED') {
                 element.css({
                     'background-color': '#ff0017',
                     'border-color': '#ff0017',
-                    'font-weight' : 'bold',
-                    'height' :  '30px',
-                    'font-size' : '20px'
+                    'font-weight': 'bold',
+                    'height': '30px',
+                    'font-size': '20px'
                 })
             }
 
 
-            if(event.status === 'REQUEST_APPROVAL') {
-               element.css({
-                   'background-color': '#F27A33',
-                   'border-color': '#F27A33',
-                   'font-weight' : 'bold',
-                   'height' :  '30px',
-                   'font-size' : '20px'
-               })
+            if (event.status === 'REQUEST_APPROVAL') {
+                element.css({
+                    'background-color': '#F27A33',
+                    'border-color': '#F27A33',
+                    'font-weight': 'bold',
+                    'height': '30px',
+                    'font-size': '20px'
+                })
             }
 
-            if(event.status === 'NEW') {
+            if (event.status === 'NEW') {
                 element.css({
                     'background-color': '#438052',
                     'border-color': '#438052',
-                    'font-weight' : 'bold',
-                    'height' :  '30px',
-                    'font-size' : '20px'
+                    'font-weight': 'bold',
+                    'height': '30px',
+                    'font-size': '20px'
 
                 })
             }

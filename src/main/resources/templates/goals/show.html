@@ -5,20 +5,21 @@
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 <div class="profile">
-<div th:each="goal :${goal}" style="max-width:75%;margin-left:auto; margin-right:auto;">
-    <h1>Your goal:</h1>
-    <h1 th:text="${goal.goalName}">
+    <div th:each="goal :${goal}" style="max-width:75%;margin-left:auto; margin-right:auto;">
+        <h1>Your goal:</h1>
+        <h1 th:text="${goal.goalName}">
 
-    </h1>
+        </h1>
 
-    <h3>Total points needed:</h3>
-    <p id="total-points" th:text="${goal.totalPoints}"></p>
-    <h3>Current Points:</h3>
-    <p id="track-progress" th:text="${goal.trackProgress}"></p>
-</div>
-<div class="progress">
-    <div th:text="${goal.trackProgress}" id="myBar" class="progress-bar" role="progressbar" style="width:10px" aria-valuenow="${goal.totalPoints}"></div>
-</div>
+        <h3>Total points needed:</h3>
+        <p id="total-points" th:text="${goal.totalPoints}"></p>
+        <h3>Current Points:</h3>
+        <p id="track-progress" th:text="${goal.trackProgress}"></p>
+    </div>
+    <div class="progress">
+        <div th:text="${goal.trackProgress}" id="myBar" class="progress-bar" role="progressbar" style="width:10px"
+             aria-valuenow="${goal.totalPoints}"></div>
+    </div>
 </div>
 <button class="progress">Click Me</button>
 <a th:href="@{/goals/{id}/update(id=${goal.id})}"><input type="submit" value="Update Goal"/></a>
@@ -32,6 +33,7 @@
     var totalProgress = (trackProgress / totalPoints) * 100;
     console.log(trackProgress);
     console.log(totalPoints);
+
     function move() {
         var elem = document.getElementById("myBar");
         var width = 0;
@@ -46,6 +48,7 @@
             }
         }
     }
+
     move();
 </script>
 

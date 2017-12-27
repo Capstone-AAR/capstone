@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments/header :: main-header('Your Profile')"></head>
+<body>
+<nav th:replace="fragments/navbar :: mainNavbar"></nav>
+
+<h1 id="edit-child-title">Edit <span th:text="${kid.username}"></span>'s profile</h1>
+
+<div class="container-fluid text-center">
+    <div class="row">
+        <div class="col col-lg-12 col col-md-12">
+            <form th:action="@{/users/edit}" method="post" th:object="${kid}">
+                <label for="kidName">Name:</label>
+                <input id="kidName" th:field="${kid.username}"/>
+                <br/>
+                <br/>
+                <label for="kidEmail">Email:</label>
+                <input id="kidEmail" th:field="${kid.email}"/>
+                <br/>
+                <br/>
+                <label for="kidPassword">Password:</label>
+                <input id="kidPassword" name="kidPassword" type="password"/>
+                <br/>
+                <br/>
+                <!--<label for="repeatPassword">Repeat Password:</label>-->
+                <!--<input id="repeatPassword" type="password"/>-->
+                <br/>
+                <input name="kidRole" type="hidden" th:value="${kid.role}"/>
+                <br/>
+                <input name="kidId" type="hidden" th:value="${kid.id}"/>
+                <br/>
+                <input type="submit" value="Update Profile"/>
+            </form>
+            <form th:action="@{/users/delete}" method="post" th:object="${kid}">
+
+                <input type="hidden" th:value="${kid.id}" name="kidId" />
+
+                <input type="submit" class="btn btn-danger" value="Delete Profile" />
+
+            </form>
+        </div>
+    </div>
+</div>
+<footer th:replace="fragments/footer :: mainFooter"></footer>
+</body>
+</html>

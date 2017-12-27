@@ -5,6 +5,10 @@ import com.capstone.demo.repositories.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/////////////////////////////////////////////////////////////////////////
+// Service class is a special class used to provide more elaborate ways
+// to query and interact with data, and tables.
+/////////////////////////////////////////////////////////////////////////
 @Service
 public class TasksService {
     private final TaskRepository taskDao;
