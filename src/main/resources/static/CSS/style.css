@@ -207,7 +207,6 @@ FOR MOBILE PHONES
         background-color: #77C2BD;
         color: white;
         font-size: 30px;
-        max-width: 400px;
         text-align: center;
     }
     .second{
@@ -401,7 +400,10 @@ FOR MOBILE PHONES
     #help {
         padding-top: 6em;
     }
-
+    .container{
+        padding: 0;
+        margin: 0;
+    }
     /*.story-category {*/
     /*font-size: 80px;*/
     /*}*/
@@ -773,23 +775,25 @@ FOR MOBILE PHONES
 
         position: absolute;
         top: 220px;
-        left:0;
+        left: 150px;
         right:0;
         background-color: transparent;
         color: #5A6075;
         font-size: 22px;
+        width: 430px;
 
     }
 
     .second {
-        max-width: 340px;
+        /*max-width: 340px;*/
         position: absolute;
         top: 480px;
-        left:0;
+        left:-160px;
         right:0;
         background-color: transparent;
         color: #5A6075;
         font-size: 22px;
+        width: 430px;
 
     }
 
@@ -809,7 +813,7 @@ FOR MOBILE PHONES
         max-width: 340px;
         position: absolute;
         top: 1000px;
-        left:0;
+        left:-50px;
         right:0;
         background-color: transparent;
         color: #5A6075;
@@ -826,7 +830,10 @@ FOR MOBILE PHONES
         position: relative;
         display: inline-block;
         font-size: 22px;
-        width: 400px;
+
+        /*text-align: center;*/
+        width: 350px;
+
         margin-left: auto;
         margin-right: auto;
         right: -100px;
