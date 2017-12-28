@@ -16,6 +16,7 @@
         </a>
         <ul class="navbar-links">
             <li><a class="index-nav" href="/profile">Home</a></li>
+            <li><a class="index-nav" href="/edit-parent">Update Account</a></li>
             <li><a class="index-nav" href="/goals/create">Set a Goal</a></li>
             <li><a class="index-nav" href="/children/new">Add New Saver</a></li>
             <li>
@@ -28,7 +29,8 @@
 </div>
 <nav sec:authorize="isAnonymous()" id="main-nav" class="navbar navbar-default" th:fragment="mainNavbar">
     <div class="logo">
-        <a class="icon-logo" th:href="@{/}"><img th:src="@{/img/squirrel.png}" alt="facebook" height="50" width="50" class="squirrel-o"/>
+        <a class="icon-logo" th:href="@{/}"><img th:src="@{/img/squirrel.png}" alt="facebook" height="50" width="50"
+                                                 class="squirrel-o"/>
             <h2 class="thrifty-title">Thrifty</h2>
         </a>
         <ul class="navbar-links">

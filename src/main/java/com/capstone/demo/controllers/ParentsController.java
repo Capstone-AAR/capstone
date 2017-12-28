@@ -196,4 +196,15 @@ public class ParentsController {
         return "redirect:/profile";
     }
 
+    /////////////////////////////////////////////////////////////////////
+    // Take logged in user to to update account page.
+    /////////////////////////////////////////////////////////////////////
+    @GetMapping("/edit-parent")
+    public String editParentProfile(Model viewModel) {
+
+        viewModel.addAttribute("parent", userService.loggedInUser());
+
+        return"users/edit-parent";
+    }
+
 }
