@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
+<head th:replace="fragments/header :: main-header('Your Profile')"></head>
+<body>
+<nav th:replace="fragments/navbar :: mainNavbar"></nav>
+
+<div class="container-fluid text-center">
+<h2 id="edit-title">Update <span th:text="${parent.username}"></span>'s information</h2>
+</div>
+
+<footer th:replace="fragments/footer :: mainFooter"></footer>
+</body>
+</html>
