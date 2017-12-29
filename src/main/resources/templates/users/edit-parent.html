@@ -6,6 +6,17 @@
 
 <div class="container-fluid text-center">
 <h2 id="edit-title">Update <span th:text="${parent.username}"></span>'s information</h2>
+    <div class="row">
+        <div class="col col-lg-12 col-md-12">
+            <form action="" method="post" th:object="parent">
+                <label for="username">Username:</label>
+                <input type="text" id="username" th:field="${parent.username}" />
+                <label for="email"></label>
+                <input type="text" id="email" th:field="${parent.email}" />
+                <input type="submit" th:value="Update" />
+            </form>
+        </div>
+    </div>
 </div>
 
 <footer th:replace="fragments/footer :: mainFooter"></footer>
