@@ -207,6 +207,9 @@ public class ParentsController {
         return"users/edit-parent";
     }
 
+    /////////////////////////////////////////////////////////////////////
+    // Persist new Parent user data to User table.
+    /////////////////////////////////////////////////////////////////////
     @PostMapping("/edit-parent")
     public String editParent(@ModelAttribute User parent,
                              @RequestParam(name = "parentId") long parentId
