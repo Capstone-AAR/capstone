@@ -175,7 +175,7 @@ public class ParentsController {
         //////////////////////////////////
         userService.save(kidTwo);
 
-        return"redirect:/profile";
+        return "redirect:/profile";
     }
 
     /////////////////////////////////////////////////////////////////////
@@ -204,7 +204,7 @@ public class ParentsController {
 
         viewModel.addAttribute("parent", userService.loggedInUser());
 
-        return"users/edit-parent";
+        return "users/edit-parent";
     }
 
     /////////////////////////////////////////////////////////////////////
@@ -212,10 +212,25 @@ public class ParentsController {
     /////////////////////////////////////////////////////////////////////
     @PostMapping("/edit-parent")
     public String editParent(@ModelAttribute User parent,
-                             @RequestParam(name = "parentId") long parentId
+                             @RequestParam(name = "parentId") long parentId,
+                             @RequestParam(name = "parentPassword") String parentPassword
     ) {
 
-        return"redirect:/profile";
+        User parentTwo = userService.findById(parentId);
+
+        parentTwo.setUsername(parent.getUsername());
+
+        parentTwo.setEmail(parent.getEmail());
+
+        parentTwo.setPassword(parentPassword);
+
+        String hash = encoder.encode(parentTwo.getPassword());
+
+        parentTwo.setPassword(hash);
+
+        userService.save(parentTwo);
+
+        return "redirect:/profile";
     }
 
 }
