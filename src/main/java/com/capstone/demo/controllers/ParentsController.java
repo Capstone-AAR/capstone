@@ -187,8 +187,6 @@ public class ParentsController {
     ) {
         Child kidDelete = parentsService.findChild(kidId);
 
-        System.out.println(kidDelete.getId());
-
         childService.delete(kidDelete.getId());
 
         userService.delete(kidDelete.getUser().getId());
@@ -225,12 +223,34 @@ public class ParentsController {
         parentTwo.setPassword(parentPassword);
 
         String hash = encoder.encode(parentTwo.getPassword());
-
         parentTwo.setPassword(hash);
 
         userService.save(parentTwo);
 
         return "redirect:/profile";
+    }
+
+    /////////////////////////////////////////////////////////////////////
+    // Persist new Parent user data to User table.
+    /////////////////////////////////////////////////////////////////////
+    @PostMapping("/delete")
+    public String deleteParent(@ModelAttribute User parent,
+                               @RequestParam(name = "parentId") long parentId
+    ) {
+
+        User parentDelete = userService.findById(parentId);
+
+        Parent parentRole = parentRepository.findByUserId(parentId);
+
+        System.out.println(parentDelete.getId());
+
+        System.out.println(parentRole.getId());
+
+        parentsService.delete(parentRole.getId());
+
+        userService.delete(parentDelete.getId());
+
+        return "redirect:/register";
     }
 
 }

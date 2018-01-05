@@ -26,6 +26,13 @@
                 <br/>
                 <input type="submit" th:value="Update" />
             </form>
+            <form th:action="@{/delete}" method="post" th:object="${parent}">
+
+                <input name="parentId" type="hidden" th:value="${parent.id}" />
+
+                <input class="btn btn-danger" type="submit" value="Delete" />
+
+            </form>
         </div>
     </div>
 </div>
